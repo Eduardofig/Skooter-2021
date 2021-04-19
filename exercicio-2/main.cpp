@@ -6,7 +6,6 @@ class Termo
         int coeficiente;
         int grau;
     public:
-
         void mudarCoeficiente(int coeficiente) {
             this->coeficiente = coeficiente;
         }
