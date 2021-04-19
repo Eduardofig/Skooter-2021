@@ -1,5 +1,6 @@
 #include <bits/stdc++.h>
 
+//Classe para driver generico
 class Driver {
     private:
         bool estaLigado;
@@ -37,6 +38,7 @@ class Driver {
         }
 };
 
+//Classe para driver de Rede que implementa o metodo enviaPacoteDeDados
 class DriverDeRede: public Driver {
     private:
         std::vector<std::pair<std::string, int>> dados;
@@ -57,6 +59,7 @@ class DriverDeRede: public Driver {
         }
 };
 
+//Classe para DriverDePagina que implementa metodo imprimePaginas
 class DriverDePagina: public Driver {
     private:
         std::vector<std::string> paginas;
@@ -77,6 +80,7 @@ class DriverDePagina: public Driver {
         }
 };
 
+//Classe para DriverDeExibicao que implementa metodo alteraBrilhoDeExibicao
 class DriverDeExibicao: public Driver {
     private:
         int brilho;
@@ -96,6 +100,7 @@ class DriverDeExibicao: public Driver {
         }
 };
 
+//main para demonstracao dos metodos
 int main()
 {
     std::vector<std::pair<std::string, int>> v(10);

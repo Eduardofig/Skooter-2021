@@ -1,5 +1,6 @@
 #include <bits/stdc++.h>
 
+//Classe geral para termo
 class Termo
 {
     private:
@@ -26,6 +27,7 @@ class Termo
         }
 };
 
+//Classe para Polinomio
 class Polinomio
 {
     private:
@@ -41,6 +43,7 @@ class Polinomio
             if(termo.acessarGrau() > this->grauMaximo) {
                 return;
             }
+            //itera por todos os termos do polinomio para ver se ha um termo com o mesmo grau do termo a ser adicionado
             for(int i = 0; i < this->termos.size(); i++) {
                 if(this->termos[i].acessarGrau() == termo.acessarGrau()) {
                     this->termos[i].mudarCoeficiente(this->termos[i].acessarCoeficiente() + termo.acessarCoeficiente());
@@ -66,6 +69,7 @@ class Polinomio
         }
 };
 
+//Main para teste
 int main()
 {
     Polinomio polinomio(7);
@@ -75,6 +79,7 @@ int main()
         termo.mudarCoeficiente(i);
         polinomio.Add(termo);
     }
+    //Adicao de termo de grau 5 que ja esta presente no polinomio
     termo.mudarGrau(5);
     termo.mudarCoeficiente(5);
     polinomio.Add(termo);
