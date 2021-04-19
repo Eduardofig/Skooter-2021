@@ -112,7 +112,7 @@ int main()
 
     }
     DriverDeExibicao driver1;
-    DriverDePagina driver3({"Pagina 1 :\n   O Comeco", "Pagina 2 :\n          O Meio", "Pagina 3:\n      O Fim"});
+    DriverDePagina driver3({"Pagina 1: \n       O Comeco", "Pagina 2: \n        O Meio", "Pagina 3: \n       O Fim"});
     DriverDeRede driver2(v);
     driver1.alteraBrilhoDeExibicao(10);
     driver1.ligaDispositivo();

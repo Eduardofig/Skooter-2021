@@ -63,7 +63,7 @@ class Polinomio
         {
             int resposta;
             for(Termo termo: this->termos) {
-                resposta += termo.acessarCoeficiente()*(int)pow(num, termo.acessarCoeficiente());
+                resposta += termo.acessarCoeficiente()*(int)pow(num, termo.acessarGrau());
             }
             return resposta;
         }
