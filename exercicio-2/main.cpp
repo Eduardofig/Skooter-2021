@@ -1,88 +1,125 @@
 #include <bits/stdc++.h>
 
-//Classe geral para termo
-class Termo
-{
+//Classe para driver generico
+class Driver {
     private:
-        int coeficiente;
-        int grau;
+        bool estaLigado;
+        bool estaFuncionando;
+        std::string status;
     public:
-        void mudarCoeficiente(int coeficiente) {
-            this->coeficiente = coeficiente;
-        }
-
-        void mudarGrau(int grau)
+        Driver()
         {
-            this->grau = grau;
+            this->estaFuncionando = true;
+            this->estaLigado = false;
+            this->status = "Aguadando Teste";
         }
-
-        int acessarCoeficiente()
+        bool checarLigado()
         {
-            return this->coeficiente;
+            return this->estaLigado;
         }
-
-        int acessarGrau()
+        void ligaDispositivo()
         {
-            return this->grau;
+            this->estaLigado = true;
+            std::cout << "Ligando" << std::endl;
         }
-};
-
-//Classe para Polinomio
-class Polinomio
-{
-    private:
-        int grauMaximo;
-        std::vector<Termo> termos;
-    public:
-        Polinomio(int grauMaximo)
+        void executaTeste()
         {
-            this->grauMaximo = grauMaximo;
+            std::cout << "Testando" << std::endl;
         }
-        void Add(Termo termo) 
+        void verificaStatus()
         {
-            if(termo.acessarGrau() > this->grauMaximo) {
+            if(estaFuncionando) {
+                this->status = "Funcionando";
+                std::cout << this->status << std::endl;
                 return;
             }
-            //itera por todos os termos do polinomio para ver se ha um termo com o mesmo grau do termo a ser adicionado
-            for(int i = 0; i < this->termos.size(); i++) {
-                if(this->termos[i].acessarGrau() == termo.acessarGrau()) {
-                    this->termos[i].mudarCoeficiente(this->termos[i].acessarCoeficiente() + termo.acessarCoeficiente());
-                    return;
-                }
-            }
-            this->termos.push_back(termo);
-        }
-        void Mostra()
-        {
-            for(Termo termo: this->termos) {
-                std::cout << termo.acessarCoeficiente() << "x^" << termo.acessarGrau() << " ";
-            }
-            std::cout << std::endl;
-        }
-        int Calcula(int num)
-        {
-            int resposta;
-            for(Termo termo: this->termos) {
-                resposta += termo.acessarCoeficiente()*(int)pow(num, termo.acessarGrau());
-            }
-            return resposta;
+            this->status = "Nao esta funcionando";
+            std::cout << this->status << std::endl;
         }
 };
 
-//Main para teste
+//Classe para driver de Rede que implementa o metodo enviaPacoteDeDados
+class DriverDeRede: public Driver {
+    private:
+        std::vector<std::pair<std::string, int>> dados;
+    public:
+        DriverDeRede(std::vector<std::pair<std::string, int>> dados)
+        {
+            this->dados = dados;
+        }
+        void enviaPacoteDeDados()
+        {
+            if(!checarLigado()) {
+                std::cout << "driver desligado" << std::endl;
+                return;
+            }
+            for(std::pair<std::string, int> p: this->dados) {
+                std::cout << "Enviando Pacote: " << p.first << std::endl;
+            }
+        }
+};
+
+//Classe para DriverDePagina que implementa metodo imprimePaginas
+class DriverDePagina: public Driver {
+    private:
+        std::vector<std::string> paginas;
+    public:
+        DriverDePagina(std::vector<std::string> paginas) 
+        {
+            this->paginas = paginas;
+        }
+        void imprimePaginas()
+        {
+            if(!checarLigado()) {
+                std::cout << "driver desligado" << std::endl;
+                return;
+            }
+            for(std::string pagina: this->paginas) {
+                std::cout << pagina << std::endl;
+            }
+        }
+};
+
+//Classe para DriverDeExibicao que implementa metodo alteraBrilhoDeExibicao
+class DriverDeExibicao: public Driver {
+    private:
+        int brilho;
+    public:
+        DriverDeExibicao()
+        {
+            this->brilho = 0;
+        }
+        void alteraBrilhoDeExibicao(int brilho)
+        {
+            if(!checarLigado()) {
+                std::cout << "driver desligado" << std::endl;
+                return;
+            }
+            this->brilho = brilho;
+            std::cout << "Brilho alterado para : " << brilho << std::endl;
+        }
+};
+
+//main para demonstracao dos metodos
 int main()
 {
-    Polinomio polinomio(7);
-    Termo termo;
-    for (int i = 1; i < 7; ++i) {
-        termo.mudarGrau(i);
-        termo.mudarCoeficiente(i);
-        polinomio.Add(termo);
+    std::vector<std::pair<std::string, int>> v(10);
+    std::string nome;
+    for (int i = 0; i < 10; ++i) {
+        nome = "dado_" + std::to_string(i);
+        v[i] = std::make_pair(nome, i);
     }
-    //Adicao de termo de grau 5 que ja esta presente no polinomio
-    termo.mudarGrau(5);
-    termo.mudarCoeficiente(5);
-    polinomio.Add(termo);
-    polinomio.Mostra();
-    std::cout << polinomio.Calcula(10) << std::endl;
+    DriverDeExibicao driver1;
+    DriverDePagina driver3({"Pagina 1: \n       O Comeco", "Pagina 2: \n        O Meio", "Pagina 3: \n       O Fim"});
+    DriverDeRede driver2(v);
+    driver1.alteraBrilhoDeExibicao(10);
+    driver1.ligaDispositivo();
+    driver1.alteraBrilhoDeExibicao(10);
+    driver1.executaTeste();
+    driver1.verificaStatus();
+    driver2.ligaDispositivo();
+    driver2.executaTeste();
+    driver2.enviaPacoteDeDados();
+    driver3.ligaDispositivo();
+    driver3.imprimePaginas();
 }
