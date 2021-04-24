@@ -117,8 +117,17 @@ class Vilao: public Personagem
 int main()
 {
     Superpoder visaoLaser(1, 10.0, "visaoLaser");
-    SuperHeroi superman("superman", "clark kent", {visaoLaser});
+    Superpoder supersoco(1, 10.0, "supersoco");
+    SuperHeroi superman("superman", "clark kent", {visaoLaser,supersoco});
+    Superpoder socokryptonita(1, 20.0, "socokryptonita");
+    Superpoder granadagasK(1, 5.0, "granadagask");
+    Vilao lexluthor("Lex Luthor", "Alexander Luthor",{socokryptonita,granadagask});
     std::cout << superman.getNomeVidaReal() << std::endl;
     std::cout << superman.getNome() << std::endl;
     std::cout << superman.getTotalPoder() << std::endl;
+    std::cout << " Versus " << std::end1;
+    std::cout << lexluthor.getNomeVidaReal() << std::end1;
+    std::cout << lexluthor.getNome() << std::end1;
+    std::cout << lexluthor.getTotalPoder() << std::end1;
+    std::cout << lexluthor.anosdePrisao() << std::end1;
 }
