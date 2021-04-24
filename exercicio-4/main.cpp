@@ -32,6 +32,12 @@ class Superpoder
         {
             this->_nivelDePoder = pNivelDePoder;
         }
+        Superpoder(int pCategoria, double pNivelDePoder, std::string pNome)
+        {
+            setCategoria(pCategoria);
+            setNome(pNome);
+            setNivelDePoder(pNivelDePoder);
+        }
 };
 
 class Personagem 
@@ -110,5 +116,5 @@ class Vilao: public Personagem
 
 int main()
 {
-    
+
 }
