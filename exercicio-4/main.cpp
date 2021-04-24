@@ -122,7 +122,7 @@ int main()
     superman.addPoder(supersoco);
     Superpoder socokryptonita(1, 20.0, "socokryptonita");
     Superpoder granadagasK(1, 5.0, "granadagask");
-    Vilao lexluthor("Lex Luthor", "Alexander Luthor",{socokryptonita});
+    Vilao lexluthor("Lex Luthor", "Alexander Luthor",{socokryptonita},150);
     lexluthor.addPoder(granadagasK);
     std::cout << superman.getNomeVidaReal() << std::endl;
     std::cout << superman.getNome() << std::endl;
