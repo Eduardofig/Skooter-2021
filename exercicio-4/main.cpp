@@ -1,5 +1,5 @@
 #include <iostream>
-#include<vector>
+#include <vector>
 
 class Superpoder 
 {
@@ -57,7 +57,7 @@ class Personagem
         }
         double getTotalPoder()
         {
-            double totalPoder;
+            double totalPoder = 0;
             for(Superpoder poder: this->_poderes) {
                 totalPoder += poder.getNivelDePoder();
             }
@@ -116,5 +116,9 @@ class Vilao: public Personagem
 
 int main()
 {
-
+    Superpoder visaoLaser(1, 10.0, "visaoLaser");
+    SuperHeroi superman("superman", "clark kent", {visaoLaser});
+    std::cout << superman.getNomeVidaReal() << std::endl;
+    std::cout << superman.getNome() << std::endl;
+    std::cout << superman.getTotalPoder() << std::endl;
 }
