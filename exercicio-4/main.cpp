@@ -116,20 +116,19 @@ class Vilao: public Personagem
 
 int main()
 {
-    Superpoder visaoLaser(1, 10.0, "visaoLaser");
-    Superpoder supersoco(1, 10.0, "supersoco");
-    SuperHeroi superman("superman", "clark kent", {visaoLaser});
-    superman.addPoder(supersoco);
-    Superpoder socokryptonita(1, 20.0, "socokryptonita");
-    Superpoder granadagasK(1, 5.0, "granadagask");
-    Vilao lexluthor("Lex Luthor", "Alexander Luthor",{socokryptonita}, 150);
-    lexluthor.addPoder(granadagasK);
+    Superpoder visaoLaser(1, 10.0, "Visao Laser");
+    Superpoder superSoco(1, 10.0, "Super Soco");
+    SuperHeroi superman("superman", "Clark Kent", {visaoLaser});
+    superman.addPoder(superSoco);
+    Superpoder socoKryptonita(1, 20.0, "Soco Kryptonita");
+    Superpoder granadaGasK(1, 5.0, "Granada Gas K");
+    Vilao lexLuthor("Lex Luthor", "Alexander Luthor",{socoKryptonita, granadaGasK}, 150);
     std::cout << superman.getNomeVidaReal() << std::endl;
     std::cout << superman.getNome() << std::endl;
     std::cout << superman.getTotalPoder() << std::endl;
     std::cout << " Versus " << std::endl;
-    std::cout << lexluthor.getNomeVidaReal() << std::endl;
-    std::cout << lexluthor.getNome() << std::endl;
-    std::cout << lexluthor.getTotalPoder() << std::endl;
-    std::cout << lexluthor.getAnosDePrisao() << std::endl;
+    std::cout << lexLuthor.getNomeVidaReal() << std::endl;
+    std::cout << lexLuthor.getNome() << std::endl;
+    std::cout << lexLuthor.getTotalPoder() << std::endl;
+    std::cout << lexLuthor.getAnosDePrisao() << std::endl;
 }
