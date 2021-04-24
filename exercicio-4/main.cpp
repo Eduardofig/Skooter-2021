@@ -118,10 +118,12 @@ int main()
 {
     Superpoder visaoLaser(1, 10.0, "visaoLaser");
     Superpoder supersoco(1, 10.0, "supersoco");
-    SuperHeroi superman("superman", "clark kent", {visaoLaser,supersoco});
+    SuperHeroi superman("superman", "clark kent", {visaoLaser});
+    superman.addPoder(supersoco);
     Superpoder socokryptonita(1, 20.0, "socokryptonita");
     Superpoder granadagasK(1, 5.0, "granadagask");
-    Vilao lexluthor("Lex Luthor", "Alexander Luthor",{socokryptonita,granadagask});
+    Vilao lexluthor("Lex Luthor", "Alexander Luthor",{socokryptonita});
+    lexluthor.addPoder(granadagasK);
     std::cout << superman.getNomeVidaReal() << std::endl;
     std::cout << superman.getNome() << std::endl;
     std::cout << superman.getTotalPoder() << std::endl;
