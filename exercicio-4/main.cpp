@@ -103,7 +103,7 @@ class Personagem
                 Oponente.setProtegido(false);
             }
             if((double)rand()/RAND_MAX > this->_poderes[PowerIndex].probabilidadeDeAcerto) {
-                Oponente.setVida(Oponente.getVida() - this->_poderes[PowerIndex].getNivelDePoder());
+                Oponente.setVida(Oponente.getVida() > this->_poderes[PowerIndex].getNivelDePoder()? Oponente.getVida() - this->_poderes[PowerIndex].getNivelDePoder(): 0);
                 std::cout << getNome() << " acerta" << std::endl;
                 std::cout << Oponente.getNome() << " perde " << this->_poderes[PowerIndex].getNivelDePoder() << " pontos de vida" << std::endl;
                 return;
@@ -115,14 +115,14 @@ class Personagem
 class SuperHeroi: public Personagem 
 {
     public:
-        SuperHeroi(std::string pNome, std::string pNomeVidaReal, std::vector<Superpoder> pPoderes)
+        SuperHeroi(std::string pNome, std::string pNomeVidaReal, std::vector<Superpoder> pPoderes, double vida)
         {
             setNome(pNome);
             setNomeVidaReal(pNomeVidaReal);
             for(Superpoder pPoder: pPoderes) {
                 addPoder(pPoder);
             }
-            setVida(150.00);
+            setVida(vida);
         }
 };
 
@@ -139,7 +139,7 @@ class Vilao: public Personagem
         {
             return this->_anosDePrisao;
         }
-        Vilao(std::string pNome, std::string pNomeVidaReal, std::vector<Superpoder> pPoderes, int pAnosDePrisao)
+        Vilao(std::string pNome, std::string pNomeVidaReal, std::vector<Superpoder> pPoderes, int pAnosDePrisao, double vida)
         {
             setNome(pNome);
             setNomeVidaReal(pNomeVidaReal);
@@ -147,7 +147,7 @@ class Vilao: public Personagem
             for(Superpoder pPoder: pPoderes) {
                 addPoder(pPoder);
             }
-            setVida(200.00);
+            setVida(vida);
         }
 };
 
@@ -155,11 +155,11 @@ int main()
 {
     Superpoder visaoLaser(1, 10.0, 0.5, "Visao Laser");
     Superpoder superSoco(1, 10.0, 0.7, "Super Soco");
-    SuperHeroi superman("superman", "Clark Kent", {visaoLaser});
+    SuperHeroi superman("superman", "Clark Kent", {visaoLaser}, 150.00);
     superman.addPoder(superSoco);
     Superpoder socoKryptonita(1, 20.0, 0.8, "Soco Kryptonita");
     Superpoder granadaGasK(1, 5.0, 0.4, "Granada Gas K");
-    Vilao lexLuthor("Lex Luthor", "Alexander Luthor",{socoKryptonita, granadaGasK}, 150);
+    Vilao lexLuthor("Lex Luthor", "Alexander Luthor",{socoKryptonita, granadaGasK}, 150, 200.00);
     std::cout << superman.getNomeVidaReal() << std::endl;
     std::cout << superman.getNome() << std::endl;
     std::cout << superman.getTotalPoder() << std::endl;
@@ -168,5 +168,4 @@ int main()
     std::cout << lexLuthor.getNome() << std::endl;
     std::cout << lexLuthor.getTotalPoder() << std::endl;
     std::cout << lexLuthor.getAnosDePrisao() << std::endl;
-    superman.Attack(lexLuthor, 0);
 }
