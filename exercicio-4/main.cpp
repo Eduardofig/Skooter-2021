@@ -86,14 +86,14 @@ class Personagem
         }
         void Attack(Personagem Oponente, int PowerIndex)
         {
-            std::cout << this->_nome << " ataca " << Oponente._nome << "com " << this->_poderes[PowerIndex].getNome() << std::endl;
+            std::cout << getNome() << " ataca " << Oponente.getNome() << " com " << this->_poderes[PowerIndex].getNome() << std::endl;
             if((double)rand()/RAND_MAX > 0.50) {
                 Oponente.setVida(Oponente.getVida() - this->_poderes[PowerIndex].getNivelDePoder());
-                std::cout << this->_nome << " acerta" << std::endl;
-                std::cout << Oponente.getNome() << " perde " << this->_poderes[PowerIndex].getNome() << " pontos de vida" << std::endl;
+                std::cout << getNome() << " acerta" << std::endl;
+                std::cout << Oponente.getNome() << " perde " << this->_poderes[PowerIndex].getNivelDePoder() << " pontos de vida" << std::endl;
                 return;
             } 
-            std::cout << this->_nome << " erra" << std::endl;
+            std::cout << getNome() << " erra" << std::endl;
         }
 };
 
@@ -107,6 +107,7 @@ class SuperHeroi: public Personagem
             for(Superpoder pPoder: pPoderes) {
                 addPoder(pPoder);
             }
+            setVida(150.00);
         }
 };
 
@@ -131,6 +132,7 @@ class Vilao: public Personagem
             for(Superpoder pPoder: pPoderes) {
                 addPoder(pPoder);
             }
+            setVida(200.00);
         }
 };
 
@@ -151,4 +153,5 @@ int main()
     std::cout << lexLuthor.getNome() << std::endl;
     std::cout << lexLuthor.getTotalPoder() << std::endl;
     std::cout << lexLuthor.getAnosDePrisao() << std::endl;
+    superman.Attack(lexLuthor, 0);
 }
