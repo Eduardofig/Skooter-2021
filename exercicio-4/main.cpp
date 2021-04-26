@@ -46,6 +46,7 @@ class Personagem
         std::string _nome;
         std::string _nomeVidaReal;
         double vida;
+        bool protegido;
     public:
         std::vector<Superpoder> _poderes;
         std::string getNome()
@@ -68,6 +69,10 @@ class Personagem
         {
             return this->vida;
         }
+        bool getProtegido()
+        {
+            return this->protegido;
+        }
         void setNome(std::string pNome)
         {
             this->_nome = pNome;
@@ -84,9 +89,17 @@ class Personagem
         {
             this->vida = pVida;
         }
+        void setProtegido(bool pProtegido)
+        {
+            this->protegido = pProtegido;
+        }
         void Attack(Personagem Oponente, int PowerIndex)
         {
             std::cout << getNome() << " ataca " << Oponente.getNome() << " com " << this->_poderes[PowerIndex].getNome() << std::endl;
+            if(Oponente.getProtegido()) {
+                std::cout << Oponente.getNome() << " esta protegido" << std::endl;
+                Oponente.setProtegido(false);
+            }
             if((double)rand()/RAND_MAX > 0.50) {
                 Oponente.setVida(Oponente.getVida() - this->_poderes[PowerIndex].getNivelDePoder());
                 std::cout << getNome() << " acerta" << std::endl;
