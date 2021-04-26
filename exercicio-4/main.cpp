@@ -8,6 +8,7 @@ class Superpoder
         double _nivelDePoder;
         std::string _nome;
     public:
+        double probabilidadeDeAcerto;
         int getCategoria()
         {
             return this->_categoria;
@@ -32,11 +33,12 @@ class Superpoder
         {
             this->_nivelDePoder = pNivelDePoder;
         }
-        Superpoder(int pCategoria, double pNivelDePoder, std::string pNome)
+        Superpoder(int pCategoria, double pNivelDePoder, double probabilidadeDeAcerto, std::string pNome)
         {
             setCategoria(pCategoria);
             setNome(pNome);
             setNivelDePoder(pNivelDePoder);
+            this->probabilidadeDeAcerto = probabilidadeDeAcerto;
         }
 };
 
@@ -100,7 +102,7 @@ class Personagem
                 std::cout << Oponente.getNome() << " esta protegido" << std::endl;
                 Oponente.setProtegido(false);
             }
-            if((double)rand()/RAND_MAX > 0.50) {
+            if((double)rand()/RAND_MAX > this->_poderes[PowerIndex].probabilidadeDeAcerto) {
                 Oponente.setVida(Oponente.getVida() - this->_poderes[PowerIndex].getNivelDePoder());
                 std::cout << getNome() << " acerta" << std::endl;
                 std::cout << Oponente.getNome() << " perde " << this->_poderes[PowerIndex].getNivelDePoder() << " pontos de vida" << std::endl;
@@ -151,12 +153,12 @@ class Vilao: public Personagem
 
 int main()
 {
-    Superpoder visaoLaser(1, 10.0, "Visao Laser");
-    Superpoder superSoco(1, 10.0, "Super Soco");
+    Superpoder visaoLaser(1, 10.0, 0.5, "Visao Laser");
+    Superpoder superSoco(1, 10.0, 0.7, "Super Soco");
     SuperHeroi superman("superman", "Clark Kent", {visaoLaser});
     superman.addPoder(superSoco);
-    Superpoder socoKryptonita(1, 20.0, "Soco Kryptonita");
-    Superpoder granadaGasK(1, 5.0, "Granada Gas K");
+    Superpoder socoKryptonita(1, 20.0, 0.8, "Soco Kryptonita");
+    Superpoder granadaGasK(1, 5.0, 0.4, "Granada Gas K");
     Vilao lexLuthor("Lex Luthor", "Alexander Luthor",{socoKryptonita, granadaGasK}, 150);
     std::cout << superman.getNomeVidaReal() << std::endl;
     std::cout << superman.getNome() << std::endl;
