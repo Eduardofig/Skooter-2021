@@ -1,5 +1,6 @@
 #ifndef PERSONAGEM_H
 #define PERSONAGEM_H value
+#include <unordered_map>
 #include "Superpoder.h"
 
 class Personagem 
@@ -10,6 +11,7 @@ class Personagem
         double vida;
         bool protegido;
         std::vector<Superpoder> _poderes;
+        std::unordered_map<std::string, int> _map_poderes;
     public:
         std::string getNome();
         std::string getNomeVidaReal();
@@ -21,7 +23,7 @@ class Personagem
         void addPoder(Superpoder pPoder);
         void setVida(double pVida);
         void setProtegido(bool pProtegido);
-        void Attack(Personagem *Oponente, int PowerIndex);
+        void Attack(Personagem *Oponente, std::string nomeDoPoder);
 };
 
 #endif /* ifndef PERSONAGEM_H */

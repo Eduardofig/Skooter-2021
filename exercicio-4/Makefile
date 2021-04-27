@@ -12,3 +12,6 @@ main.o: main.cpp
 	g++ -c main.cpp
 run:
 	./main
+clear:
+	rm main main.o Superpoder.o Personagem.o SuperHeroi.o Vilao.o 
+
