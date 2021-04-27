@@ -103,7 +103,7 @@ class Personagem
                 Oponente->setProtegido(false);
                 return;
             }
-            if((double)rand()/RAND_MAX > this->_poderes[PowerIndex].probabilidadeDeAcerto) {
+            if((double)rand()/RAND_MAX > this->_poderes[PowerIndex].probabilidadeDeAcerto && PowerIndex <= this->_poderes.size() - 1 && this->_poderes.size() > 0) {
                 Oponente->setVida(Oponente->getVida() > this->_poderes[PowerIndex].getNivelDePoder()? Oponente->getVida() - this->_poderes[PowerIndex].getNivelDePoder(): 0);
                 std::cout << getNome() << " acerta" << std::endl;
                 std::cout << Oponente->getNome() << " perde " << this->_poderes[PowerIndex].getNivelDePoder() << " pontos de vida" << std::endl;
