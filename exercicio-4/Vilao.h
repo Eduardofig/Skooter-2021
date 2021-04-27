@@ -1,5 +1,5 @@
 #ifndef VILAO_H
-#define VILAO_H value
+#define VILAO_H
 #include "Personagem.h"
 
 class Vilao: public Personagem

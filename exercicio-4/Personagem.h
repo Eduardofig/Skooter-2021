@@ -1,5 +1,5 @@
 #ifndef PERSONAGEM_H
-#define PERSONAGEM_H value
+#define PERSONAGEM_H
 #include <unordered_map>
 #include "Superpoder.h"
 

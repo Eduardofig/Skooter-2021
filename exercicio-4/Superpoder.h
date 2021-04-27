@@ -1,7 +1,7 @@
 #include<string>
 #include<vector>
 #ifndef SUPERPODER_H
-#define SUPERPODER_H value
+#define SUPERPODER_H
 
 class Superpoder
 {

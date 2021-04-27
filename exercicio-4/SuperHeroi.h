@@ -1,5 +1,5 @@
 #ifndef SUPERHEROI_H
-#define SUPERHEROI_H value
+#define SUPERHEROI_H
 #include "Personagem.h"
 
 class SuperHeroi: public Personagem
