@@ -6,12 +6,12 @@
 
 int main()
 {
-    Superpoder VisaoLaser(1, 10.0, 0.5, "Visao Laser");
-    Superpoder SuperSoco(1, 10.0, 0.7, "Super Soco");
+    Superpoder VisaoLaser(1, 10.0, 0.5, "Visao Laser", false);
+    Superpoder SuperSoco(1, 10.0, 0.7, "Super Soco", false);
     SuperHeroi Superman("Superman", "Clark Kent", {VisaoLaser, SuperSoco}, 150.00);
     std::vector<std::string> poderesSuperman = {VisaoLaser.getNome(), SuperSoco.getNome()};
-    Superpoder SocoKryptonita(1, 20.0, 0.8, "Soco Kryptonita");
-    Superpoder GranadaGasKryptonita(1, 5.0, 0.4, "Granada de Gas de Kryptonita");
+    Superpoder SocoKryptonita(1, 20.0, 0.8, "Soco Kryptonita", false);
+    Superpoder GranadaGasKryptonita(1, 5.0, 0.4, "Granada de Gas de Kryptonita", false);
     Vilao LexLuthor("Lex Luthor", "Lex Luthor",{SocoKryptonita, GranadaGasKryptonita}, 150, 200.00);
     std::vector<std::string> poderesLexLuthor = {SocoKryptonita.getNome(), GranadaGasKryptonita.getNome()};
     std::cout << Superman.getNomeVidaReal() << std::endl;

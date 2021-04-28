@@ -54,6 +54,9 @@ void Personagem::Attack(Personagem *Oponente, std::string nomeDoPoder)
     }
     int PowerIndex = this->_map_poderes[nomeDoPoder];
     std::cout << getNome() << " ataca " << Oponente->getNome() << " com " << this->_poderes[PowerIndex].getNome() << std::endl;
+    if(this->_poderes[PowerIndex].getProtege()) {
+        this->protegido = true;
+    }
     if(Oponente->getProtegido()) {
         std::cout << Oponente->getNome() << " esta protegido" << std::endl;
         Oponente->setProtegido(false);
