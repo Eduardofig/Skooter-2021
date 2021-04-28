@@ -13,10 +13,6 @@ double Superpoder::getNivelDePoder()
 {
     return this->_nivelDePoder;
 }
-bool Superpoder::getProtege()
-{
-    return this->protege;
-}
 void Superpoder::setCategoria(int pCategoria)
 {
     this->_categoria = pCategoria;
@@ -29,15 +25,10 @@ void Superpoder::setNivelDePoder(double pNivelDePoder)
 {
     this->_nivelDePoder = pNivelDePoder;
 }
-void Superpoder::setProtege(bool pProtege) 
-{
-    this->protege = pProtege;
-}
-Superpoder::Superpoder(int pCategoria, double pNivelDePoder, double probabilidadeDeAcerto, std::string pNome, bool pProtege)
+Superpoder::Superpoder(int pCategoria, double pNivelDePoder, double probabilidadeDeAcerto, std::string pNome)
 {
     setCategoria(pCategoria);
     setNome(pNome);
     setNivelDePoder(pNivelDePoder);
-    setProtege(pProtege);
     this->probabilidadeDeAcerto = probabilidadeDeAcerto;
 }

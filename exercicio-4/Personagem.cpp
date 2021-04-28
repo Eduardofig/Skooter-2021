@@ -53,20 +53,26 @@ void Personagem::Attack(Personagem *Oponente, std::string nomeDoPoder)
         return;
     }
     int PowerIndex = this->_map_poderes[nomeDoPoder];
-    std::cout << getNome() << " ataca " << Oponente->getNome() << " com " << this->_poderes[PowerIndex].getNome() << std::endl;
-    if(this->_poderes[PowerIndex].getProtege()) {
-        this->protegido = true;
+    if(this->_poderes[PowerIndex].getCategoria() == 1) {
+        std::cout << getNome() << " ataca " << Oponente->getNome() << " com " << this->_poderes[PowerIndex].getNome() << std::endl;
+        if(Oponente->getProtegido()) {
+            std::cout << Oponente->getNome() << " esta protegido, o ataque nao funciona" << std::endl;
+            Oponente->setProtegido(false);
+            return;
+        }
+    } else {
+        std::cout << getNome() << " usa " << this->_poderes[PowerIndex].getNome() << std::endl;
     }
-    if(Oponente->getProtegido()) {
-        std::cout << Oponente->getNome() << " esta protegido" << std::endl;
-        Oponente->setProtegido(false);
-        return;
-    }
-    if((double)rand()/RAND_MAX > this->_poderes[PowerIndex].probabilidadeDeAcerto) {
+    if((double)rand()/RAND_MAX < this->_poderes[PowerIndex].probabilidadeDeAcerto) {
+        if(this->_poderes[PowerIndex].getCategoria() == 2) {
+            this->protegido = true;
+            std::cout << this->_poderes[PowerIndex].getNome() << " ativado, " << getNome() << " esta protegido"<< std::endl;
+            return;
+        }
         Oponente->setVida(Oponente->getVida() > this->_poderes[PowerIndex].getNivelDePoder()? Oponente->getVida() - this->_poderes[PowerIndex].getNivelDePoder(): 0);
         std::cout << getNome() << " acerta" << std::endl;
         std::cout << Oponente->getNome() << " perde " << this->_poderes[PowerIndex].getNivelDePoder() << " pontos de vida" << std::endl;
         return;
     } 
-    std::cout << getNome() << " erra" << std::endl;
+    printf("%s %s\n", getNome().c_str(), this->_poderes[PowerIndex].getCategoria() == 1? "erra": "falha");
 }
