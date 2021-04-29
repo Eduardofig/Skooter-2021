@@ -46,7 +46,7 @@ void Personagem::setProtegido(bool pProtegido)
 {
     this->protegido = pProtegido;
 }
-void Personagem::Attack(Personagem *Oponente, std::string nomeDoPoder)
+void Personagem::Attack(Personagem *Oponente, std::string nomeDoPoder, double intensidade)
 {
     //Caso o Personagem nao possua o poder Passado como parametro
     if(this->_map_poderes.find(nomeDoPoder) == this->_map_poderes.end()) {
@@ -74,9 +74,9 @@ void Personagem::Attack(Personagem *Oponente, std::string nomeDoPoder)
             std::cout << this->_poderes[PowerIndex].getNome() << " ativado, " << getNome() << " esta protegido"<< std::endl;
             return;
         }
-        Oponente->setVida(Oponente->getVida() > this->_poderes[PowerIndex].getNivelDePoder()? Oponente->getVida() - this->_poderes[PowerIndex].getNivelDePoder(): 0);
+        Oponente->setVida(Oponente->getVida() > this->_poderes[PowerIndex].getNivelDePoder()*intensidade? Oponente->getVida() - this->_poderes[PowerIndex].getNivelDePoder(): 0);
         std::cout << getNome() << " acerta" << std::endl;
-        std::cout << Oponente->getNome() << " perde " << this->_poderes[PowerIndex].getNivelDePoder() << " pontos de vida" << std::endl;
+        std::cout << Oponente->getNome() << " perde " << this->_poderes[PowerIndex].getNivelDePoder()*intensidade << " pontos de vida" << std::endl;
         return;
     } 
     printf("%s %s\n", getNome().c_str(), this->_poderes[PowerIndex].getCategoria() == 1? "erra": "falha");

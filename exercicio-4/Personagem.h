@@ -23,7 +23,7 @@ class Personagem
         void addPoder(Superpoder pPoder);
         void setVida(double pVida);
         void setProtegido(bool pProtegido);
-        void Attack(Personagem *Oponente, std::string nomeDoPoder);
+        void Attack(Personagem *Oponente, std::string nomeDoPoder, double instensidade);
 };
 
 #endif /* ifndef PERSONAGEM_H */
