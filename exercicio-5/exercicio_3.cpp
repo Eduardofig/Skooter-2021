@@ -27,6 +27,15 @@ class Carro: public PegadaDeCarbono
     }
 };
 
+class Bicicleta: public PegadaDeCarbono
+{
+    GETSET(string, Marca);
+    int getPegadaDeCarbono()
+    {
+        return 0;
+    }
+};
+
 class Predio: public PegadaDeCarbono
 {
     GETSET(int, Andares);
@@ -46,11 +55,12 @@ class Predio: public PegadaDeCarbono
     }
 };
 
-class Bicicleta: public PegadaDeCarbono
+class Escola: public Predio
 {
-    GETSET(string, Marca);
-    int getPegadaDeCarbono()
-    {
-        return 0;
-    }
+
+};
+
+class Casa: public Predio
+{
+
 };
