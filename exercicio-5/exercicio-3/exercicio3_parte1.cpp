@@ -1,6 +1,6 @@
 #include <iostream>
 #include <vector>
-#include "getset.hpp"
+#include "../getset.hpp"
 
 class PegadaDeCarbono
 {
