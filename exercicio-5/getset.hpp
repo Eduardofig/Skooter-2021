@@ -1,7 +1,7 @@
 #define GETSET(type, var)\
-    public:\
-        type var;\
     private:\
+        type var;\
+    public:\
         void set##var(type var)\
             {\
                 this->var = var;\
