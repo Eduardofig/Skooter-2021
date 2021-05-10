@@ -11,7 +11,7 @@ class PegadaDeCarbono
 class Carro: public PegadaDeCarbono
 {
     GETSET(int, KilometrosRodados);
-    GETSET(double, EficienciaDoMotor);
+    GETSET(int, EficienciaDoMotor);
     public:
         Carro(int KilometrosRodados, double EficienciaDoMotor) 
         {
@@ -24,7 +24,7 @@ class Carro: public PegadaDeCarbono
         }
         int getPegadaDeCarbono()
         {
-            return getPegadaDeCarbono()*(int)getEficienciaDoMotor();
+            return this->getPegadaDeCarbono()*this->getEficienciaDoMotor();
         }
 };
 
@@ -64,23 +64,43 @@ class Escola: public Predio
         {
             std::cout << "A escola esta em periodo de aula, nao e possivel construir novos andares" << std::endl;
         }
+        int getPegadaDeCarbono()
+        {
+            return getNumeroDeAlunos()*(int)getConsumoDeEnergiaPorAndar();
+        }
 };
 
 class Casa: public Predio
 {
-
+    GETSET(int, Andares);
+    GETSET(int, ConsumoDeEnergiaPorAndar);
+    public:
+        Casa(int Andares, double ConsumoDeEnergiaPorAndar)
+        {
+            setConsumoDeEnergiaPorAndar(ConsumoDeEnergiaPorAndar);
+            setAndares(Andares);
+        }
+        void construirNovoAndar()
+        {
+            setAndares(getAndares() + 1);
+        }
+        int getPegadaDeCarbono()
+        {
+            return this->getConsumoDeEnergiaPorAndar()*this->getAndares();
+        }
 };
 
 int main()
 {
-    std::vector<PegadaDeCarbono> listaPolimorfica;
-    listaPolimorfica.push_back(*new Carro(10, 4.5));
-    listaPolimorfica.push_back(*new Carro(11, 5.5));
-    listaPolimorfica.push_back(*new Bicicleta("Canoi"));
-    listaPolimorfica.push_back(*new Bicicleta("Cannondale"));
-    listaPolimorfica.push_back(*new Predio(5, 4.4));
-    listaPolimorfica.push_back(*new Predio(3, 3.3));
+    /*O aplicativo nao funciona pois nao e possivel instanciar um objeto de uma classe abstrata*/
+    std::vector<PegadaDeCarbono*> listaPolimorfica;
+    listaPolimorfica.push_back(new Carro(10, 4));
+    listaPolimorfica.push_back(new Carro(11, 5));
+    listaPolimorfica.push_back(new Bicicleta("Canoi"));
+    listaPolimorfica.push_back(new Bicicleta("Cannondale"));
+    listaPolimorfica.push_back(new Predio(5, 4);
+    listaPolimorfica.push_back(new Predio(3, 3));
     for(int i = 0; i < listaPolimorfica.size(); ++i) {
-        std::cout << listaPolimorfica[i].getPegadaDeCarbono() << std::endl;
+        std::cout << listaPolimorfica[i]->getPegadaDeCarbono() << std::endl;
     }
 }

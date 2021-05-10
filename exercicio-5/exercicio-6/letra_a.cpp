@@ -7,21 +7,21 @@ class Impressora: public Dispositivo
     public:
         void calibrar()
         {
-            if(!getLigado()) {
+            if(!this->getLigado()) {
                 std::cout << "Impressora nao esta ligada!" << std::endl;
                 return;
             }
             std::cout << "Calibrando funcoes da impressora" << std::endl;
-            setStatus(rand() % 3);
+            this->setStatus(rand() % 3);
         }
         int checarStatus()
         {
-            if(!getLigado()) {
+            if(!this->getLigado()) {
                 std::cout << "Impressora nao esta ligada!" << std::endl;
                 return 0;
             }
             std::cout << "Checkando o Status da Impressora" << std::endl;
-            return getStatus();
+            return this->getStatus();
         }
         Impressora()
         {
@@ -36,24 +36,24 @@ class Mouse: public Dispositivo
         void calibrar()
         {
             int Status;
-            if(!getLigado()) {
+            if(!this->getLigado()) {
                 std::cout << "Mouse nao esta conectado no computador!" << std::endl;
                 return;
             }
             std::cout << "Calibrando Botoes do Mouse" << std::endl;
-            Status += rand() % 3;
+            Status += rand() % 2;
             std::cout << "Calibrando sensor optico do Mouse" << std::endl;
-            Status += rand() % 3;
+            Status += rand() % 2;
             setStatus(Status);
         }
         int checarStatus()
         {
-            if(!getLigado()) {
+            if(!this->getLigado()) {
                 std::cout << "Mouse nao esta conectado no computador!" << std::endl;
                 return 0;
             }
             std::cout << "Checkando o status do Mouse" << std::endl;
-            return getStatus();
+            return this->getStatus();
         }
         Mouse()
         {
@@ -64,13 +64,13 @@ class Mouse: public Dispositivo
 
 int main()
 {
-    std::vector<Dispositivo> dispositivos;
-    dispositivos.push_back(*new Mouse);
-    dispositivos.push_back(*new Impressora);
+    std::vector<Dispositivo*> dispositivos;
+    dispositivos.push_back(new Mouse);
+    dispositivos.push_back(new Impressora);
     for(int i = 0; i < dispositivos.size(); ++i) {
-        std::cout << dispositivos[i].checarStatus() << std::endl;
-        dispositivos[i].calibrar();
-        std::cout << dispositivos[i].checarStatus() << std::endl;
-        dispositivos[i].desligar();
+        std::cout << dispositivos[i]->checarStatus() << std::endl;
+        dispositivos[i]->calibrar();
+        std::cout << dispositivos[i]->checarStatus() << std::endl;
+        dispositivos[i]->desligar();
     }
 }

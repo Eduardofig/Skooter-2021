@@ -12,7 +12,7 @@ class Carro: public PegadaDeCarbono
 {
     GETSET(int, KilometrosRodados);
     GETSET(int, EficienciaDoMotor);
-        public:
+    public:
         Carro(int KilometrosRodados, double EficienciaDoMotor) 
         {
             setKilometrosRodados(KilometrosRodados);
@@ -47,7 +47,35 @@ class Predio: public PegadaDeCarbono
     GETSET(int, Andares);
     GETSET(int, ConsumoDeEnergiaPorAndar);
     public:
-        Predio(int Andares, double ConsumoDeEnergiaPorAndar)
+        virtual void construirNovoAndar() = 0;
+};
+
+class Escola: public Predio
+{
+    GETSET(int, NumeroDeAlunos)
+    public:
+        Escola(int Andares, int NumeroDeAlunos, int ConsumoDeEnergiaPorAndar)
+        {
+            setConsumoDeEnergiaPorAndar(ConsumoDeEnergiaPorAndar);
+            setAndares(Andares);
+            setNumeroDeAlunos(NumeroDeAlunos);
+        }
+        void construirNovoAndar()
+        {
+            std::cout << "A escola esta em periodo de aula, nao e possivel construir novos andares" << std::endl;
+        }
+        int getPegadaDeCarbono()
+        {
+            return this->getNumeroDeAlunos()*this->getConsumoDeEnergiaPorAndar();
+        }
+};
+
+class Casa: public Predio
+{
+    GETSET(int, Andares);
+    GETSET(int, ConsumoDeEnergiaPorAndar);
+    public:
+        Casa(int Andares, int ConsumoDeEnergiaPorAndar)
         {
             setConsumoDeEnergiaPorAndar(ConsumoDeEnergiaPorAndar);
             setAndares(Andares);
@@ -64,13 +92,14 @@ class Predio: public PegadaDeCarbono
 
 int main()
 {
+    /*O aplicativo nao funciona pois nao e possivel instanciar um objeto de uma classe abstrata*/
     std::vector<PegadaDeCarbono*> listaPolimorfica;
     listaPolimorfica.push_back(new Carro(10, 4));
     listaPolimorfica.push_back(new Carro(11, 5));
     listaPolimorfica.push_back(new Bicicleta("Canoi"));
     listaPolimorfica.push_back(new Bicicleta("Cannondale"));
-    listaPolimorfica.push_back(new Predio(5, 4));
-    listaPolimorfica.push_back(new Predio(3, 3));
+    listaPolimorfica.push_back(new Casa(5, 4));
+    listaPolimorfica.push_back(new Escola(3, 20, 3));
     for(int i = 0; i < listaPolimorfica.size(); ++i) {
         std::cout << listaPolimorfica[i]->getPegadaDeCarbono() << std::endl;
     }
