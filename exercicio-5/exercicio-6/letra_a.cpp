@@ -2,6 +2,7 @@
 #include <vector>
 #include "Dispositivo.hpp"
 
+//classe impressora que extende dispositivo
 class Impressora: public Dispositivo
 {
     public:
@@ -30,6 +31,7 @@ class Impressora: public Dispositivo
         }
 };
 
+//classe mouse que extende dispositivo
 class Mouse: public Dispositivo
 {
     public:
@@ -65,6 +67,7 @@ int main()
     std::vector<Dispositivo*> dispositivos;
     dispositivos.push_back(new Mouse);
     dispositivos.push_back(new Impressora);
+    //chamada polimorfica dos metodos calibrar e checarStatus
     for(Dispositivo *dispositivo: dispositivos) {
         std::cout << dispositivo->checarStatus() << std::endl;
         dispositivo->calibrar();

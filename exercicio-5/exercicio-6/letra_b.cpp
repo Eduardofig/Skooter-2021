@@ -2,6 +2,7 @@
 #include <vector>
 #include "Dispositivo.hpp"
 
+//classe impressora que extende dispositivo e gerara a famila de drivers de impressoras
 class Impressora: public Dispositivo
 {
     public:
@@ -25,6 +26,7 @@ class Impressora: public Dispositivo
         }
 };
 
+//classe impressora de tinta que extende impressora
 class ImpressoraTinta: public Impressora
 {
     GETSET(int, QuantidadeDeTinta);
@@ -37,6 +39,7 @@ class ImpressoraTinta: public Impressora
         }
 };
 
+//classe impressora de laser que extende impressora
 class ImpressoraLaser: public Impressora
 {
     GETSET(double, IntegridadeDoLaser);
@@ -52,6 +55,7 @@ class ImpressoraLaser: public Impressora
 int main()
 {
     std::vector<Dispositivo*> dispositivos = {new ImpressoraLaser(5.2), new ImpressoraTinta(10)};
+    //chamada polimorfica dos metodos calibrar e checarStatus
     for(Dispositivo *dispositivo: dispositivos) {
         std::cout << dispositivo->checarStatus() << std::endl;
         dispositivo->calibrar();

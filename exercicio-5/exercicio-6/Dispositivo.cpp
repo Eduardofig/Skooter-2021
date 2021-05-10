@@ -4,6 +4,8 @@
 GETSET_C(bool, Ligado, Dispositivo);
 GETSET_C(int, Status, Dispositivo);
 
+//Implementacao dos metodos ligar a desligar da classe abstrada Dispositivo(os metodos virtuais estao no .hpp)
+
 void Dispositivo::ligar()
 {
     if(getLigado()) {
