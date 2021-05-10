@@ -11,6 +11,10 @@ class TimeFutebol:
         self._nome = nome
 
     @property
+    def nome(self):
+        return self._nome
+
+    @property
     def vitorias(self):
         return self._vitorias
 
@@ -19,7 +23,7 @@ class TimeFutebol:
         return self._derrotas
 
     @property
-    def empartes(self):
+    def empates(self):
         return self._empates
 
     @property
@@ -36,7 +40,7 @@ class TimeFutebol:
 
     @property
     def vermelhos(self):
-        return self_vermelhos
+        return self._vermelhos
 
     @property
     def pontos(self):
@@ -45,6 +49,7 @@ class TimeFutebol:
     @property
     def saldo(self):
         saldo_gols = self.gols_marcados - self.gols_sofridos
+        return saldo_gols
 
     def __repr__(self):
         return '{' + str(self.vitorias) + '}'

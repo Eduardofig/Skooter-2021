@@ -38,6 +38,7 @@ def compare(time1, time2):
 
 if __name__ == '__main__':
 
+
     timeA = TimeFutebol(13,5,6,38,12,1,8, 'timea')
     timeB = TimeFutebol(13,5,6,38,12,0,8, 'timeb')
     timeC = TimeFutebol(13,5,6,38,12,0,7, 'timec')
@@ -65,8 +66,11 @@ if __name__ == '__main__':
     timeY = TimeFutebol(14,9,1,43,22,5,12, 'timey')
     timeZ = TimeFutebol(18,0,6,39,22,5,12, 'timez')
 
-    campeonato = ['timeb', 'timec', 'timea', 'timed', 'timee', 'timef', 'timeg', 'timeh', 'timei', 'timej', 'timek', 'timel', 'timem', 'timen', 'timeo', 'timep', 'timeq', 'timer', 'times', 'timet', 'timeu', 'timev', 'timex', 'timew', 'timey', 'timez']
+    campeonato = [timeA, timeB, timeC, timeD, timeE, timeF, timeG, timeH, timeI, timeJ, timeK, timeL, timeM, timeN, timeO, timeP, timeQ, timeR, timeS, timeT, timeU, timeV, timeX, timeW, timeY, timeZ]
 
-    campeonato.sort(key = lambda x: x.vitorias)
+    campeonato.sort(key = lambda x: (-x.pontos, -x.vitorias, -x.saldo, -x.gols_marcados, x.vermelhos, x.amarelos))
 
-    print(campeonato)
+
+    for time in campeonato:
+        print(time.nome, end=' ')
+        print(time.pontos)
