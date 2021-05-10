@@ -64,14 +64,8 @@ class Predio: public PegadaDeCarbono
 
 int main()
 {
-    std::vector<PegadaDeCarbono*> listaPolimorfica;
-    listaPolimorfica.push_back(new Carro(10, 4));
-    listaPolimorfica.push_back(new Carro(11, 5));
-    listaPolimorfica.push_back(new Bicicleta("Canoi"));
-    listaPolimorfica.push_back(new Bicicleta("Cannondale"));
-    listaPolimorfica.push_back(new Predio(5, 4));
-    listaPolimorfica.push_back(new Predio(3, 3));
-    for(int i = 0; i < listaPolimorfica.size(); ++i) {
-        std::cout << listaPolimorfica[i]->getPegadaDeCarbono() << std::endl;
+    std::vector<PegadaDeCarbono*> listaPolimorfica = {new Carro(10, 3), new Carro(11, 4), new Bicicleta("Canoi"), new Bicicleta("Cannondale"), new Predio(5, 4), new Predio(3, 3)};
+    for(PegadaDeCarbono *p: listaPolimorfica) {
+        std::cout << p->getPegadaDeCarbono() << std::endl;
     }
 }

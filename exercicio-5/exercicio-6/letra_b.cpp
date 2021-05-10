@@ -12,7 +12,7 @@ class Impressora: public Dispositivo
                 return;
             }
             std::cout << "Calibrando funcoes da impressora" << std::endl;
-            this->setStatus(rand() % 5);
+            this->setStatus(rand() % 3);
         }
         int checarStatus()
         {
@@ -23,48 +23,35 @@ class Impressora: public Dispositivo
             std::cout << "Checkando o Status da Impressora" << std::endl;
             return this->getStatus();
         }
-        Impressora()
+};
+
+class ImpressoraTinta: public Impressora
+{
+    GETSET(int, QuantidadeDeTinta);
+    public:
+        ImpressoraTinta(int QuantidadeDeTinta)
         {
             ligar();
             calibrar();
+            setQuantidadeDeTinta(QuantidadeDeTinta);
         }
 };
 
-class Mouse: public Dispositivo
+class ImpressoraLaser: public Impressora
 {
+    GETSET(double, IntegridadeDoLaser);
     public:
-        void calibrar()
-        {
-            int Status;
-            if(!this->getLigado()) {
-                std::cout << "Mouse nao esta conectado no computador!" << std::endl;
-                return;
-            }
-            std::cout << "Calibrando Botoes do Mouse" << std::endl;
-            std::cout << "Calibrando sensor optico do Mouse" << std::endl;
-            setStatus(rand() % 7);
-        }
-        int checarStatus()
-        {
-            if(!this->getLigado()) {
-                std::cout << "Mouse nao esta conectado no computador!" << std::endl;
-                return 0;
-            }
-            std::cout << "Checkando o status do Mouse" << std::endl;
-            return this->getStatus();
-        }
-        Mouse()
+        ImpressoraLaser(double IntegridadeDoLaser)
         {
             ligar();
             calibrar();
+            setIntegridadeDoLaser(IntegridadeDoLaser);
         }
 };
 
 int main()
 {
-    std::vector<Dispositivo*> dispositivos;
-    dispositivos.push_back(new Mouse);
-    dispositivos.push_back(new Impressora);
+    std::vector<Dispositivo*> dispositivos = {new ImpressoraLaser(5.2), new ImpressoraTinta(10)};
     for(Dispositivo *dispositivo: dispositivos) {
         std::cout << dispositivo->checarStatus() << std::endl;
         dispositivo->calibrar();
