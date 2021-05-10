@@ -1,40 +1,5 @@
 from timefutebol import TimeFutebol
-from operator import itemgetter, attrgetter
 import random
-
-def compare(time1, time2):
-    if(time1.pontos != time2.pontos):
-        if(time1.pontos > time2.pontos):
-            return 1
-        else:
-            return -1
-    elif(time1.vitorias != time2.vitorias):
-        if(time1.vitorias > time2.vitorias):
-            return 1
-        else:
-            return -1
-    elif(time1.saldo != time2.saldo):
-        if(time1.saldo > time1.saldo):
-            return 1
-        else:
-            return -1
-    elif(time1.gols_marcados != time2.gols_marcados):
-        if(time1.gols_marcados > time2.gols_marcados):
-            return 1
-        else:
-            return -1
-    elif(time1.vermelhos != time2.vermelhos):
-        if(time1.vermelhos > time2.vermelhos):
-            return -1
-        else:
-            return 1
-    elif(time1.amarelos != time2.amarelos):
-        if(time1.amarelos > time2.amarelos):
-            return -1
-        else:
-            return 1
-    else:
-        return random.randint(-1,1)
 
 if __name__ == '__main__':
 
@@ -68,7 +33,7 @@ if __name__ == '__main__':
 
     campeonato = [timeA, timeB, timeC, timeD, timeE, timeF, timeG, timeH, timeI, timeJ, timeK, timeL, timeM, timeN, timeO, timeP, timeQ, timeR, timeS, timeT, timeU, timeV, timeX, timeW, timeY, timeZ]
 
-    campeonato.sort(key = lambda x: (-x.pontos, -x.vitorias, -x.saldo, -x.gols_marcados, x.vermelhos, x.amarelos))
+    campeonato.sort(key = lambda x: (-x.pontos, -x.vitorias, -x.saldo, -x.gols_marcados, x.vermelhos, x.amarelos, random.randint(-1,1)))
 
 
     for time in campeonato:
