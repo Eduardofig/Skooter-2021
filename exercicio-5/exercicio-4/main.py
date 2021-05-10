@@ -1,4 +1,3 @@
-from produto import Produto, ProdutoPerecivel, ProdutoPerecivelEspecial, ProdutoNaoPerecivel
 from estoque import Estoque
 
 estoque1 = Estoque()
