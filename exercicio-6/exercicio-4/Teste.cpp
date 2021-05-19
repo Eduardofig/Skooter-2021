@@ -7,9 +7,9 @@ int main()
     {
         p.pop();
     }
-    catch (PilhaExcessao e)
+    catch (PilhaExcessao ex)
     {
-        cout << e.what() << endl << e.getErro() << endl;
+        cout << ex.what() << endl << ex.getErro() << endl;
     }
     for(int i = 0; i < 11; ++i) {
         try
