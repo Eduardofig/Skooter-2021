@@ -16,9 +16,9 @@ int main()
         {
             p.push(i);
         }
-        catch(PilhaExcessao e)
+        catch(PilhaExcessao ex)
         {
-            cout << e.what() << endl << e.getErro() << endl;
+            cout << ex.what() << endl << ex.getErro() << endl;
         } 
     }
 }

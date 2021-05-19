@@ -44,12 +44,14 @@ class Pilha
         {
             if(pilha.empty()) {
                 throw PilhaVazia();
+                return;
             }
             pilha.pop();
         }
         void push(int num) {
             if(pilha.size() + 1 > getCapacidade()) {
                 throw PilhaCheia();
+                return;
             }
             pilha.push(num);
         }
