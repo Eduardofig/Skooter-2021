@@ -41,6 +41,7 @@ class Relogio
     GETSET(Horario, Horas);
     GETSET(Horario, Alarme);
     public:
+        //Funcao virtual dispara alarme que sera alterada na classe RadioRelogio
         virtual void disparaAlarme()
         {
             cout << "Alarme, Alarme, Alarme";

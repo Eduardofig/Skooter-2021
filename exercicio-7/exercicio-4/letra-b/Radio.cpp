@@ -29,8 +29,8 @@ class Radio: public Dispositivo
         }
         Radio(int estacao, string fabricante):
             Dispositivo(fabricante)
-    {
-        setModulacao("FM");
-        setEstacao(estacao);
-    }
+        {
+            setModulacao("FM");
+            setEstacao(estacao);
+        }
 };

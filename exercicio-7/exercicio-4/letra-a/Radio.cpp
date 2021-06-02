@@ -5,9 +5,10 @@ using namespace std;
 
 class Radio
 {
-    GETSET(int, Estacao);
+    GETSET(int, Estacao);//Funcoes que definem e retornam a estacao
     GETSET(string, Modulacao);
     public:
+        //Funcao que alterna de FM para AM e vice e versa
         void alternarModulacao()
         {
             if(getModulacao() == "AM") {

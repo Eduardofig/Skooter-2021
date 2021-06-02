@@ -5,6 +5,7 @@ class RadioRelogio: public Radio, public Relogio
 {
     GETSET(int, EstacaoAlarme);
     public:
+        //Overload da funcao virtual disparaAlarme
         virtual void disparaAlarme()
         {
             setEstacao(getEstacaoAlarme());

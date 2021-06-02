@@ -15,6 +15,7 @@ class NumeroComplexo
             setParteReal(ParteReal);
             setParteImaginaria(ParteImaginaria);
         }
+        //Operacoes
         NumeroComplexo soma(NumeroComplexo &z)
         {
             return *new NumeroComplexo(getParteReal() + z.getParteReal(), getParteImaginaria() + z.getParteImaginaria());
@@ -32,6 +33,7 @@ class NumeroComplexo
         {
             return sqrt(pow(getParteReal(), 2) + pow(getParteImaginaria(), 2));
         }
+        //Impressao do numero
         void printNumero()
         {
             cout << getParteReal() << " + " << getParteImaginaria() << "i\n";

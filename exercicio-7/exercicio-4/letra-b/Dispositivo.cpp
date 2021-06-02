@@ -5,6 +5,7 @@
 
 using namespace std;
 
+//Classe mae dispositivo
 class Dispositivo
 {
     GETSET(string, Fabricante);
