@@ -3,6 +3,7 @@
 
 using namespace std;
 
+//Classo que representa um determinado horario na classe relogio
 class Horario
 {
     GETSET(int, Hora);
@@ -46,6 +47,7 @@ class Relogio
         {
             cout << "Alarme, Alarme, Alarme";
         }
+        //Funcao que sera chamada a cada segundo durante o funcionamento do relogio
         void relogioTick()
         {
             if(getHoras() == getAlarme()) disparaAlarme();
