@@ -15,7 +15,7 @@ public class OrdenadorArquivos
         return this.diretorio;
     }
 
-    public void OrdenarArquivos() 
+    public void ordenarArquivos() 
     {
         File diretorioAlvo = null;
         File[] arquivos;

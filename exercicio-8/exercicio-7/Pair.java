@@ -2,7 +2,7 @@ import java.io.File;
 
 //Classe Pair que armazenara o arquivo com o seu respectivo tamanho para
 //a ordenacao
-class Pair implements Comparable 
+class Pair implements Comparable<Object>
 {
     public long tamanho;
     public File arquivo;
