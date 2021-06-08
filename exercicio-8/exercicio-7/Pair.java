@@ -1,5 +1,7 @@
 import java.io.File;
 
+//Classe Pair que armazenara o arquivo com o seu respectivo tamanho para
+//a ordenacao
 class Pair implements Comparable 
 {
     public long tamanho;
@@ -10,7 +12,7 @@ class Pair implements Comparable
         arquivo = file;
         tamanho = file.length();
     }
-
+    @Override
     public int compareTo(Object o) 
     {
         long tamanho_o = ((Pair)o).tamanho;

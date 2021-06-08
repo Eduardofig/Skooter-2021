@@ -25,9 +25,9 @@ public class OrdenadorArquivos
 
         try
         {      
-            // create new file object
+            // Abre o Diretorio
             diretorioAlvo = new File(this.getDiretorio());
-            // array of files and directory
+            //Cria o Array de arquivos contidos no diretorio
             arquivos = diretorioAlvo.listFiles();
             ArrayList<File> listaDeArquivosOrdenados = new ArrayList<File>();
             Pair[] Pares = new Pair[arquivos.length];
@@ -35,19 +35,18 @@ public class OrdenadorArquivos
 
             Arrays.sort(Pares);
 
-            // Take the sorted pairs and extract only the file part, discarding the timestamp.
+            // Faz um array com os apenas os arquivos ordenados do array de pares
             for (int i = 0; i < arquivos.length; i++) arquivos[i] = Pares[i].arquivo;
 
             for(File file: arquivos) {
-                // prints filename and directory name
+                // Print dos arquivos ordenados com os seus respectivos tamanhos
                 System.out.println(file.getName()+" - " +file.length() );
                 al.add(file.getName());
             }
-            //for()
         }
         catch(Exception e)
         {
-            // if any error occurs
+            // Catch para se ocorra alguma excessao
             e.printStackTrace();
         }
     }
