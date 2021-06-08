@@ -27,8 +27,9 @@ public class OrdenadorArquivos
         {      
             // Abre o Diretorio
             diretorioAlvo = new File(this.getDiretorio());
-            //Cria o Array de arquivos contidos no diretorio
-            arquivos = diretorioAlvo.listFiles();
+            //Cria o Array de arquivos contidos no diretorio e os faz o filtro
+            //para manter somente os que possuem a extensao .mpe
+            arquivos = Arrays.stream(diretorioAlvo.listFiles()).filter(arquivo -> arquivo.getName().endsWith(".mp3")).toArray(File[]::new);
             ArrayList<File> listaDeArquivosOrdenados = new ArrayList<File>();
             Pair[] Pares = new Pair[arquivos.length];
             for (int i = 0; i < arquivos.length; i++) Pares[i] = new Pair(arquivos[i]);
