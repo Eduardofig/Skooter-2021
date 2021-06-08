@@ -37,12 +37,11 @@ public class OrdenadorArquivos
             Arrays.sort(Pares);
 
             // Faz um array com os apenas os arquivos ordenados do array de pares
-            for (int i = 0; i < arquivos.length; i++) arquivos[i] = Pares[i].arquivo;
-
-            for(File file: arquivos) {
+            for (int i = 0; i < arquivos.length; i++){
+                arquivos[i] = Pares[i].arquivo;
                 // Print dos arquivos ordenados com os seus respectivos tamanhos
-                System.out.println(file.getName()+" - " +file.length() );
-                al.add(file.getName());
+                System.out.println(arquivos[i].getName() + " - " + arquivos[i].length());
+                al.add(arquivos[i].getName());
             }
         }
         catch(Exception e)
