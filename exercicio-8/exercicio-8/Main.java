@@ -6,6 +6,7 @@ public class Main
     public static void main(String[] args)
     {
         Scanner inputScanner = new Scanner(System.in);
+        System.out.print("Insira o nome do arquivo: ");
         String nomeArquivo = inputScanner.nextLine();
         int i = 1;
         try

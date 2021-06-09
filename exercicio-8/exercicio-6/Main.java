@@ -1,3 +1,4 @@
+import java.util.Scanner;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -8,9 +9,12 @@ public class Main
 {
     public static void main(String[] args)
     {
+        System.out.print("Insira o nome do arquivo: ");
+        Scanner inputScanner = new Scanner(System.in);
+        String nomeArquivo = inputScanner.nextLine();
         try
         {
-            Path path = Paths.get("test.txt");
+            Path path = Paths.get(nomeArquivo);
             Charset charset = StandardCharsets.UTF_8;
             String content = new String(Files.readAllBytes(path), charset);
             content = content.replaceAll("muito", "pouco");
@@ -20,5 +24,6 @@ public class Main
         {
             e.printStackTrace();
         }
+        inputScanner.close();
     }
 }
