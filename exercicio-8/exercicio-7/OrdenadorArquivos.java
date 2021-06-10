@@ -57,7 +57,7 @@ public class OrdenadorArquivos
 
     OrdenadorArquivos(String diretorio) 
     {
-        if(!diretorio.endsWith("/")) diretorio += '/';
+        if(!diretorio.endsWith(File.separator)) diretorio += File.separator;
         setDiretorio(diretorio);
     }
 }
