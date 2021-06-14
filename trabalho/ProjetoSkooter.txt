@@ -1,0 +1,58 @@
+1. Os seguintes metodos devem ser criados na classe Heroi ja existente:
+
+void Morrer(): metodo que remove uma vida do heroi e reinicia o nivel caso ele 
+ainda tenha vidas ou da game over se ele nao tiver mais vidas
+
+void coletarColecionavel(Colecionavel cColecionavel): Metodo que recebe um objeto da 
+classe "Colecionavel" que ainda tem que ser implementada, se o Colecionavel for uma cereja o 
+Heroi chama o Metodo "ficarEnergizado", se nao, nao faz nada e apaga o colecionavel da fase
+
+void ficarEnergizado(): Metodo que eh chamado quando o heroi coleta uma cereja,
+muda o seu atributo privado "Energizado" para true por alguns frames
+
+void serRestringido(Posicao pPosicao): Metodo que determina que no proximo movimento o heroi so pode se mover para a 
+posicao passada como parametro
+
+2. Uma classe BlocoInteragivel que extende a classe Elemento:
+Essa classe deve possuir os metodos:
+
+bool Empurrar(Posicao destino): recebe um Objeto da classe Posicao que
+indica para aonde ele deve ser movido e retorna True se a posicao for
+valida(nao tiver nada no lugar e nao ser fora do nivel) e False se for
+Invalida.
+
+Alem disso, devem ser criados +2 novos metodos na classe Heroi:
+
+bool EmpurrarBloco(BlocoInteragivel bBloco, Posicao pDestino) : Tenta Empurrar
+O bloco, chamando a funcao "Empurrar" do bloco passado para ele, para 
+uma determinada posicao, retorna o resultado da posicao empurrar
+
+bool DestruirBloco(BlocoInteragivel bBloco) : Destroi o Bloco passado como parametro,
+removendo-o do Array de elementos que compoem a fase
+
+3. Uma classe BlocoNaoInteragivel que extende a class Elemento:
+Esse classe eh apenas um bloco que nao pode ser empurrado nem destruido e fica parado
+
+4. Uma classe robo inimigo que extende a classe Elemento:
+Essa classe deve possuir os seguintes metodos:
+
+Posicao acharProximaPosicao(ArrayList<Elemento> fase) : Metodo recebe como o estado atual da fase e
+calcula para onde ele deve se mover retornando a sua proxima posicao (pode ser feito com uma busca em profundidade
+ou algo mais simples)
+
+bool MatarHeroi(Heroi hHeroi): Metodo que eh chamado no evento da colisao entre o inimigo e o Heroi , ele recebe o Heroi como
+parametro e tenta mata-lo, se o atributo "Energizado" do heroi for False, ele consegue matar o heroi chamando o metodo "Morrer" 
+do Heroi que foi passado como parametro. Caso o atributo "Energizado" for true, a funcao retorna falso
+
+void Morrer(): Apaga o Inimigo da fase, eh chamado no momento da colisao se o metodo MatarHeroi retornar falso
+o nivel
+
+5. Uma classe Colecionavel que extende Elemento: 
+Apenas uma classe colecionavel que devera ter um atributo bool ehCereja que pode ser true ou false
+
+6. Uma classe BlocoSeta que extende Elemento:
+Essa classe devera ter um atributo Posicao pOrientacao que indica para onde ele aponta e os metodos:
+
+void restringirMovimento(Heroi hHeroi): Esse metodo recebe um objeto da classe heroi e chama o metodo serRestringido(Posicao pPosicao) 
+do Heroi passando a sua pOrientacao como parametro
+
