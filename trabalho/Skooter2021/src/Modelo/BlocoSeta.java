@@ -25,13 +25,14 @@ public class BlocoSeta extends Elemento implements Serializable{
         this.pOrientacao = sOrientacao;
     }
 
-    public void restringirHeroi(Heroi hHeroi) {
-        hHeroi.setRestringido(this.getOrientacao());
-    }
-
     public void getOrientacao() {
         return this.pOrientacao;
     }
+
+    public void restringirHeroi(Hero hHeroi) {
+        hHeroi.setRestringido(this.getOrientacao());
+    }
+
 
     public BlocoSeta(String sNomeImagePNG) {
         super(sNomeImagePNG);
