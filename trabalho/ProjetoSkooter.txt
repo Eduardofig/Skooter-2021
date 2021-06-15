@@ -1,13 +1,17 @@
 1. Os seguintes metodos devem ser criados na classe Heroi ja existente:
 
+void passarDeFase(): metodo que avanca o heroi para a proxima fase se houver, se
+estiver na ultima o heroi vence o jogo
+
 void Morrer(): metodo que remove uma vida do heroi e reinicia o nivel caso ele 
 ainda tenha vidas ou da game over se ele nao tiver mais vidas
 
 void coletarColecionavel(Colecionavel cColecionavel): Metodo que recebe um objeto da 
-classe "Colecionavel" que ainda tem que ser implementada, se o Colecionavel for uma cereja o 
-Heroi chama o Metodo "ficarEnergizado", se nao, nao faz nada e apaga o colecionavel da fase
+classe "Colecionavel" que ainda tem que ser implementada, se o Colecionavel for um coracao o 
+Heroi chama o Metodo "ficarEnergizado", se o Colecionavel for um Sol ele chama o metodo passarDeFase()
+se nao, nao faz nada e apaga o colecionavel da fase
 
-void ficarEnergizado(): Metodo que eh chamado quando o heroi coleta uma cereja,
+void ficarEnergizado(): Metodo que eh chamado quando o heroi coleta uma coracao,
 muda o seu atributo privado "Energizado" para true por alguns frames
 
 void serRestringido(Posicao pPosicao): Metodo que determina que no proximo movimento o heroi so pode se mover para a 
@@ -48,7 +52,7 @@ void Morrer(): Apaga o Inimigo da fase, eh chamado no momento da colisao se o me
 o nivel
 
 5. Uma classe Colecionavel que extende Elemento: 
-Apenas uma classe colecionavel que devera ter um atributo bool ehCereja que pode ser true ou false
+Apenas uma classe colecionavel que devera ter um atributo bool ehCoracao, e um atribudo bool ehSol que podem ser true ou false
 
 6. Uma classe BlocoSeta que extende Elemento:
 Essa classe devera ter um atributo Posicao pOrientacao que indica para onde ele aponta e os metodos:
@@ -56,3 +60,9 @@ Essa classe devera ter um atributo Posicao pOrientacao que indica para onde ele 
 void restringirMovimento(Heroi hHeroi): Esse metodo recebe um objeto da classe heroi e chama o metodo serRestringido(Posicao pPosicao) 
 do Heroi passando a sua pOrientacao como parametro
 
+7. Uma classe Coracao que extende Colecionavel:
+Essa classe devera possuir o metodo void moverAleatoriamente() que sorteia dentre as 4 casas adjacentes para ele se mover
+e devera ter o atributo ehCoracao verdadeiro
+
+8. Devemos fazer outro loop na Classe Controlador no metodo processaTudo() que calcula as colisoes entre os robos inimigos e outros
+Elementos que nao permite o robo atravessar esses elementos
