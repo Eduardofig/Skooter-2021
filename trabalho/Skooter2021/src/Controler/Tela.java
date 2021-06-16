@@ -15,7 +15,23 @@ import java.util.zip.*;
 public class Tela extends javax.swing.JFrame implements MouseListener, KeyListener {
 
     private Hero hHero;
+    ////listas para processamendo
+    //private ArrayList<Elemento> listaInimigos1;
+    //private ArrayList<Elemento> listaBlocosInteragiveis1;
+    //private ArrayList<Elemento> listaInimigos2;
+    //private ArrayList<Elemento> listaBlocosInteragiveis2;
+    //private ArrayList<Elemento> listaInimigos3;
+    //private ArrayList<Elemento> listaBlocosInteragiveis3;
+    //private ArrayList<Elemento> listaInimigos4;
+    //private ArrayList<Elemento> listaBlocosInteragiveis4;
+    ////Instanciacao das fases
+    //private ArrayList<Elemento> fase1;
+    //private ArrayList<Elemento> fase2;
+    //private ArrayList<Elemento> fase3;
+    //private ArrayList<Elemento> fase4;
+
     private ArrayList<Elemento> eElementos;
+
     private ControleDeJogo cControle = new ControleDeJogo();
     private Graphics g2;
     /**
