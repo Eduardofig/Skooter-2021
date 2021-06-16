@@ -43,8 +43,8 @@ public class Hero extends Elemento implements Serializable {
 
     public void passarDeFase(ArrayList<Elemento> eElementos, ArrayList<Elemento> novaFase) {
         eElementos.clear();
-        for(Elemento e: novaFase) {
-            eElementos.add(e);
+        for(int i = 0; i < eElementos.size(); i++) {
+            eElementos.add(eElementos.get(i));
         }
     }
 
@@ -52,8 +52,8 @@ public class Hero extends Elemento implements Serializable {
         setNumVidas(getNumVidas() - 1);
         eElementos.clear();
         //Inserir um if que checa se ha um game over
-        for(Elemento e: faseAtual) {
-            eElementos.add(e);
+        for(int i = 0; i < eElementos.size(); i++) {
+            eElementos.add(eElementos.get(i));
         }
         System.out.println("Voce Morreu");
     }
