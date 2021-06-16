@@ -14,13 +14,10 @@ se nao, nao faz nada e apaga o colecionavel da fase
 void ficarEnergizado(): Metodo que eh chamado quando o heroi coleta uma coracao,
 muda o seu atributo privado "Energizado" para true por alguns frames
 
-void serRestringido(Posicao pPosicao): Metodo que determina que no proximo movimento o heroi so pode se mover para a 
-posicao passada como parametro
-
 2. Uma classe BlocoInteragivel que extende a classe Elemento:
 Essa classe deve possuir os metodos:
 
-bool Empurrar(Posicao destino): recebe um Objeto da classe Posicao que
+##(Nao Precisa Mais)## bool Empurrar(Posicao destino): recebe um Objeto da classe Posicao que
 indica para aonde ele deve ser movido e retorna True se a posicao for
 valida(nao tiver nada no lugar e nao ser fora do nivel) e False se for
 Invalida.
