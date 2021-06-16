@@ -51,6 +51,5 @@ public class BlocoSeta extends Elemento implements Serializable{
     public BlocoSeta(String sNomeImagePNG, int sOrientacao) {
         super(sNomeImagePNG);
         this.setOrientacao(sOrientacao);
-        this.setbTransponivel(true);
     }
 }
