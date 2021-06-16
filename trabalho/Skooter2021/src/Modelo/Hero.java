@@ -64,15 +64,19 @@ public class Hero extends Elemento implements Serializable {
     public void empurrarBloco(BlocoInteragivel bBloco, int destino) {
         switch(destino) {
             case 0:
+                bBloco.moveLeft();
                 this.moveLeft();
                 break;
             case 1:
+                bBloco.moveUp();
                 this.moveUp();
                 break;
             case 2:
+                bBloco.moveRight();
                 this.moveRight();
                 break;
             default:
+                bBloco.moveDown();
                 this.moveDown();
                 break;
         }
