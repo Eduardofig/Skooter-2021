@@ -2,6 +2,7 @@ package Modelo;
 
 import Auxiliar.Consts;
 import Auxiliar.Desenhador;
+import Modelo.BlocoInteragivel;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.io.IOException;
@@ -9,6 +10,7 @@ import java.io.Serializable;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import java.util.ArrayList;
 
 /**
  *
@@ -16,7 +18,7 @@ import javax.swing.JPanel;
  */
 public class Hero extends Elemento implements Serializable {
 
-    protected bool estaEnergizado;
+    protected boolean estaEnergizado;
     protected int numVidas;
 
     public void setNumVidas(int sNumVidas) {
@@ -62,16 +64,16 @@ public class Hero extends Elemento implements Serializable {
     public void empurrarBloco(BlocoInteragivel bBloco, int destino) {
         switch(destino) {
             case 0:
-                hHeroi.moveLeft();
+                this.moveLeft();
                 break;
             case 1:
-                hHeroi.moveUp();
+                this.moveUp();
                 break;
             case 2:
-                hHeroi.moveRight();
+                this.moveRight();
                 break;
             default:
-                hHeroi.moveDown();
+                this.moveDown();
                 break;
         }
     }
