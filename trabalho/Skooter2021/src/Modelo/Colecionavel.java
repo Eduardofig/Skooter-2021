@@ -17,10 +17,10 @@ import javax.swing.JPanel;
 public class Colecionavel extends Elemento implements Serializable{
 
     //Variaveis publicas que definem se o Colecionavel eh um Coracao ou se ele eh um sol
-    public bool ehCoracao;
-    public bool ehSol;
+    public boolean ehCoracao;
+    public boolean ehSol;
 
-    public Colecionavel(String sNomeImagePNG, bool sEhCoracao, bool sEhSol) {
+    public Colecionavel(String sNomeImagePNG, boolean sEhCoracao, boolean sEhSol) {
         super(sNomeImagePNG);
         this.ehCoracao = sEhCoracao;
         this.ehSol = sEhSol;

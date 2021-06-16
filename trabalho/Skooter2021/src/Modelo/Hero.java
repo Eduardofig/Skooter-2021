@@ -27,11 +27,11 @@ public class Hero extends Elemento implements Serializable {
         return this.numVidas;
     }
 
-    public void setEnergizado(bool sEstaEnergizado) {
+    public void setEnergizado(boolean sEstaEnergizado) {
         this.estaEnergizado = sEstaEnergizado;
     }
 
-    public bool getEnergizado() {
+    public boolean getEnergizado() {
         return this.estaEnergizado;
     }
 
