@@ -150,18 +150,19 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
          //Movimento via mouse
          int x = e.getX();
          int y = e.getY();
-     
+
          this.setTitle("X: "+ x + ", Y: " + y +
-         " -> Cell: " + (y/Consts.CELL_SIDE) + ", " + (x/Consts.CELL_SIDE));
-        
+                 " -> Cell: " + (y/Consts.CELL_SIDE) + ", " + (x/Consts.CELL_SIDE));
+
          this.hHero.getPosicao().setPosicao(y/Consts.CELL_SIDE, x/Consts.CELL_SIDE);
 
-        /*Se o heroi for para uma posicao invalida, sobre um elemento intransponivel, volta para onde estava*/
-        if (!cControle.ehPosicaoValida(this.eElementos,hHero.getPosicao())) {
-            hHero.voltaAUltimaPosicao();
-        }         
-         
-        repaint();
+         /*Se o heroi for para uma posicao invalida, sobre um elemento intransponivel, volta para onde estava*/
+         //Processa as colisoes dos blocos interagiveis e dos inimigos
+         if (!cControle.ehPosicaoValida(this.eElementos,hHero.getPosicao())) {
+             hHero.voltaAUltimaPosicao();
+         }         
+
+         repaint();
     }
 
     /**
@@ -181,13 +182,13 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 561, Short.MAX_VALUE)
-        );
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(0, 561, Short.MAX_VALUE)
+                );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
-        );
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(0, 500, Short.MAX_VALUE)
+                );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
