@@ -17,6 +17,15 @@ import javax.swing.JPanel;
 public class Hero extends Elemento implements Serializable {
 
     protected bool estaEnergizado;
+    protected int numVidas;
+
+    public void setNumVidas(int sNumVidas) {
+        this.numVidas = sNumVidas;
+    }
+
+    public int getNumVidas() {
+        return this.numVidas;
+    }
 
     public void setEnergizado(bool sEstaEnergizado) {
         this.estaEnergizado = sEstaEnergizado;
@@ -28,6 +37,7 @@ public class Hero extends Elemento implements Serializable {
 
     public Hero(String sNomeImagePNG) {
         super(sNomeImagePNG);
+        setNumVidas(4);
         setEnergizado(false);
     }
 
@@ -38,15 +48,18 @@ public class Hero extends Elemento implements Serializable {
         }
     }
 
-    public void Morrer(ArrayList<Elemento> eElementos, ArrayList<Elemento> faseAtual) {
+    public void morrer(ArrayList<Elemento> eElementos, ArrayList<Elemento> faseAtual) {
+        setNumVidas(getNumVidas() - 1);
         eElementos.clear();
+        //Inserir um if que checa se ha um game over
         for(Elemento e: faseAtual) {
             eElementos.add(e);
         }
+        System.out.println("Voce Morreu");
     }
 
     //Funcao que eh chamada quando o heroi destroi o bloco interagivel
-    public void EmpurrarBloco(BlocoInteragivel bBloco, int destino) {
+    public void empurrarBloco(BlocoInteragivel bBloco, int destino) {
         switch(destino) {
             case 0:
                 hHeroi.moveLeft();
