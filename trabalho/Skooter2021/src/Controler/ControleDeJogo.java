@@ -32,10 +32,13 @@ public class ControleDeJogo {
         for(int i = 1; i < e.size(); i++){
             eTemp = e.get(i); /*Pega o i-esimo elemento do jogo*/
             /*Verifica se o heroi se sobrepoe ao i-ésimo elemento*/
-            if(hHero.getPosicao().estaNaMesmaPosicao(eTemp.getPosicao()))
-                /*Nem todos os elementos podem ser transpostos pelo heroi*/
+            if(hHero.getPosicao().estaNaMesmaPosicao(eTemp.getPosicao())) {
                 if(eTemp.isbTransponivel())
                     e.remove(eTemp);
+                else 
+                    hHero.voltaAUltimaPosicao();
+            }
+                /*Nem todos os elementos podem ser transpostos pelo heroi*/
         }
     }
     public boolean ehPosicaoValida(ArrayList<Elemento> e, Posicao p){
