@@ -4,6 +4,7 @@ import Modelo.Elemento;
 import Modelo.Hero;
 
 public class Fase implements Serializable {
+    //Implementar backups
     protected ArrayList<Elemento> listaBlocosInteragiveis;
     protected ArrayList<Elemento> listaInimigos;
     protected ArrayList<Elemento> listaBlocosNaoInteragiveis;

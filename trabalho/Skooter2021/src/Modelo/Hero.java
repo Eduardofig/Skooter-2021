@@ -59,6 +59,7 @@ public class Hero extends Elemento implements Serializable {
         }
     }
 
+    //Mudar pra ele receber uma fase e resetar a fase
     public void morrer(ArrayList<Elemento> eElementos, ArrayList<Elemento> faseAtual) {
         setNumVidas(getNumVidas() - 1);
         eElementos.clear();

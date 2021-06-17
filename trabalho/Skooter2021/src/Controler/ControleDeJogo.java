@@ -16,6 +16,7 @@ public class ControleDeJogo {
         }
     }
     public void processaTudo(ArrayList<Elemento> e){
+        //Implementar a classe Fase
         Hero hHero = (Hero)e.get(0); /*O heroi (protagonista) eh sempre o primeiro do array*/
         Elemento eTemp;
         /*Processa todos os demais em relacao ao heroi*/
