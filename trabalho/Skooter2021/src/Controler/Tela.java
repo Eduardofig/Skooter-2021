@@ -152,9 +152,9 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
             CoronaVirus cTeste = new CoronaVirus("carro_azul.png");
             cTeste.setPosicao(5, 5);
             this.addElemento(cTeste);
-        } else if(e.getKeyCode() == KeyEvent.VK_Z) {
-            hHero.removerBloco(listaBlocosInteragiveis);
-        }
+        } //else if(e.getKeyCode() == KeyEvent.VK_Z) {
+            //hHero.removerBloco(listaBlocosInteragiveis);
+        //}
         
         /*Se o heroi for para uma posicao invalida, sobre um elemento intransponivel, volta para onde estava*/
         if (!cControle.ehPosicaoValida(this.eElementos,hHero.getPosicao())) {

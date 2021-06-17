@@ -2,6 +2,7 @@ package Modelo;
 
 import Auxiliar.Consts;
 import Auxiliar.Desenhador;
+import Auxiliar.Posicao;
 import Modelo.BlocoInteragivel;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -74,29 +75,30 @@ public class Hero extends Elemento implements Serializable {
             case 0:
                 bBloco.moveLeft();
                 this.moveLeft();
-                this.setOlhando(this.getOlhando().setPosicao(this.getPosicao().getLinha(), this.getPosicao().getColuna() - 1));
+                this.getOlhando().setPosicao(this.getPosicao().getLinha(), this.getPosicao().getColuna() - 1);
                 break;
             case 1:
                 bBloco.moveUp();
                 this.moveUp();
-                this.setOlhando(this.getOlhando().setPosicao(this.getPosicao().getLinha() - 1, this.getPosicao().getColuna()));
+                this.getOlhando().setPosicao(this.getPosicao().getLinha() - 1, this.getPosicao().getColuna());
                 break;
             case 2:
                 bBloco.moveRight();
                 this.moveRight();
-                this.setOlhando(this.getOlhando().setPosicao(this.getPosicao().getLinha(), this.getPosicao().getColuna() + 1));
+                this.getOlhando().setPosicao(this.getPosicao().getLinha(), this.getPosicao().getColuna() + 1);
                 break;
             default:
                 bBloco.moveDown();
                 this.moveDown();
-                this.setOlhando(this.getOlhando().setPosicao(this.getPosicao().getLinha() + 1, this.getPosicao().getColuna()));
+                this.getOlhando().setPosicao(this.getPosicao().getLinha() + 1, this.getPosicao().getColuna());
                 break;
         }
     }
 
     public void removerBloco(ArrayList<Elemento> listaBlocosInteragiveis, ArrayList<Elemento> eElementos) {
         for(int i = 0; i < listaBlocosInteragiveis.size(); i++) {
-            if(listaBlocosInteragiveis.get(i).pPosicao.estaNaMesmaPosicao(this.getOlhando())) eElementos.remove(bBloco);
+            Elemento bBloco = listaBlocosInteragiveis.get(i);
+            if(bBloco.pPosicao.estaNaMesmaPosicao(this.getOlhando())) eElementos.remove(bBloco);
             return;
         }
     }
