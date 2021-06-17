@@ -19,16 +19,30 @@ public class ControleDeJogo {
         Hero hHero = (Hero)e.get(0); /*O heroi (protagonista) eh sempre o primeiro do array*/
         Elemento eTemp;
         /*Processa todos os demais em relacao ao heroi*/
-        //for(int i = 0; i < listaBlocosInteragiveis.size(); i++) {
-            //if(!cControle.ehPosicaoValida(this.eElementos, listaBlocosInteragiveis.get(i).getPosicao())) {
-                //listaBlocosInteragiveis.get(i).voltaAUltimaPosicao();
-            //}
-        //}
-        //for(int i = 0; i < listaInimigos.size(); i++) {
-            //if(!cControle.ehPosicaoValida(this.eElementos, listaInimigos.get(i).getPosicao())) {
-                //listaInimigos.get(i).voltaAUltimaPosicao();
-            //}
-        //}
+        //Processa coisoes dos Blocos interagiveis com os demais elementos
+        for(int i = 0; i < listaBlocosInteragiveis.size(); i++) {
+            eTemp = listaBlocosInteragiveis.get(i);
+            if(!cControle.ehPosicaoValida(this.eElementos, eTemp.getPosicao())) {
+                eTemp.voltaAUltimaPosicao();
+            }
+        }
+        for(int i = 0; i < listaInimigos.size(); i++) {
+            eTemp = listaInimigos.get(i);
+            //Processa possiveis colisoes do inimigo com o heroi
+            if(hHero.getOlhando().estaNaMesmaPosicao(eTemp.getPosicao())) {
+                if(hHero.setEnergizado()) {
+                    eElementos.remove(eTemp);
+                    listaInimigos.remove(eTemp);
+                } else {
+                    //hHero.morrer;
+                }
+            }
+            //Processa colisoes do inimigo com os outros elementos
+            if(!cControle.ehPosicaoValida(this.eElementos, listaInimigos.get(i).getPosicao())) {
+                listaInimigos.get(i).voltaAUltimaPosicao();
+            }
+        }
+        //Processa colisoes do heroi
         for(int i = 1; i < e.size(); i++){
             eTemp = e.get(i); /*Pega o i-esimo elemento do jogo*/
             /*Verifica se o heroi se sobrepoe ao i-ésimo elemento*/
