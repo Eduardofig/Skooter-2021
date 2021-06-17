@@ -1,8 +1,9 @@
 import java.util.ArrayList;
+import java.io.Serializable;
 import Modelo.Elemento;
 import Modelo.Hero;
 
-public class Fase {
+public class Fase implements Serializable {
     protected ArrayList<Elemento> listaBlocosInteragiveis;
     protected ArrayList<Elemento> listaInimigos;
     protected ArrayList<Elemento> listaBlocosNaoInteragiveis;
@@ -48,6 +49,7 @@ public class Fase {
         for(int i = 0; i < this.listaInimigos.size(); i++) {
             eElementos.add(this.listaInimigos.get(i));
         }
+        return eElementos;
     }
 
     public Fase (Hero hHero) {
