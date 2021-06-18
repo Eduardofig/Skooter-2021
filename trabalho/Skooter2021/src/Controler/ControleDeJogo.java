@@ -2,6 +2,7 @@ package Controler;
 
 import Modelo.Elemento;
 import Modelo.Hero;
+import Modelo.BlocoSeta;
 import Auxiliar.Fase;
 import Auxiliar.Posicao;
 import java.util.ArrayList;
@@ -19,7 +20,16 @@ public class ControleDeJogo {
     public void processaTudo(Fase fFase){
         Hero hHero = (Hero)fFase.getElementos().get(0); /*O heroi (protagonista) eh sempre o primeiro do array*/
         Elemento eTemp;
+        BlocoSeta bBlocoSeta;
         int moveLinha, moveColuna;
+
+        //Colisoes com Blocos Seta
+        for(int i = 0; i < fFase.getBlocosSeta.size(); ++i) {
+            bBlocoSeta = (BlocoSeta)fFase.getBlocosSeta().get(i);
+            if(hHero.getPosicao().estaNaMesmaPosicao(bBlocoSeta.getPosicao())) {
+                bBlocoSeta.moverHeroi(hHeroi);
+            }
+        }
 
         //Colisoes de Blocos interagiveis
         for(int i = 0; i < fFase.getBlocosInteragiveis().size(); i++) {
@@ -42,8 +52,7 @@ public class ControleDeJogo {
             eTemp = fFase.getInimigos().get(i);
             //Processa possiveis colisoes do inimigo com o heroi
             if(hHero.getPosicao().estaNaMesmaPosicao(eTemp.getPosicao())) {
-                if(hHero.isEnergizado()) {
-                    fFase.matarInimigo(eTemp);
+                if(hHero.isEnergizado()) { fFase.matarInimigo(eTemp);
                 } else {
                     hHero.morrer();
                     fFase.reset();
@@ -54,15 +63,25 @@ public class ControleDeJogo {
                 eTemp.voltaAUltimaPosicao();
             }
         }
-        //Processa colisoes do heroi
+        //Processa colisoes do heroi com colecionaveis
+        for(int i = 0; i < fFase.getColecionaveis().size(); i++) {
+            eTemp = fFase.getColecionaveis().get(i);
+            if(hHero.getPosicao().estaNaMesmaPosicao(eTemp.getPosicao())) {
+                fFase.removeColecionavel(eTemp);
+                if(!fFase.getColecionaveis().size()) {
+                    //Passar de fase
+                }
+            }
+        }
+        //Processa as colicoes do heroi com todos os elementos que estao atualmente na tela
         for(int i = 1; i < fFase.getElementos().size(); i++){
             eTemp = fFase.getElementos().get(i); /*Pega o i-esimo elemento do jogo*/
             /*Verifica se o heroi se sobrepoe ao i-ésimo elemento*/
             if(hHero.getPosicao().estaNaMesmaPosicao(eTemp.getPosicao())) {
-                if(eTemp.isbTransponivel())
-                    fFase.getElementos().remove(eTemp);
-                else  {
+                if(!eTemp.isbTransponivel()) {
                     hHero.voltaAUltimaPosicao();
+                    //Se o heroi vai para uma posicao invalida ele volta e fica olhando para a posicao que ele 
+                    //tentou ir
                     hHero.setOlhando(hHero.getPosicao().getLinhaAnterior(), hHero.getPosicao().getColunaAnterior());
                 }
             }
