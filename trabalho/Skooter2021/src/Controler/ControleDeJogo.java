@@ -2,6 +2,7 @@ package Controler;
 
 import Modelo.Elemento;
 import Modelo.Hero;
+import Auxiliar.Fase;
 import Auxiliar.Posicao;
 import java.util.ArrayList;
 
@@ -10,46 +11,43 @@ import java.util.ArrayList;
  * @author junio
  */
 public class ControleDeJogo {
-    public void desenhaTudo(ArrayList<Elemento> e){
-        for(int i = 0; i < e.size(); i++){
-            e.get(i).autoDesenho();
+    public void desenhaTudo(Fase fFase){
+        for(int i = 0; i < fFase.getElementos().size(); i++){
+            fFase.getElementos().get(i).autoDesenho();
         }
     }
-    public void processaTudo(ArrayList<Elemento> e){
-        //Implementar a classe Fase
-        Hero hHero = (Hero)e.get(0); /*O heroi (protagonista) eh sempre o primeiro do array*/
+    public void processaTudo(Fase fFase){
+        Hero hHero = (Hero)fFase.getElementos().get(0); /*O heroi (protagonista) eh sempre o primeiro do array*/
         Elemento eTemp;
-        /*Processa todos os demais em relacao ao heroi*/
         //Processa coisoes dos Blocos interagiveis com os demais elementos
-        for(int i = 0; i < listaBlocosInteragiveis.size(); i++) {
-            eTemp = listaBlocosInteragiveis.get(i);
-            if(!cControle.ehPosicaoValida(this.eElementos, eTemp.getPosicao())) {
+        for(int i = 0; i < fFase.getBlocosInteragiveis().size(); i++) {
+            eTemp = fFase.getBlocosInteragiveis().get(i);
+            if(!cControle.ehPosicaoValida(fFase.getElementos(), eTemp.getPosicao())) {
                 eTemp.voltaAUltimaPosicao();
             }
         }
-        for(int i = 0; i < listaInimigos.size(); i++) {
-            eTemp = listaInimigos.get(i);
-            //Processa possiveis colisoes do inimigo com o heroi
-            if(hHero.getOlhando().estaNaMesmaPosicao(eTemp.getPosicao())) {
-                if(hHero.setEnergizado()) {
-                    eElementos.remove(eTemp);
-                    listaInimigos.remove(eTemp);
+        //Processa possiveis colisoes do inimigo com o heroi
+        for(int i = 0; i < fFase.getInimigos().size(); i++) {
+            eTemp = fFase.getInimigos().get(i);
+            if(hHero.getPosicao().estaNaMesmaPosicao(eTemp.getPosicao())) {
+                if(hHero.isEnergizado()) {
+                    fFase.matarInimigo(eTemp);
                 } else {
                     //hHero.morrer;
                 }
             }
             //Processa colisoes do inimigo com os outros elementos
-            if(!cControle.ehPosicaoValida(this.eElementos, listaInimigos.get(i).getPosicao())) {
-                listaInimigos.get(i).voltaAUltimaPosicao();
+            if(!cControle.ehPosicaoValida(fFase.getElementos(), eTemp.getPosicao())) {
+                eTemp.voltaAUltimaPosicao();
             }
         }
         //Processa colisoes do heroi
-        for(int i = 1; i < e.size(); i++){
-            eTemp = e.get(i); /*Pega o i-esimo elemento do jogo*/
+        for(int i = 1; i < fFase.getElementos().size(); i++){
+            eTemp = fFase.getElementos().get(i); /*Pega o i-esimo elemento do jogo*/
             /*Verifica se o heroi se sobrepoe ao i-ésimo elemento*/
             if(hHero.getPosicao().estaNaMesmaPosicao(eTemp.getPosicao())) {
                 if(eTemp.isbTransponivel())
-                    e.remove(eTemp);
+                    fFase.getElementos().remove(eTemp);
                 else 
                     hHero.voltaAUltimaPosicao();
             }

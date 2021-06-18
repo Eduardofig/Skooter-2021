@@ -18,7 +18,7 @@ import java.util.ArrayList;
  */
 public class Hero extends Elemento implements Serializable {
 
-    protected boolean estaEnergizado;
+    protected boolean Energizado;
     protected int numVidas;
     protected Posicao Olhando;
 
@@ -38,12 +38,12 @@ public class Hero extends Elemento implements Serializable {
         return this.numVidas;
     }
 
-    public void setEnergizado(boolean sEstaEnergizado) {
-        this.estaEnergizado = sEstaEnergizado;
+    public void setEnergizado(boolean sEnergizado) {
+        this.Energizado = sEnergizado;
     }
 
-    public boolean getEnergizado() {
-        return this.estaEnergizado;
+    public boolean isEnergizado() {
+        return this.Energizado;
     }
 
     public Hero(String sNomeImagePNG) {
