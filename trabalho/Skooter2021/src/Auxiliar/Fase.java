@@ -1,33 +1,38 @@
 import java.util.ArrayList;
 import java.io.Serializable;
 import Modelo.Elemento;
-import Modelo.Hero;
+import Modelo.BlocoSeta;
+import Modelo.BlocoInteragivel;
 
 public class Fase implements Serializable {
     //Backups para o reset da fase apos o heroi morrer
     protected ArrayList<Elemento> listaBlocosInteragiveisBackup;
     protected ArrayList<Elemento> listaInimigosBackup;
-    protected ArrayList<Elemento> listaBlocosNaoInteragiveisBackup;
+    protected ArrayList<Elemento> eElementosBackup;
     //Elementos que serao utilizados
     protected ArrayList<Elemento> listaBlocosInteragiveis;
+    protected ArrayList<Elemento> listaBlocosSeta;
     protected ArrayList<Elemento> listaInimigos;
-    protected ArrayList<Elemento> listaBlocosNaoInteragiveis;
-    protected Hero hHero;
+    protected ArrayList<Elemento> eElementos;
 
-    public void setHero(Hero sHero) {
-        this.hHero = sHero;
+    public void addBlocoSeta(Elemento bBloco) {
+        this.listaBlocosSeta.add(bBloco);
+        this.listaBlocosSetaBackup.add(bBloco);
+        this.eElementos.add(bBloco);
+        this.eElementosBackup.add(bBloco);
     }
 
     public void addBlocoInteragivel(Elemento bBloco) {
         this.listaBlocosInteragiveis.add(bBloco);
+        this.listaBlocosInteragiveisBackup.add(bBloco);
+        this.eElementos.add(bBloco);
+        this.eElementosBackup.add(bBloco);
     }
 
     public void addInimigo(Elemento bInimigo) {
         this.listaInimigos.add(bInimigo);
-    }
-
-    public void addBlocoNaoInteragivel(Elemento bBloco) {
-        this.listaBlocosNaoInteragiveis.add(bBloco);
+        this.listaInimigosBackup.add(bInimigo);
+        this.eElementos.add(bInimigo);
     }
 
     public ArrayList<Elemento> getInimigos() {
@@ -38,39 +43,28 @@ public class Fase implements Serializable {
         return this.listaBlocosInteragiveis;
     }
 
-    public ArrayList<Elemento> getBlocosNaoInteragiveis() {
-        return this.listaBlocosNaoInteragiveis;
+    public void matarInimigo(Elemento rInimigo) {
+        this.listaInimigos.remove(rInimigo);
+        this.eElementos.remove(rInimigo);
     }
 
-    public void backup() {
-        this.listaBlocosNaoInteragiveisBackup = new ArrayList<Elemento>(this.listaBlocosNaoInteragiveis);
-        this.listaBlocosInteragiveisBackup = new ArrayList<Elemento>(this.listaBlocosInteragiveis);
-        this.listaInimigosBackup = new ArrayList<Elemento>(this.listaInimigos);
+    public void destruirBlocosInteragiveis(Elemento rBloco) {
+        this.listaBlocosInteragiveis.remove(rBloco);
+        this.eElementos.remove(rBloco);
     }
 
     public void reset() {
-        this.listaBlocosNaoInteragiveis = new ArrayList<Elemento>(this.listaBlocosNaoInteragiveisBackup);
-        this.listaBlocosInteragiveis = new ArrayList<Elemento>(this.listaBlocosInteragiveisBackup );
+        this.listaBlocosInteragiveis = new ArrayList<Elemento>(this.listaBlocosInteragiveisBackup);
         this.listaInimigos = new ArrayList<Elemento>(this.listaInimigosBackup);
+        this.eElementos = new ArrayList<Elemento>(this.eElementosBackup);
     }
 
     public ArrayList<Elemento> getElementos() {
-        ArrayList<Elemento> eElementos = new ArrayList<Elemento>();
-        eElementos.add(this.hHero);
-        for(int i = 0; i < this.listaBlocosNaoInteragiveisBackup.size(); i++) {
-            eElementos.add(this.listaBlocosNaoInteragiveisBackup.get(i));
-        }
-        for(int i = 0; i < this.listaBlocosInteragiveisBackup.size(); i++) {
-            eElementos.add(this.listaBlocosInteragiveisBackup.get(i));
-        }
-        for(int i = 0; i < this.listaInimigosBackup.size(); i++) {
-            eElementos.add(this.listaInimigosBackup.get(i));
-        }
-        return eElementos;
+        return this.eElementos;
     }
 
-    public Fase(Hero hHero) {
-        this.setHero(hHero);
+    public Fase(Elemento hHero) {
+        this.eElementos.add(hHero);
     }
     
 }
