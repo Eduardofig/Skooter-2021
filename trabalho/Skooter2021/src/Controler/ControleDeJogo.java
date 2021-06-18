@@ -33,7 +33,8 @@ public class ControleDeJogo {
                 if(hHero.isEnergizado()) {
                     fFase.matarInimigo(eTemp);
                 } else {
-                    //hHero.morrer;
+                    hHero.morrer();
+                    fFase.reset();
                 }
             }
             //Processa colisoes do inimigo com os outros elementos

@@ -59,15 +59,16 @@ public class Hero extends Elemento implements Serializable {
         }
     }
 
-    //Mudar pra ele receber uma fase e resetar a fase
-    public void morrer(ArrayList<Elemento> eElementos, ArrayList<Elemento> faseAtual) {
-        setNumVidas(getNumVidas() - 1);
-        eElementos.clear();
-        //Inserir um if que checa se ha um game over
-        for(int i = 0; i < eElementos.size(); i++) {
-            eElementos.add(eElementos.get(i));
+    //Metodo chamado quando o heroi morre
+    public void morrer() {
+        if(this.numVidas > 1) {
+            this.numVidas--;
+            System.out.println("Voce Morreu");
+            System.out.println("Numero de vidas: " + String.valueOf(this.numVidas));
+            return;
         }
-        System.out.println("Voce Morreu");
+        System.out.println("Game Over");
+        System.exit(0);
     }
 
     //Overrides dos metodos move
