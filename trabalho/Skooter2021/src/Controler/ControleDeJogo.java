@@ -19,16 +19,28 @@ public class ControleDeJogo {
     public void processaTudo(Fase fFase){
         Hero hHero = (Hero)fFase.getElementos().get(0); /*O heroi (protagonista) eh sempre o primeiro do array*/
         Elemento eTemp;
-        //Processa coisoes dos Blocos interagiveis com os demais elementos
+        int moveLinha, moveColuna;
+
+        //Colisoes de Blocos interagiveis
         for(int i = 0; i < fFase.getBlocosInteragiveis().size(); i++) {
             eTemp = fFase.getBlocosInteragiveis().get(i);
+            //Processa o Heroi empurrando o bloco
+            if(hHero.getPosicao().estaNaMesmaPosicao(eTemp.getPosicao())) {
+                moveLinha = hHero.getPosicao().getLinha() - hHeroi.getPosicao().getLinhaAnterior() + eTemp.getPosicao().getLinha();
+                moveColuna = hHero.getPosicao().getColuna() - hHeroi.getPosicao().getColunaAnterior() + eTemp.getPosicao().getColuna();
+                eTemp.getPosicao().setPosicao(moveLinha, moveColuna);
+            }
+
+            //Processa coisoes dos Blocos interagiveis com os demais elementos
             if(!cControle.ehPosicaoValida(fFase.getElementos(), eTemp.getPosicao())) {
                 eTemp.voltaAUltimaPosicao();
             }
         }
-        //Processa possiveis colisoes do inimigo com o heroi
+
+        //Colisoes de inimigos
         for(int i = 0; i < fFase.getInimigos().size(); i++) {
             eTemp = fFase.getInimigos().get(i);
+            //Processa possiveis colisoes do inimigo com o heroi
             if(hHero.getPosicao().estaNaMesmaPosicao(eTemp.getPosicao())) {
                 if(hHero.isEnergizado()) {
                     fFase.matarInimigo(eTemp);

@@ -89,32 +89,6 @@ public class Hero extends Elemento implements Serializable {
         this.setOlhando(this.getPosicao().getLinha(), this.getPosicao().getColuna());
     }
 
-    //Funcao que eh chamada quando o heroi destroi o bloco interagivel
-    public void empurrarBloco(BlocoInteragivel bBloco, int destino) {
-        switch(destino) {
-            case 0:
-                bBloco.moveLeft();
-                this.moveLeft();
-                this.getOlhando().setPosicao(this.getPosicao().getLinha(), this.getPosicao().getColuna() - 1);
-                break;
-            case 1:
-                bBloco.moveUp();
-                this.moveUp();
-                this.getOlhando().setPosicao(this.getPosicao().getLinha() - 1, this.getPosicao().getColuna());
-                break;
-            case 2:
-                bBloco.moveRight();
-                this.moveRight();
-                this.getOlhando().setPosicao(this.getPosicao().getLinha(), this.getPosicao().getColuna() + 1);
-                break;
-            default:
-                bBloco.moveDown();
-                this.moveDown();
-                this.getOlhando().setPosicao(this.getPosicao().getLinha() + 1, this.getPosicao().getColuna());
-                break;
-        }
-    }
-
     public void removerBloco(ArrayList<Elemento> listaBlocosInteragiveis, ArrayList<Elemento> eElementos) {
         for(int i = 0; i < listaBlocosInteragiveis.size(); i++) {
             Elemento bBloco = listaBlocosInteragiveis.get(i);
