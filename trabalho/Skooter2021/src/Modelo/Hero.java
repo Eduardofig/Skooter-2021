@@ -30,6 +30,10 @@ public class Hero extends Elemento implements Serializable {
         return this.Olhando;
     }
 
+    public void setOlhando(int linha, int coluna) {
+        this.Olhando.setPosicao(linha, coluna);
+    }
+
     public void setNumVidas(int sNumVidas) {
         this.numVidas = sNumVidas;
     }
@@ -68,6 +72,24 @@ public class Hero extends Elemento implements Serializable {
             eElementos.add(eElementos.get(i));
         }
         System.out.println("Voce Morreu");
+    }
+
+    //Overrides dos metodos move
+    public boolean moveLeft() {
+        this.setPosicao(this.getPosicao().getLinha(), this.getPosicao.getColuna() - 1);
+        this.setOlhando(this.getPosicao().getLinha(), this.getPosicao().getColuna() - 1);
+    }
+    public boolean moveUp() {
+        this.setPosicao(this.getPosicao().getLinha() - 1, this.getPosicao.getColuna());
+        this.setOlhando(this.getPosicao().getLinha() - 1, this.getPosicao().getColuna());
+    }
+    public boolean moveRight() {
+        this.setPosicao(this.getPosicao().getLinha(), this.getPosicao.getColuna() + 1);
+        this.setOlhando(this.getPosicao().getLinha(), this.getPosicao().getColuna() + 1);
+    }
+    public boolean moveDown() {
+        this.setPosicao(this.getPosicao().getLinha(), this.getPosicao.getColuna());
+        this.setOlhando(this.getPosicao().getLinha(), this.getPosicao().getColuna());
     }
 
     //Funcao que eh chamada quando o heroi destroi o bloco interagivel
