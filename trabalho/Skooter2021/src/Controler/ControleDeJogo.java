@@ -48,8 +48,10 @@ public class ControleDeJogo {
             if(hHero.getPosicao().estaNaMesmaPosicao(eTemp.getPosicao())) {
                 if(eTemp.isbTransponivel())
                     fFase.getElementos().remove(eTemp);
-                else 
+                else  {
                     hHero.voltaAUltimaPosicao();
+                    hHero.setOlhando(hHero.getPosicao().getLinhaAnterior(), hHero.getPosicao().getColunaAnterior());
+                }
             }
                 /*Nem todos os elementos podem ser transpostos pelo heroi*/
         }

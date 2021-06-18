@@ -9,6 +9,14 @@ public class Posicao implements Serializable{
     private int linhaAnterior;
     private int colunaAnterior;
 
+    public int getLinhaAnterior() {
+        return this.linhaAnterior;
+    }
+
+    public int getColunaAnterior() {
+        return this.colunaAnterior;
+    }
+
     public Posicao(int linha, int coluna){
         this.setPosicao(linha,coluna);
     }

@@ -22,10 +22,6 @@ public class Hero extends Elemento implements Serializable {
     protected int numVidas;
     protected Posicao Olhando;
 
-    public void setOlhando(Posicao sOlhando) {
-        this.Olhando = sOlhando;
-    }
-
     public Posicao getOlhando() {
         return this.Olhando;
     }
