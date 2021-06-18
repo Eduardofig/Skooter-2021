@@ -67,4 +67,13 @@ public class ControleDeJogo {
         }
         return true;
     }
+
+    public void destruirBloco(Fase fFase, Hero hHeroi) {
+        Elemento bBloco;
+        for(int i = 0; i < fFase.getBlocosInteragiveis(); i++) {
+            bBloco = fFase.getBlocosInteragiveis.get(i);
+            if(bBloco.getPosicao().estaNaMesmaPosicao(hHeroi.getOlhando()))
+                fFase.destruirBloco(bBloco);
+        }
+    }
 }
