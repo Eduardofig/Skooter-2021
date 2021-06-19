@@ -2,6 +2,7 @@ package Data;
 
 import java.util.ArrayList;
 import Auxiliar.Fase;
+import Modelo.Hero;
 
 public class Fases {
     protected ArrayList<Fase> Fases;
@@ -24,7 +25,7 @@ public class Fases {
     }
 
     public Hero getHeroAtual() {
-        return this.fases.getFaseAtual().get(0);
+        return this.getFaseAtual().getElementos().get(0);
     }
 
     public Fases() {

@@ -18,6 +18,7 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
     private Fases fFases;
     private ControleDeJogo cControle = new ControleDeJogo();
     private Graphics g2;
+    private Hero hHero;
     /**
      * Creates new form
      */
@@ -97,7 +98,7 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         } else if (e.getKeyCode() == KeyEvent.VK_R) {
             this.fFases.getFaseAtual().reset();
         } else if(e.getKeyCode() == KeyEvent.VK_Z) {
-            this.hHero.removerBloco(this.fFases.getFaseAtual().getBlocosInteragiveis(), this.fFases.getElementos());
+            this.hHero.removerBloco(this.fFases.getFaseAtual().getBlocosInteragiveis(), this.fFases.getFaseAtual().getElementos());
         }
 
         this.setTitle("-> Cell: " + (this.hHero.getPosicao().getColuna()) + ", " + (this.hHero.getPosicao().getLinha()));
