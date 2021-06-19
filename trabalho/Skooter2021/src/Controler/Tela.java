@@ -43,6 +43,7 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
     
     /*Este metodo eh executado a cada Consts.FRAME_INTERVAL milissegundos*/    
     public void paint(Graphics gOld) {
+        this.hHero = this.Fases.getHeroAtual();
         Graphics g = this.getBufferStrategy().getDrawGraphics();
         /*Criamos um contexto gráfico*/
         g2 = g.create(getInsets().left, getInsets().top, getWidth() - getInsets().right, getHeight() - getInsets().top);

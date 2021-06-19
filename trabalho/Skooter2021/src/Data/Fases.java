@@ -23,6 +23,10 @@ public class Fases {
         return this.Fases.get(this.faseAtual);
     }
 
+    public Hero getHeroAtual() {
+        return this.fases.getFaseAtual().get(0);
+    }
+
     public Fases() {
         //Desenhar as fases
     }
