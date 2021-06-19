@@ -34,26 +34,6 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         this.setSize(Consts.RES * Consts.CELL_SIDE + getInsets().left + getInsets().right,
                 Consts.RES * Consts.CELL_SIDE + getInsets().top + getInsets().bottom);
     
-        /*O protagonista (heroi) necessariamente precisa estar na posicao 0 do array*/
-        hHero = new Hero("skooter_hero.png"); /* https://www.online-image-editor.com/ */
-        hHero.setPosicao(0, 7);
-        this.addElemento(hHero);
-        
-        CoronaVirus cTeste = new CoronaVirus("robo_azul.png");
-        cTeste.setPosicao(5, 5);
-        this.addElemento(cTeste);     
-
-        CoronaVirus cCorona = new CoronaVirus("robo.png");
-        cCorona.setPosicao(3, 3);
-        this.addElemento(cCorona);
-
-        CoronaVirus cRobo = new CoronaVirus("robo_azul.png");
-        cCorona.setPosicao(10, 5);        
-        this.addElemento(cRobo);
-        
-        Caveira cCaveira = new Caveira("caveira.png");
-        cCaveira.setPosicao(10, 9);
-        this.addElemento(cCaveira);        
     }
 
 /*--------------------------------------------------*/
@@ -115,7 +95,7 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
             hHero.moveRight();
         } else if (e.getKeyCode() == KeyEvent.VK_R) {
-            this.fFases.reset();
+            this.fFases.getFaseAtual().reset();
         } //else if(e.getKeyCode() == KeyEvent.VK_Z) {
             //hHero.removerBloco(listaBlocosInteragiveis);
         //}
