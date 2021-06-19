@@ -33,12 +33,7 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         /*Cria a janela do tamanho do cenario + insets (bordas) da janela*/
         this.setSize(Consts.RES * Consts.CELL_SIDE + getInsets().left + getInsets().right,
                 Consts.RES * Consts.CELL_SIDE + getInsets().top + getInsets().bottom);
-
-        /*Este array vai guardar os elementos graficos*/
-        eElementos = new ArrayList<Elemento>(100);
-
     
-        /*Cria eElementos adiciona elementos*/
         /*O protagonista (heroi) necessariamente precisa estar na posicao 0 do array*/
         hHero = new Hero("skooter_hero.png"); /* https://www.online-image-editor.com/ */
         hHero.setPosicao(0, 7);
@@ -62,14 +57,6 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
     }
 
 /*--------------------------------------------------*/
-    public void addElemento(Elemento umElemento) {
-        eElementos.add(umElemento);
-    }
-
-    public void removeElemento(Elemento umElemento) {
-        eElementos.remove(umElemento);
-    }
-
     public Graphics getGraphicsBuffer(){
         return g2;
     }
@@ -128,22 +115,10 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
             hHero.moveRight();
         } else if (e.getKeyCode() == KeyEvent.VK_R) {
-            this.eElementos.clear();
-            hHero = new Hero("vacina.png");
-            hHero.setPosicao(0, 7);
-            this.addElemento(hHero);
-
-            CoronaVirus cTeste = new CoronaVirus("carro_azul.png");
-            cTeste.setPosicao(5, 5);
-            this.addElemento(cTeste);
+            this.fFases.reset();
         } //else if(e.getKeyCode() == KeyEvent.VK_Z) {
             //hHero.removerBloco(listaBlocosInteragiveis);
         //}
-        
-        /*Se o heroi for para uma posicao invalida, sobre um elemento intransponivel, volta para onde estava*/
-        if (!cControle.ehPosicaoValida(this.eElementos,hHero.getPosicao())) {
-            hHero.voltaAUltimaPosicao();
-        }
 
         this.setTitle("-> Cell: " + (hHero.getPosicao().getColuna()) + ", " + (hHero.getPosicao().getLinha()));
     }
@@ -160,9 +135,6 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
 
          /*Se o heroi for para uma posicao invalida, sobre um elemento intransponivel, volta para onde estava*/
          //Processa as colisoes dos blocos interagiveis e dos inimigos
-         if (!cControle.ehPosicaoValida(this.eElementos,hHero.getPosicao())) {
-             hHero.voltaAUltimaPosicao();
-         }         
 
          repaint();
     }
