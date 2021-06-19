@@ -4,6 +4,7 @@ import Modelo.Elemento;
 import Modelo.Hero;
 import Modelo.BlocoSeta;
 import Modelo.RoboInimigo;
+import Modelo.Coracao;
 import Auxiliar.Fase;
 import Auxiliar.Posicao;
 import Data.Fases;
@@ -26,6 +27,8 @@ public class ControleDeJogo {
         Elemento eTemp;
         BlocoSeta bBlocoSeta;
         RoboInimigo rRobo;
+        Coracao cCoracao;
+
         int moveLinha, moveColuna;
 
         //Colisoes com Blocos Seta
@@ -82,11 +85,13 @@ public class ControleDeJogo {
             }
         }
 
-        //Colisoes com coracoes
+        //Processamento dos coracoes
         for(int i = 0; i < fFase.getCoracoes().size(); ++i) {
-            eTemp = fFase.getCoracoes().get(i) ;
-            if(hHero.getPosicao().estaNaMesmaPosicao(eTemp.getPosicao())) {
-                fFase.removeCoracao(eTemp);
+            cCoracao = (Coracao)fFase.getCoracoes().get(i) ;
+            //Movimento dos coracoes
+            cCoracao.move();
+            if(hHero.getPosicao().estaNaMesmaPosicao(cCoracao.getPosicao())) {
+                fFase.removeCoracao(cCoracao);
                 hHero.ficarEnergizado();
             }
         }
