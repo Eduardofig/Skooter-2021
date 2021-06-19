@@ -52,13 +52,6 @@ public class Hero extends Elemento implements Serializable {
         setEnergizado(false);
     }
 
-    public void passarDeFase(ArrayList<Elemento> eElementos, ArrayList<Elemento> novaFase) {
-        eElementos.clear();
-        for(int i = 0; i < eElementos.size(); i++) {
-            eElementos.add(eElementos.get(i));
-        }
-    }
-
     //Metodo chamado quando o heroi morre
     public void morrer() {
         if(this.numVidas > 1) {

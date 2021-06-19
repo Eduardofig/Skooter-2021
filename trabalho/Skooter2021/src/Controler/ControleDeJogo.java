@@ -5,6 +5,7 @@ import Modelo.Hero;
 import Modelo.BlocoSeta;
 import Auxiliar.Fase;
 import Auxiliar.Posicao;
+import Data.Fases;
 import java.util.ArrayList;
 
 /**
@@ -12,12 +13,14 @@ import java.util.ArrayList;
  * @author junio
  */
 public class ControleDeJogo {
-    public void desenhaTudo(Fase fFase){
+    public void desenhaTudo(Fases fFases){
+        Fase fFase = fFases.getFaseAtual();
         for(int i = 0; i < fFase.getElementos().size(); i++){
             fFase.getElementos().get(i).autoDesenho();
         }
     }
-    public void processaTudo(Fase fFase){
+    public void processaTudo(Fases fFases){
+        Fase fFase = fFases.getFaseAtual();
         Hero hHero = (Hero)fFase.getElementos().get(0); /*O heroi (protagonista) eh sempre o primeiro do array*/
         Elemento eTemp;
         BlocoSeta bBlocoSeta;
@@ -69,7 +72,7 @@ public class ControleDeJogo {
             if(hHero.getPosicao().estaNaMesmaPosicao(eTemp.getPosicao())) {
                 fFase.removeColecionavel(eTemp);
                 if(!fFase.getColecionaveis().size()) {
-                    //Passar de fase
+                    fFases.passarDeFase();
                 }
             }
         }
