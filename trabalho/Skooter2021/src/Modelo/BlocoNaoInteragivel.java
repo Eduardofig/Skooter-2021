@@ -23,6 +23,5 @@ public class BlocoNaoInteragivel extends Elemento implements Serializable {
     public BlocoNaoInteragivel(String sNomeImagePNG) {
         super(sNomeImagePNG);
         this.setbTransponivel(false);
-        this.iContaFrames = 0;
     }
 }

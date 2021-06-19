@@ -23,5 +23,7 @@ import java.util.ArrayList;
  * @author jonatas
  */
 public class RoboInimigo extends Elemento implements Serializable{
-    
+    public RoboInimigo(String sNomeImagePNG) {
+        super(sNomeImagePNG);
+    }
 }

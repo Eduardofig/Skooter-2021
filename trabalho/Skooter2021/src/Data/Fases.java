@@ -19,7 +19,7 @@ public class Fases {
         this.faseAtual++;
     }
 
-    public void getFaseAtual() {
+    public Fase getFaseAtual() {
         return this.Fases.get(this.faseAtual);
     }
 

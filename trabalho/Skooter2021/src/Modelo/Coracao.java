@@ -24,7 +24,7 @@ public class Coracao extends Colecionavel implements Serializable {
 
     }
 
-    public Coracao(string sNomeImagePNG) {
+    public Coracao(String sNomeImagePNG) {
         super(sNomeImagePNG);
     }
 

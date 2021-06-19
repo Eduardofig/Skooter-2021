@@ -1,3 +1,5 @@
+package Auxiliar;
+
 import java.util.ArrayList;
 import java.io.Serializable;
 import Modelo.Elemento;
@@ -35,7 +37,6 @@ public class Fase implements Serializable {
 
     public void addBlocoSeta(Elemento bBloco) {
         this.listaBlocosSeta.add(bBloco);
-        this.listaBlocosSetaBackup.add(bBloco);
         this.eElementos.add(bBloco);
         this.eElementosBackup.add(bBloco);
     }

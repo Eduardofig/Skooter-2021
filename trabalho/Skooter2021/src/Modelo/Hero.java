@@ -66,20 +66,24 @@ public class Hero extends Elemento implements Serializable {
 
     //Overrides dos metodos move
     public boolean moveLeft() {
-        this.setPosicao(this.getPosicao().getLinha(), this.getPosicao.getColuna() - 1);
+        this.setPosicao(this.getPosicao().getLinha(), this.getPosicao().getColuna() - 1);
         this.setOlhando(this.getPosicao().getLinha(), this.getPosicao().getColuna() - 1);
+        return true;
     }
     public boolean moveUp() {
-        this.setPosicao(this.getPosicao().getLinha() - 1, this.getPosicao.getColuna());
+        this.setPosicao(this.getPosicao().getLinha() - 1, this.getPosicao().getColuna());
         this.setOlhando(this.getPosicao().getLinha() - 1, this.getPosicao().getColuna());
+        return true;
     }
     public boolean moveRight() {
-        this.setPosicao(this.getPosicao().getLinha(), this.getPosicao.getColuna() + 1);
+        this.setPosicao(this.getPosicao().getLinha(), this.getPosicao().getColuna() + 1);
         this.setOlhando(this.getPosicao().getLinha(), this.getPosicao().getColuna() + 1);
+        return true;
     }
     public boolean moveDown() {
-        this.setPosicao(this.getPosicao().getLinha(), this.getPosicao.getColuna());
+        this.setPosicao(this.getPosicao().getLinha(), this.getPosicao().getColuna());
         this.setOlhando(this.getPosicao().getLinha(), this.getPosicao().getColuna());
+        return true;
     }
 
     public void removerBloco(ArrayList<Elemento> listaBlocosInteragiveis, ArrayList<Elemento> eElementos) {
@@ -93,9 +97,5 @@ public class Hero extends Elemento implements Serializable {
     public void ficarEnergizado() {
         setEnergizado(true);
         //Contar um timer
-    }
-
-    public void voltaAUltimaPosicao(){
-        this.pPosicao.volta();
     }
 }

@@ -27,10 +27,10 @@ public class ControleDeJogo {
         int moveLinha, moveColuna;
 
         //Colisoes com Blocos Seta
-        for(int i = 0; i < fFase.getBlocosSeta.size(); ++i) {
+        for(int i = 0; i < fFase.getBlocosSeta().size(); ++i) {
             bBlocoSeta = (BlocoSeta)fFase.getBlocosSeta().get(i);
             if(hHero.getPosicao().estaNaMesmaPosicao(bBlocoSeta.getPosicao())) {
-                bBlocoSeta.moverHeroi(hHeroi);
+                bBlocoSeta.moverHeroi(hHero);
             }
         }
 
@@ -39,13 +39,13 @@ public class ControleDeJogo {
             eTemp = fFase.getBlocosInteragiveis().get(i);
             //Processa o Heroi empurrando o bloco
             if(hHero.getPosicao().estaNaMesmaPosicao(eTemp.getPosicao())) {
-                moveLinha = hHero.getPosicao().getLinha() - hHeroi.getPosicao().getLinhaAnterior() + eTemp.getPosicao().getLinha();
-                moveColuna = hHero.getPosicao().getColuna() - hHeroi.getPosicao().getColunaAnterior() + eTemp.getPosicao().getColuna();
+                moveLinha = hHero.getPosicao().getLinha() - hHero.getPosicao().getLinhaAnterior() + eTemp.getPosicao().getLinha();
+                moveColuna = hHero.getPosicao().getColuna() - hHero.getPosicao().getColunaAnterior() + eTemp.getPosicao().getColuna();
                 eTemp.getPosicao().setPosicao(moveLinha, moveColuna);
             }
 
             //Processa coisoes dos Blocos interagiveis com os demais elementos
-            if(!cControle.ehPosicaoValida(fFase.getElementos(), eTemp.getPosicao())) {
+            if(!this.ehPosicaoValida(fFase.getElementos(), eTemp.getPosicao())) {
                 eTemp.voltaAUltimaPosicao();
             }
         }
@@ -62,7 +62,7 @@ public class ControleDeJogo {
                 }
             }
             //Processa colisoes do inimigo com os outros elementos
-            if(!cControle.ehPosicaoValida(fFase.getElementos(), eTemp.getPosicao())) {
+            if(!this.ehPosicaoValida(fFase.getElementos(), eTemp.getPosicao())) {
                 eTemp.voltaAUltimaPosicao();
             }
         }
@@ -71,7 +71,7 @@ public class ControleDeJogo {
             eTemp = fFase.getColecionaveis().get(i);
             if(hHero.getPosicao().estaNaMesmaPosicao(eTemp.getPosicao())) {
                 fFase.removeColecionavel(eTemp);
-                if(!fFase.getColecionaveis().size()) {
+                if(fFase.getColecionaveis().isEmpty()) {
                     fFases.passarDeFase();
                 }
             }
@@ -112,12 +112,12 @@ public class ControleDeJogo {
         return true;
     }
 
-    public void destruirBloco(Fase fFase, Hero hHeroi) {
+    public void destruirBloco(Fase fFase, Hero hHero) {
         Elemento bBloco;
-        for(int i = 0; i < fFase.getBlocosInteragiveis(); i++) {
-            bBloco = fFase.getBlocosInteragiveis.get(i);
-            if(bBloco.getPosicao().estaNaMesmaPosicao(hHeroi.getOlhando()))
-                fFase.destruirBloco(bBloco);
+        for(int i = 0; i < fFase.getBlocosInteragiveis().size(); i++) {
+            bBloco = fFase.getBlocosInteragiveis().get(i);
+            if(bBloco.getPosicao().estaNaMesmaPosicao(hHero.getOlhando()))
+                fFase.destruirBlocosInteragiveis(bBloco);
         }
     }
 }
