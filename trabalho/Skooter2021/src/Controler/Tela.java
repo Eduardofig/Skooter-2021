@@ -15,7 +15,6 @@ import java.util.zip.*;
  */
 public class Tela extends javax.swing.JFrame implements MouseListener, KeyListener {
 
-    private Hero hHero;
     private Fases fFases;
     private ControleDeJogo cControle = new ControleDeJogo();
     private Graphics g2;
@@ -85,23 +84,23 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
     }
 
     public void keyPressed(KeyEvent e) {
-        hHero = this.Fases.getHeroAtual();
+        this.hHero = this.fFases.getHeroAtual();
         /*Movimento do heroi via teclado*/
         if (e.getKeyCode() == KeyEvent.VK_UP) {
-            hHero.moveUp();
+            this.hHero.moveUp();
         } else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-            hHero.moveDown();
+            this.hHero.moveDown();
         } else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-            hHero.moveLeft();
+            this.hHero.moveLeft();
         } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-            hHero.moveRight();
+            this.hHero.moveRight();
         } else if (e.getKeyCode() == KeyEvent.VK_R) {
             this.fFases.getFaseAtual().reset();
-        } //else if(e.getKeyCode() == KeyEvent.VK_Z) {
-            //hHero.removerBloco(listaBlocosInteragiveis);
-        //}
+        } else if(e.getKeyCode() == KeyEvent.VK_Z) {
+            this.hHero.removerBloco(this.fFases.getFaseAtual().getBlocosInteragiveis(), this.fFases.getElementos());
+        }
 
-        this.setTitle("-> Cell: " + (hHero.getPosicao().getColuna()) + ", " + (hHero.getPosicao().getLinha()));
+        this.setTitle("-> Cell: " + (this.hHero.getPosicao().getColuna()) + ", " + (this.hHero.getPosicao().getLinha()));
     }
 
     public void mousePressed(MouseEvent e) {
