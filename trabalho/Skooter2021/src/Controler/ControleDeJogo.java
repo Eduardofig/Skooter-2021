@@ -3,6 +3,7 @@ package Controler;
 import Modelo.Elemento;
 import Modelo.Hero;
 import Modelo.BlocoSeta;
+import Modelo.RoboInimigo;
 import Auxiliar.Fase;
 import Auxiliar.Posicao;
 import Data.Fases;
@@ -24,6 +25,7 @@ public class ControleDeJogo {
         Hero hHero = (Hero)fFase.getElementos().get(0); /*O heroi (protagonista) eh sempre o primeiro do array*/
         Elemento eTemp;
         BlocoSeta bBlocoSeta;
+        RoboInimigo rRobo;
         int moveLinha, moveColuna;
 
         //Colisoes com Blocos Seta
@@ -50,12 +52,14 @@ public class ControleDeJogo {
             }
         }
 
-        //Colisoes de inimigos
+        //Processamento dos inimigos
         for(int i = 0; i < fFase.getInimigos().size(); i++) {
-            eTemp = fFase.getInimigos().get(i);
+            rRobo = (RoboInimigo)fFase.getInimigos().get(i);
+            rRobo.move();
             //Processa possiveis colisoes do inimigo com o heroi
-            if(hHero.getPosicao().estaNaMesmaPosicao(eTemp.getPosicao())) {
-                if(hHero.isEnergizado()) { fFase.matarInimigo(eTemp);
+            if(hHero.getPosicao().estaNaMesmaPosicao(rRobo.getPosicao())) {
+                if(hHero.isEnergizado()) {
+                    fFase.matarInimigo(rRobo);
                 } else {
                     hHero.morrer();
                     fFase.reset();
@@ -63,9 +67,10 @@ public class ControleDeJogo {
             }
             //Processa colisoes do inimigo com os outros elementos
             if(!this.ehPosicaoValida(fFase.getElementos(), eTemp.getPosicao())) {
-                eTemp.voltaAUltimaPosicao();
+                rRobo.voltaAUltimaPosicao();
             }
         }
+
         //Processa colisoes do heroi com colecionaveis
         for(int i = 0; i < fFase.getColecionaveis().size(); i++) {
             eTemp = fFase.getColecionaveis().get(i);
