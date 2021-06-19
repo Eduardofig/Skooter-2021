@@ -18,16 +18,16 @@ import java.util.ArrayList;
  */
 public class Hero extends Elemento implements Serializable {
 
-    protected boolean estaEnergizado;
+    protected boolean Energizado;
     protected int numVidas;
     protected Posicao Olhando;
 
-    public void setOlhando(Posicao sOlhando) {
-        this.Olhando = sOlhando;
-    }
-
     public Posicao getOlhando() {
         return this.Olhando;
+    }
+
+    public void setOlhando(int linha, int coluna) {
+        this.Olhando.setPosicao(linha, coluna);
     }
 
     public void setNumVidas(int sNumVidas) {
@@ -38,12 +38,12 @@ public class Hero extends Elemento implements Serializable {
         return this.numVidas;
     }
 
-    public void setEnergizado(boolean sEstaEnergizado) {
-        this.estaEnergizado = sEstaEnergizado;
+    public void setEnergizado(boolean sEnergizado) {
+        this.Energizado = sEnergizado;
     }
 
-    public boolean getEnergizado() {
-        return this.estaEnergizado;
+    public boolean isEnergizado() {
+        return this.Energizado;
     }
 
     public Hero(String sNomeImagePNG) {
@@ -52,47 +52,34 @@ public class Hero extends Elemento implements Serializable {
         setEnergizado(false);
     }
 
-    public void passarDeFase(ArrayList<Elemento> eElementos, ArrayList<Elemento> novaFase) {
-        eElementos.clear();
-        for(int i = 0; i < eElementos.size(); i++) {
-            eElementos.add(eElementos.get(i));
+    //Metodo chamado quando o heroi morre
+    public void morrer() {
+        if(this.numVidas > 1) {
+            this.numVidas--;
+            System.out.println("Voce Morreu");
+            System.out.println("Numero de vidas: " + String.valueOf(this.numVidas));
+            return;
         }
+        System.out.println("Game Over");
+        System.exit(0);
     }
 
-    public void morrer(ArrayList<Elemento> eElementos, ArrayList<Elemento> faseAtual) {
-        setNumVidas(getNumVidas() - 1);
-        eElementos.clear();
-        //Inserir um if que checa se ha um game over
-        for(int i = 0; i < eElementos.size(); i++) {
-            eElementos.add(eElementos.get(i));
-        }
-        System.out.println("Voce Morreu");
+    //Overrides dos metodos move
+    public boolean moveLeft() {
+        this.setPosicao(this.getPosicao().getLinha(), this.getPosicao.getColuna() - 1);
+        this.setOlhando(this.getPosicao().getLinha(), this.getPosicao().getColuna() - 1);
     }
-
-    //Funcao que eh chamada quando o heroi destroi o bloco interagivel
-    public void empurrarBloco(BlocoInteragivel bBloco, int destino) {
-        switch(destino) {
-            case 0:
-                bBloco.moveLeft();
-                this.moveLeft();
-                this.getOlhando().setPosicao(this.getPosicao().getLinha(), this.getPosicao().getColuna() - 1);
-                break;
-            case 1:
-                bBloco.moveUp();
-                this.moveUp();
-                this.getOlhando().setPosicao(this.getPosicao().getLinha() - 1, this.getPosicao().getColuna());
-                break;
-            case 2:
-                bBloco.moveRight();
-                this.moveRight();
-                this.getOlhando().setPosicao(this.getPosicao().getLinha(), this.getPosicao().getColuna() + 1);
-                break;
-            default:
-                bBloco.moveDown();
-                this.moveDown();
-                this.getOlhando().setPosicao(this.getPosicao().getLinha() + 1, this.getPosicao().getColuna());
-                break;
-        }
+    public boolean moveUp() {
+        this.setPosicao(this.getPosicao().getLinha() - 1, this.getPosicao.getColuna());
+        this.setOlhando(this.getPosicao().getLinha() - 1, this.getPosicao().getColuna());
+    }
+    public boolean moveRight() {
+        this.setPosicao(this.getPosicao().getLinha(), this.getPosicao.getColuna() + 1);
+        this.setOlhando(this.getPosicao().getLinha(), this.getPosicao().getColuna() + 1);
+    }
+    public boolean moveDown() {
+        this.setPosicao(this.getPosicao().getLinha(), this.getPosicao.getColuna());
+        this.setOlhando(this.getPosicao().getLinha(), this.getPosicao().getColuna());
     }
 
     public void removerBloco(ArrayList<Elemento> listaBlocosInteragiveis, ArrayList<Elemento> eElementos) {

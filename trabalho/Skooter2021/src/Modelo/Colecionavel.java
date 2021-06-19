@@ -16,18 +16,7 @@ import javax.swing.JPanel;
  */
 public class Colecionavel extends Elemento implements Serializable{
 
-    //Variaveis publicas que definem se o Colecionavel eh um Coracao ou se ele eh um sol
-    public boolean ehCoracao;
-    public boolean ehSol;
-
-    public Colecionavel(String sNomeImagePNG, boolean sEhCoracao, boolean sEhSol) {
+    public Colecionavel(String sNomeImagePNG) {
         super(sNomeImagePNG);
-        this.ehCoracao = sEhCoracao;
-        this.ehSol = sEhSol;
-        this.setbTransponivel(true);
-    }
-
-    public void voltaAUltimaPosicao(){
-        this.pPosicao.volta();
     }
 }
