@@ -66,7 +66,7 @@ public class ControleDeJogo {
                 }
             }
             //Processa colisoes do inimigo com os outros elementos
-            if(!this.ehPosicaoValida(fFase.getElementos(), eTemp.getPosicao())) {
+            if(!this.ehPosicaoValida(fFase.getElementos(), rRobo.getPosicao())) {
                 rRobo.voltaAUltimaPosicao();
             }
         }
