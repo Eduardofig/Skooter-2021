@@ -76,10 +76,19 @@ public class ControleDeJogo {
                 }
             }
         }
+
+        //Colisoes com coracoes
+        for(int i = 0; i < fFase.getCoracoes().size(); ++i) {
+            eTemp = fFase.getCoracoes().get(i) ;
+            if(hHero.getPosicao().estaNaMesmaPosicao(eTemp.getPosicao())) {
+                fFase.removeCoracao(eTemp);
+                hHero.ficarEnergizado();
+            }
+        }
+
         //Processa as colicoes do heroi com todos os elementos que estao atualmente na tela
         for(int i = 1; i < fFase.getElementos().size(); i++){
-            eTemp = fFase.getElementos().get(i); /*Pega o i-esimo elemento do jogo*/
-            /*Verifica se o heroi se sobrepoe ao i-ésimo elemento*/
+            eTemp = fFase.getElementos().get(i);
             if(hHero.getPosicao().estaNaMesmaPosicao(eTemp.getPosicao())) {
                 if(!eTemp.isbTransponivel()) {
                     hHero.voltaAUltimaPosicao();
@@ -88,8 +97,8 @@ public class ControleDeJogo {
                     hHero.setOlhando(hHero.getPosicao().getLinhaAnterior(), hHero.getPosicao().getColunaAnterior());
                 }
             }
-                /*Nem todos os elementos podem ser transpostos pelo heroi*/
         }
+
     }
     public boolean ehPosicaoValida(ArrayList<Elemento> e, Posicao p){
         Elemento eTemp;

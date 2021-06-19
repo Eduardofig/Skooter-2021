@@ -20,5 +20,12 @@ import javax.swing.JPanel;
  * @author jonatas
  */
 public class Coracao extends Colecionavel implements Serializable {
-    
+    public void move() {
+
+    }
+
+    public Coracao(string sNomeImagePNG) {
+        super(sNomeImagePNG);
+    }
+
 }
