@@ -25,7 +25,7 @@ public class Fases {
     }
 
     public Hero getHeroAtual() {
-        return this.getFaseAtual().getElementos().get(0);
+        return (Hero)this.getFaseAtual().getElementos().get(0);
     }
 
     public Fases() {
