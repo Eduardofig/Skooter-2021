@@ -52,6 +52,12 @@ public class Fase implements Serializable {
         this.listaInimigos.add(bInimigo);
         this.listaInimigosBackup.add(bInimigo);
         this.eElementos.add(bInimigo);
+        this.eElementosBackup.add(bInimigo);
+    }
+
+    public void addBlocoNaoInteragivel(Elemento bBloco) {
+        this.eElementos.add(bBloco);
+        this.eElementosBackup.add(bBloco);
     }
 
     public ArrayList<Elemento> getCoracoes() {
