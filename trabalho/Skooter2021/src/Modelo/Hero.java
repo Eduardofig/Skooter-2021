@@ -48,6 +48,7 @@ public class Hero extends Elemento implements Serializable {
 
     public Hero(String sNomeImagePNG) {
         super(sNomeImagePNG);
+        this.Olhando = new Posicao(0, 0);
         setNumVidas(4);
         setEnergizado(false);
     }

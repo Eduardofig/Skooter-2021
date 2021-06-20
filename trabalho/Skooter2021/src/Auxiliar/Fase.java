@@ -106,6 +106,17 @@ public class Fase implements Serializable {
     }
 
     public Fase(Elemento hHero) {
+        this.listaBlocosInteragiveisBackup = new ArrayList<Elemento>();
+        this.listaInimigosBackup = new ArrayList<Elemento>();
+        this.listaColecionaveisBackup = new ArrayList<Elemento>();
+        this.listaCoracoesBackup = new ArrayList<Elemento>();
+        this.eElementosBackup = new ArrayList<Elemento>();
+        this.listaBlocosInteragiveis = new ArrayList<Elemento>();
+        this.listaBlocosSeta = new ArrayList<Elemento>();
+        this.listaInimigos = new ArrayList<Elemento>();
+        this.listaColecionaveis = new ArrayList<Elemento>();
+        this.listaCoracoes = new ArrayList<Elemento>();
+        this.eElementos = new ArrayList<Elemento>();
         this.eElementos.add(hHero);
     }
 

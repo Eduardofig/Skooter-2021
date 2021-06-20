@@ -2,7 +2,7 @@ package Data;
 
 import java.util.ArrayList;
 import Auxiliar.Fase;
-import Modelo.Hero;
+import Modelo.*;
 
 public class Fases {
     protected ArrayList<Fase> Fases;
@@ -29,7 +29,14 @@ public class Fases {
     }
 
     public Fases() {
-        //Desenhar as fases
+        this.Fases = new ArrayList<Elemento>();
+        this.faseAtual = 0;
+        Hero hHero1 = new Hero("skooter_hero.png");
+        Colecionavel Colecionavel1 = new Colecionavel("vacina.png");
+        hHero1.setPosicao(0, 0);
+        Colecionavel1.setPosicao(0, 1);
+        Fase Fase1 = new Fase(hHeroi1);
+        Fase1.addColecionavel(Colecionavel1);
     }
 
 }
