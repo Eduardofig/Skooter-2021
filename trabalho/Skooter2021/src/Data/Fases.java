@@ -31,12 +31,15 @@ public class Fases {
     public Fases() {
         this.Fases = new ArrayList<Fase>();
         this.faseAtual = 0;
-        Hero hHero1 = new Hero("skooter_hero.png");
-        Colecionavel Colecionavel1 = new Colecionavel("vacina.png");
-        hHero1.setPosicao(0, 0);
-        Colecionavel1.setPosicao(0, 1);
+        Hero hHero1 = new Hero("skooter_hero.png", 0, 0);
+        Colecionavel Colecionavel1 = new Colecionavel("vacina.png", 0, 1);
+        Colecionavel Colecionavel2 = new Colecionavel("vacina.png", 5, 3);
+        BlocoInteragivel BlocoInteragivel1 = new BlocoInteragivel("bricks.png", 8, 8);
         Fase Fase1 = new Fase(hHero1);
         Fase1.addColecionavel(Colecionavel1);
+        Fase1.addColecionavel(Colecionavel2);
+        Fase1.addBlocoInteragivel(BlocoInteragivel1);
+        this.addFase(Fase1);
     }
 
 }

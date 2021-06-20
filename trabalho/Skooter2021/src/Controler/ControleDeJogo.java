@@ -50,7 +50,7 @@ public class ControleDeJogo {
             }
 
             //Processa coisoes dos Blocos interagiveis com os demais elementos
-            if(!this.ehPosicaoValida(fFase.getElementos(), eTemp.getPosicao())) {
+            if(!this.estaEmPosicaoValida(fFase.getElementos(), eTemp)) {
                 eTemp.voltaAUltimaPosicao();
             }
         }
@@ -69,7 +69,7 @@ public class ControleDeJogo {
                 }
             }
             //Processa colisoes do inimigo com os outros elementos
-            if(!this.ehPosicaoValida(fFase.getElementos(), rRobo.getPosicao())) {
+            if(!this.estaEmPosicaoValida(fFase.getElementos(), rRobo)) {
                 rRobo.voltaAUltimaPosicao();
             }
         }
@@ -110,13 +110,13 @@ public class ControleDeJogo {
         }
 
     }
-    public boolean ehPosicaoValida(ArrayList<Elemento> e, Posicao p){
+    public boolean estaEmPosicaoValida(ArrayList<Elemento> e, Elemento eParam){
         Elemento eTemp;
         /*Validacao da posicao de todos os elementos com relacao a Posicao p*/
         for(int i = 1; i < e.size(); i++){ /*Olha todos os elementos*/
             eTemp = e.get(i); /*Pega o i-esimo elemento do jogo*/
-            if(!eTemp.isbTransponivel())
-                if(eTemp.getPosicao().estaNaMesmaPosicao(p))
+            if(!eTemp.isbTransponivel() && eTemp != eParam)
+                if(eTemp.getPosicao().estaNaMesmaPosicao(eParam.getPosicao()))
                     return false; /*A posicao p é invalida, pois ha um elemento (i-esimo eTemp) intransponivel lá*/
         }
         return true;

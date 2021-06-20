@@ -112,7 +112,7 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
          this.setTitle("X: "+ x + ", Y: " + y +
                  " -> Cell: " + (y/Consts.CELL_SIDE) + ", " + (x/Consts.CELL_SIDE));
 
-         this.hHero.getPosicao().setPosicao(y/Consts.CELL_SIDE, x/Consts.CELL_SIDE);
+         //this.hHero.getPosicao().setPosicao(y/Consts.CELL_SIDE, x/Consts.CELL_SIDE);
 
          /*Se o heroi for para uma posicao invalida, sobre um elemento intransponivel, volta para onde estava*/
          //Processa as colisoes dos blocos interagiveis e dos inimigos

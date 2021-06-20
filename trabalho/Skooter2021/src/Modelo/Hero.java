@@ -46,8 +46,8 @@ public class Hero extends Elemento implements Serializable {
         return this.Energizado;
     }
 
-    public Hero(String sNomeImagePNG) {
-        super(sNomeImagePNG);
+    public Hero(String sNomeImagePNG, int linha, int coluna) {
+        super(sNomeImagePNG, linha, coluna);
         this.Olhando = new Posicao(0, 0);
         setNumVidas(4);
         setEnergizado(false);
@@ -82,8 +82,8 @@ public class Hero extends Elemento implements Serializable {
         return true;
     }
     public boolean moveDown() {
-        this.setPosicao(this.getPosicao().getLinha(), this.getPosicao().getColuna());
-        this.setOlhando(this.getPosicao().getLinha(), this.getPosicao().getColuna());
+        this.setPosicao(this.getPosicao().getLinha() + 1, this.getPosicao().getColuna());
+        this.setOlhando(this.getPosicao().getLinha() + 1, this.getPosicao().getColuna());
         return true;
     }
 

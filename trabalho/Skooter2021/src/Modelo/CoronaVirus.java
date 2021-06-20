@@ -18,8 +18,8 @@ import javax.swing.JPanel;
 public class CoronaVirus extends Elemento implements Serializable{
     private boolean bRight;
 
-    public CoronaVirus(String sNomeImagePNG) {
-        super(sNomeImagePNG);
+    public CoronaVirus(String sNomeImagePNG, int linha, int coluna) {
+        super(sNomeImagePNG, linha, coluna);
         bRight = true;
         this.bTransponivel = false;
     }

@@ -24,8 +24,8 @@ public class Coracao extends Colecionavel implements Serializable {
 
     protected Random rRandom;
 
-    public Coracao(String sNomeImagePNG) {
-        super(sNomeImagePNG);
+    public Coracao(String sNomeImagePNG, int linha, int coluna) {
+        super(sNomeImagePNG, linha, coluna);
         this.rRandom = new Random();
     }
 

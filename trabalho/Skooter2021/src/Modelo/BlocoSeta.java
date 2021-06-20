@@ -48,8 +48,8 @@ public class BlocoSeta extends Elemento implements Serializable{
         }
     }
 
-    public BlocoSeta(String sNomeImagePNG, int sOrientacao) {
-        super(sNomeImagePNG);
+    public BlocoSeta(String sNomeImagePNG, int sOrientacao, int linha, int coluna) {
+        super(sNomeImagePNG, linha, coluna);
         this.setOrientacao(sOrientacao);
     }
 }

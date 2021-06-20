@@ -19,11 +19,13 @@ public abstract class Elemento implements Serializable {
 
     protected ImageIcon iImage;
     protected Posicao pPosicao;
+    protected Posicao pPosicaoInicial;
     protected boolean bTransponivel; /*Pode passar por cima?*/
     protected boolean bMortal;       /*Se encostar, morre?*/
        
-    protected Elemento(String sNomeImagePNG) {
-        this.pPosicao = new Posicao(1, 1);
+    protected Elemento(String sNomeImagePNG, int linha, int coluna) {
+        this.pPosicao = new Posicao(linha, coluna);
+        this.pPosicaoInicial = new Posicao(linha, coluna);
         this.bTransponivel = true;
         this.bMortal = false;
         try {
@@ -76,5 +78,9 @@ public abstract class Elemento implements Serializable {
 
     public void voltaAUltimaPosicao(){
         this.pPosicao.volta();
+    }
+
+    public void reset() {
+        this.setPosicao(this.pPosicaoInicial.getLinha(), this.pPosicaoInicial.getColuna());
     }
 }

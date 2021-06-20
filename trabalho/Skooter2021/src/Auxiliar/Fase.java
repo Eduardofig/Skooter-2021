@@ -81,6 +81,7 @@ public class Fase implements Serializable {
 
     public void removeColecionavel(Elemento rColecionavel) {
         this.listaColecionaveis.remove(rColecionavel);
+        this.eElementos.remove(rColecionavel);
     }
 
     public void matarInimigo(Elemento rInimigo) {
@@ -99,6 +100,9 @@ public class Fase implements Serializable {
         this.listaColecionaveis = new ArrayList<Elemento>(this.listaColecionaveisBackup);
         this.listaCoracoes = new ArrayList<Elemento>(this.listaCoracoesBackup);
         this.eElementos = new ArrayList<Elemento>(this.eElementosBackup);
+        for(int i = 0; i < this.eElementos.size(); i++) {
+            this.eElementos.get(i).reset();
+        }
     }
 
     public ArrayList<Elemento> getElementos() {
@@ -117,6 +121,7 @@ public class Fase implements Serializable {
         this.listaColecionaveis = new ArrayList<Elemento>();
         this.listaCoracoes = new ArrayList<Elemento>();
         this.eElementos = new ArrayList<Elemento>();
+        this.eElementosBackup.add(hHero);
         this.eElementos.add(hHero);
     }
 

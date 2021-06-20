@@ -20,8 +20,8 @@ import javax.swing.JPanel;
  * @author jonatas
  */
 public class BlocoNaoInteragivel extends Elemento implements Serializable {
-    public BlocoNaoInteragivel(String sNomeImagePNG) {
-        super(sNomeImagePNG);
+    public BlocoNaoInteragivel(String sNomeImagePNG, int linha, int coluna) {
+        super(sNomeImagePNG, linha, coluna);
         this.setbTransponivel(false);
     }
 }

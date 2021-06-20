@@ -15,8 +15,8 @@ import javax.swing.JPanel;
  * @author Junio
  */
 public class BlocoInteragivel extends Elemento implements Serializable {
-    public BlocoInteragivel(String sNomeImagePNG) {
-        super(sNomeImagePNG);
+    public BlocoInteragivel(String sNomeImagePNG, int linha, int coluna) {
+        super(sNomeImagePNG, linha, coluna);
         this.setbTransponivel(false);
     }
 }

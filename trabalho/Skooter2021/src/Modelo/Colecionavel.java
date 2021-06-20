@@ -16,7 +16,7 @@ import javax.swing.JPanel;
  */
 public class Colecionavel extends Elemento implements Serializable{
 
-    public Colecionavel(String sNomeImagePNG) {
-        super(sNomeImagePNG);
+    public Colecionavel(String sNomeImagePNG, int linha, int coluna) {
+        super(sNomeImagePNG, linha, coluna);
     }
 }

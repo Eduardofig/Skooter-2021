@@ -22,8 +22,8 @@ public class RoboInimigo extends Elemento implements Serializable{
 
     protected Random rRandom;
 
-    public RoboInimigo(String sNomeImagePNG) {
-        super(sNomeImagePNG);
+    public RoboInimigo(String sNomeImagePNG, int linha, int coluna) {
+        super(sNomeImagePNG, linha, coluna);
         this.rRandom = new Random();
     }
     public void move() {
