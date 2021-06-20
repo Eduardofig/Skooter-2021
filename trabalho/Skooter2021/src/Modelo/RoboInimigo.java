@@ -27,7 +27,7 @@ public class RoboInimigo extends Elemento implements Serializable{
         this.rRandom = new Random();
     }
     public void move() {
-        switch(this.rRandom.nextInt(3)) {
+        switch(this.rRandom.nextInt(4)) {
             case 0:
                 this.moveLeft();
                 return;
