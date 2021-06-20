@@ -35,10 +35,12 @@ public class Fases {
         Colecionavel Colecionavel1 = new Colecionavel("vacina.png", 0, 1);
         Colecionavel Colecionavel2 = new Colecionavel("vacina.png", 5, 3);
         BlocoInteragivel BlocoInteragivel1 = new BlocoInteragivel("bricks.png", 8, 8);
+        BlocoInteragivel BlocoInteragivel2 = new BlocoInteragivel("bricks.png", 7, 7);
         Fase Fase1 = new Fase(hHero1);
         Fase1.addColecionavel(Colecionavel1);
         Fase1.addColecionavel(Colecionavel2);
         Fase1.addBlocoInteragivel(BlocoInteragivel1);
+        Fase1.addBlocoInteragivel(BlocoInteragivel2);
         this.addFase(Fase1);
     }
 

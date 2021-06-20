@@ -7,7 +7,7 @@ import Modelo.BlocoSeta;
 import Modelo.BlocoInteragivel;
 
 public class Fase implements Serializable {
-    //Backups para o reset da fase apos o heroi morrer
+    //Backups para o reset da fase apos o heroi morrer ou apos o jogador apertar r
     protected ArrayList<Elemento> listaBlocosInteragiveisBackup;
     protected ArrayList<Elemento> listaInimigosBackup;
     protected ArrayList<Elemento> listaColecionaveisBackup;
