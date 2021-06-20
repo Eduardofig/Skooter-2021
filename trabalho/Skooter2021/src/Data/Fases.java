@@ -29,13 +29,13 @@ public class Fases {
     }
 
     public Fases() {
-        this.Fases = new ArrayList<Elemento>();
+        this.Fases = new ArrayList<Fase>();
         this.faseAtual = 0;
         Hero hHero1 = new Hero("skooter_hero.png");
         Colecionavel Colecionavel1 = new Colecionavel("vacina.png");
         hHero1.setPosicao(0, 0);
         Colecionavel1.setPosicao(0, 1);
-        Fase Fase1 = new Fase(hHeroi1);
+        Fase Fase1 = new Fase(hHero1);
         Fase1.addColecionavel(Colecionavel1);
     }
 
