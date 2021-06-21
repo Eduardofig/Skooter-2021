@@ -101,7 +101,8 @@ public class Hero extends Elemento implements Serializable {
 
     public void removerBloco(ArrayList<Elemento> listaBlocosInteragiveis, ArrayList<Elemento> eElementos) {
         for(int i = 0; i < listaBlocosInteragiveis.size(); i++) {
-            Elemento bBloco = listaBlocosInteragiveis.get(i);
+            BlocoInteragivel bBloco = (BlocoInteragivel)listaBlocosInteragiveis.get(i);
+            if(!bBloco.isDestruivel()) return;
             if(bBloco.pPosicao.estaNaMesmaPosicao(this.getOlhando())){
                 eElementos.remove(bBloco);
                 return;

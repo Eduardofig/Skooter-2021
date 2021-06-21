@@ -1,10 +1,6 @@
 package Controler;
 
-import Modelo.Elemento;
-import Modelo.Hero;
-import Modelo.BlocoSeta;
-import Modelo.RoboInimigo;
-import Modelo.Coracao;
+import Modelo.*;
 import Auxiliar.Fase;
 import Auxiliar.Posicao;
 import Data.Fases;
@@ -26,6 +22,7 @@ public class ControleDeJogo {
         Fase fFase = fFases.getFaseAtual();
         Hero hHero = (Hero)fFase.getElementos().get(0); /*O heroi (protagonista) eh sempre o primeiro do array*/
         Elemento eTemp;
+        BlocoInteragivel bBloco;
         BlocoSeta bBlocoSeta;
         RoboInimigo rRobo;
         Coracao cCoracao;
@@ -45,17 +42,19 @@ public class ControleDeJogo {
 
         //Colisoes de Blocos interagiveis
         for(int i = 0; i < fFase.getBlocosInteragiveis().size(); i++) {
-            eTemp = fFase.getBlocosInteragiveis().get(i);
+            bBloco = (BlocoInteragivel)fFase.getBlocosInteragiveis().get(i);
             //Processa o Heroi empurrando o bloco
-            if(hHero.getPosicao().estaNaMesmaPosicao(eTemp.getPosicao())) {
-                moveLinha = hHero.getPosicao().getLinha() - hHero.getPosicao().getLinhaAnterior() + eTemp.getPosicao().getLinha();
-                moveColuna = hHero.getPosicao().getColuna() - hHero.getPosicao().getColunaAnterior() + eTemp.getPosicao().getColuna();
-                eTemp.getPosicao().setPosicao(moveLinha, moveColuna);
+            if(bBloco.isEmpurravel()) {
+                if(hHero.getPosicao().estaNaMesmaPosicao(bBloco.getPosicao())) {
+                    moveLinha = hHero.getPosicao().getLinha() - hHero.getPosicao().getLinhaAnterior() + bBloco.getPosicao().getLinha();
+                    moveColuna = hHero.getPosicao().getColuna() - hHero.getPosicao().getColunaAnterior() + bBloco.getPosicao().getColuna();
+                    bBloco.getPosicao().setPosicao(moveLinha, moveColuna);
+                }
             }
 
             //Processa coisoes dos Blocos interagiveis com os demais elementos
-            if(!this.estaEmPosicaoValida(fFase.getElementos(), eTemp)) {
-                eTemp.voltaAUltimaPosicao();
+            if(!this.estaEmPosicaoValida(fFase.getElementos(), bBloco)) {
+                bBloco.voltaAUltimaPosicao();
             }
         }
 

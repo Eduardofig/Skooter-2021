@@ -30,6 +30,7 @@ public class Fases {
     }
 
     public Fases() {
+        BlocoInteragivel bBloco;
         this.Fases = new ArrayList<Fase>();
         this.faseAtual = 0;
         //Fase 1
@@ -371,6 +372,10 @@ public class Fases {
         Fase3.addInimigo(roboInimigo10);
         Fase3.addInimigo(roboInimigo11);
         Fase3.addInimigo(roboInimigo12);
+        for(int i = 0; i < Fase3.getBlocosInteragiveis().size(); i++) {
+            bBloco = (BlocoInteragivel)Fase3.getBlocosInteragiveis().get(i);
+            bBloco.setDestruivel(false);
+        }
         this.addFase(Fase3);
 
         //Fase 4
@@ -504,6 +509,10 @@ public class Fases {
         Fase4.addInimigo(roboInimigo14);
         Fase4.addInimigo(roboInimigo15);
         Fase4.addInimigo(roboInimigo16);
+        for(int i = 0; i < Fase4.getBlocosInteragiveis().size(); i++) {
+            bBloco = (BlocoInteragivel)Fase4.getBlocosInteragiveis().get(i);
+            bBloco.setEmpurravel(false);
+        }
         this.addFase(Fase4);
     }
 
