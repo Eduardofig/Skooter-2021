@@ -59,25 +59,6 @@ public class ControleDeJogo {
             }
         }
 
-        //Processamento dos inimigos
-        for(int i = 0; i < fFase.getInimigos().size(); i++) {
-            rRobo = (RoboInimigo)fFase.getInimigos().get(i);
-            rRobo.move();
-            //Processa possiveis colisoes do inimigo com o heroi
-            if(hHero.getPosicao().estaNaMesmaPosicao(rRobo.getPosicao())) {
-                if(hHero.isEnergizado()) {
-                    fFase.matarInimigo(rRobo);
-                } else {
-                    hHero.morrer();
-                    fFase.reset();
-                }
-            }
-            //Processa colisoes do inimigo com os outros elementos
-            if(!this.estaEmPosicaoValida(fFase.getElementos(), rRobo)) {
-                rRobo.voltaAUltimaPosicao();
-            }
-        }
-
         //Processa colisoes do heroi com colecionaveis
         for(int i = 0; i < fFase.getColecionaveis().size(); i++) {
             eTemp = fFase.getColecionaveis().get(i);
@@ -112,6 +93,26 @@ public class ControleDeJogo {
                 }
             }
         }
+
+        //Processamento dos inimigos
+        for(int i = 0; i < fFase.getInimigos().size(); i++) {
+            rRobo = (RoboInimigo)fFase.getInimigos().get(i);
+            rRobo.move();
+            //Processa possiveis colisoes do inimigo com o heroi
+            if(hHero.getPosicao().estaNaMesmaPosicao(rRobo.getPosicao())) {
+                if(hHero.isEnergizado()) {
+                    fFase.matarInimigo(rRobo);
+                } else {
+                    hHero.morrer();
+                    fFase.reset();
+                }
+            }
+            //Processa colisoes do inimigo com os outros elementos
+            if(!this.estaEmPosicaoValida(fFase.getElementos(), rRobo)) {
+                rRobo.voltaAUltimaPosicao();
+            }
+        }
+
 
     }
     public boolean estaEmPosicaoValida(ArrayList<Elemento> e, Elemento eParam){
