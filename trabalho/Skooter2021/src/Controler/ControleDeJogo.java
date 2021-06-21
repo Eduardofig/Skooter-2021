@@ -31,6 +31,9 @@ public class ControleDeJogo {
 
         int moveLinha, moveColuna;
 
+        //Processa se o heroi esta energizado
+        hHero.processarEnergizado();
+
         //Colisoes com Blocos Seta
         for(int i = 0; i < fFase.getBlocosSeta().size(); ++i) {
             bBlocoSeta = (BlocoSeta)fFase.getBlocosSeta().get(i);

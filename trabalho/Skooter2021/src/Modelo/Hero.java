@@ -20,7 +20,19 @@ public class Hero extends Elemento implements Serializable {
 
     protected boolean Energizado;
     protected int numVidas;
+    protected int tempoEnergizado;
     protected Posicao Olhando;
+
+    public void processarEnergizado() {
+        if(!this.isEnergizado()) return;
+        if(this.tempoEnergizado == 0) {
+            this.setEnergizado(false);
+            System.out.println("Nao esta mais Energizado");
+            return;
+        }
+        this.tempoEnergizado--;
+        System.out.println("Tempo Energizado: " + String.valueOf(this.tempoEnergizado));
+    }
 
     public Posicao getOlhando() {
         return this.Olhando;
@@ -99,6 +111,8 @@ public class Hero extends Elemento implements Serializable {
 
     public void ficarEnergizado() {
         setEnergizado(true);
-        //Contar um timer
+        System.out.println("Esta Energizado");
+        //Fica energizado por 90 frames
+        this.tempoEnergizado = 90;
     }
 }
