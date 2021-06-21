@@ -27,6 +27,7 @@ public class RoboInimigo extends Elemento implements Serializable{
         super(sNomeImagePNG, linha, coluna);
         this.rRandom = new Random();
         this.iAtrasador = 0;
+        this.setbTransponivel(false);
     }
     public void move() {
         if(iAtrasador > 0) {

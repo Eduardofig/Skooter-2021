@@ -81,18 +81,6 @@ public class ControleDeJogo {
             }
         }
 
-        //Processa as colicoes do heroi com todos os elementos que estao atualmente na tela
-        for(int i = 1; i < fFase.getElementos().size(); i++){
-            eTemp = fFase.getElementos().get(i);
-            if(hHero.getPosicao().estaNaMesmaPosicao(eTemp.getPosicao())) {
-                if(!eTemp.isbTransponivel()) {
-                    hHero.voltaAUltimaPosicao();
-                    //Se o heroi vai para uma posicao invalida ele volta e fica olhando para a posicao que ele 
-                    //tentou ir
-                    hHero.setOlhando(hHero.getPosicao().getLinhaAnterior(), hHero.getPosicao().getColunaAnterior());
-                }
-            }
-        }
 
         //Processamento dos inimigos
         for(int i = 0; i < fFase.getInimigos().size(); i++) {
@@ -110,6 +98,19 @@ public class ControleDeJogo {
             //Processa colisoes do inimigo com os outros elementos
             if(!this.estaEmPosicaoValida(fFase.getElementos(), rRobo)) {
                 rRobo.voltaAUltimaPosicao();
+            }
+        }
+
+        //Processa as colicoes do heroi com todos os elementos que estao atualmente na tela
+        for(int i = 1; i < fFase.getElementos().size(); i++){
+            eTemp = fFase.getElementos().get(i);
+            if(hHero.getPosicao().estaNaMesmaPosicao(eTemp.getPosicao())) {
+                if(!eTemp.isbTransponivel()) {
+                    hHero.voltaAUltimaPosicao();
+                    //Se o heroi vai para uma posicao invalida ele volta e fica olhando para a posicao que ele 
+                    //tentou ir
+                    hHero.setOlhando(hHero.getPosicao().getLinhaAnterior(), hHero.getPosicao().getColunaAnterior());
+                }
             }
         }
 
