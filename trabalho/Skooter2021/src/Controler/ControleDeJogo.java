@@ -41,6 +41,7 @@ public class ControleDeJogo {
         for(int i = 0; i < fFase.getBlocosSeta().size(); ++i) {
             bBlocoSeta = (BlocoSeta)fFase.getBlocosSeta().get(i);
             if(hHero.getPosicao().estaNaMesmaPosicao(bBlocoSeta.getPosicao())) {
+                this.sSoundFx.blocoSetaSound();
                 bBlocoSeta.moverHeroi(hHero);
             }
         }
