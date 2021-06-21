@@ -31,19 +31,20 @@ public class BlocoSeta extends Elemento implements Serializable{
     }
 
     //Quando o Heroi atravessa o bloco seta ele eh empurrado
-    public void moverHeroi(Hero hHeroi) {
+    public void moverHeroi(Hero hHero) {
+        hHero.autoDesenho();
         switch(this.getOrientacao()) {
             case 0:
-                hHeroi.moveLeft();
+                hHero.moveLeft();
                 break;
             case 1:
-                hHeroi.moveUp();
+                hHero.moveUp();
                 break;
             case 2:
-                hHeroi.moveRight();
+                hHero.moveRight();
                 break;
             default:
-                hHeroi.moveDown();
+                hHero.moveDown();
                 break;
         }
     }

@@ -23,13 +23,20 @@ import java.util.Random;
 public class Coracao extends Colecionavel implements Serializable {
 
     protected Random rRandom;
+    protected int iAtrasador;
 
     public Coracao(String sNomeImagePNG, int linha, int coluna) {
         super(sNomeImagePNG, linha, coluna);
         this.rRandom = new Random();
+        this.iAtrasador = 0;
     }
 
     public void move() {
+        if(this.iAtrasador > 0) {
+            this.iAtrasador--;
+            return;
+        }
+        this.iAtrasador = 1;
         switch(this.rRandom.nextInt(3)) {
             case 0:
                 this.moveLeft();

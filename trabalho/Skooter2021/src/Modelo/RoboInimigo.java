@@ -21,12 +21,19 @@ import java.util.Random;
 public class RoboInimigo extends Elemento implements Serializable{
 
     protected Random rRandom;
+    protected int iAtrasador;
 
     public RoboInimigo(String sNomeImagePNG, int linha, int coluna) {
         super(sNomeImagePNG, linha, coluna);
         this.rRandom = new Random();
+        this.iAtrasador = 0;
     }
     public void move() {
+        if(iAtrasador > 0) {
+            iAtrasador--;
+            return;
+        }
+        iAtrasador = 2;
         switch(this.rRandom.nextInt(4)) {
             case 0:
                 this.moveLeft();

@@ -17,9 +17,10 @@ import java.util.ArrayList;
 public class ControleDeJogo {
     public void desenhaTudo(Fases fFases){
         Fase fFase = fFases.getFaseAtual();
-        for(int i = 0; i < fFase.getElementos().size(); i++){
+        for(int i = 1; i < fFase.getElementos().size(); i++){
             fFase.getElementos().get(i).autoDesenho();
         }
+        fFase.getElementos().get(0).autoDesenho();
     }
     public void processaTudo(Fases fFases){
         Fase fFase = fFases.getFaseAtual();
