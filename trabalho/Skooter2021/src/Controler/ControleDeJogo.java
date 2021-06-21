@@ -80,7 +80,7 @@ public class ControleDeJogo {
         for(int i = 0; i < fFase.getCoracoes().size(); ++i) {
             cCoracao = (Coracao)fFase.getCoracoes().get(i) ;
             //Movimento dos coracoes
-            cCoracao.move();
+            if(cCoracao.move()) this.sSoundFx.coracaoMovendoSound();
             if(hHero.getPosicao().estaNaMesmaPosicao(cCoracao.getPosicao())) {
                 this.sSoundFx.coracaoSound();
                 fFase.removeCoracao(cCoracao);

@@ -18,26 +18,27 @@ public class Coracao extends Elemento {
         this.iAtrasador = 0;
     }
 
-    public void move() {
+    public boolean move() {
         if(this.iAtrasador > 0) {
             this.iAtrasador--;
-            return;
+            return false;
         }
         this.iAtrasador = 1;
         switch(this.rRandom.nextInt(3)) {
             case 0:
                 this.moveLeft();
-                return;
+                break;
             case 1:
                 this.moveRight();
-                return;
+                break;
             case 2:
                 this.moveUp();
-                return;
+                break;
             default:
                 this.moveDown();
-                return;
+                break;
         }
+        return true;
     }
 
 }

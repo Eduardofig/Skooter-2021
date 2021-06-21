@@ -14,6 +14,7 @@ public class SoundFx {
     private Clip cBlocoSetaSound;
     private Clip cMatarInimigoSound;
     private Clip cCoracaoSound;
+    private Clip cCoracaoMovendoSound;
 
     private AudioInputStream cSoundtrackStream;
     private AudioInputStream cColecionavelSoundStream;
@@ -22,6 +23,7 @@ public class SoundFx {
     private AudioInputStream cBlocoSetaSoundStream;
     private AudioInputStream cMatarInimigoSoundStream;
     private AudioInputStream cCoracaoSoundStream;
+    private AudioInputStream cCoracaoMovendoSoundStream;
 
     public void soundtrack() {
         try {
@@ -91,6 +93,16 @@ public class SoundFx {
         }
     }
 
+    public void coracaoMovendoSound() {
+        try {
+            this.cCoracaoMovendoSound.stop();
+            this.cCoracaoMovendoSound.setFramePosition(0);
+            this.cCoracaoMovendoSound.start();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public SoundFx() {
         try {
             File soundtrackFile = new File("audio" + File.separator + "soundtrack.wav");
@@ -100,6 +112,7 @@ public class SoundFx {
             File blocoSetaSoundFile = new File ("audio" + File.separator + "skid.wav");
             File matarInimigoSoundFile = new File("audio" + File.separator + "enemy.wav");
             File coracaoSoundFile = new File("audio" + File.separator + "heart.wav");
+            File coracaoMovendoSoundFile = new File("audio" + File.separator + "heartcome.wav");
 
             this.cSoundtrackStream = AudioSystem.getAudioInputStream(soundtrackFile);
             this.cColecionavelSoundStream = AudioSystem.getAudioInputStream(colecionavelSoundFile);
@@ -108,6 +121,7 @@ public class SoundFx {
             this.cBlocoSetaSoundStream = AudioSystem.getAudioInputStream(blocoSetaSoundFile);
             this.cMatarInimigoSoundStream = AudioSystem.getAudioInputStream(matarInimigoSoundFile);
             this.cCoracaoSoundStream = AudioSystem.getAudioInputStream(coracaoSoundFile);
+            this.cCoracaoMovendoSoundStream = AudioSystem.getAudioInputStream(coracaoMovendoSoundFile); 
 
             this.cSoundtrack = AudioSystem.getClip();
             this.cColecionavelSound = AudioSystem.getClip();
@@ -116,6 +130,7 @@ public class SoundFx {
             this.cBlocoSetaSound = AudioSystem.getClip();
             this.cMatarInimigoSound = AudioSystem.getClip();
             this.cCoracaoSound = AudioSystem.getClip();
+            this.cCoracaoMovendoSound = AudioSystem.getClip();
 
             this.cSoundtrack.open(this.cSoundtrackStream);
             this.cColecionavelSound.open(this.cColecionavelSoundStream);
@@ -124,6 +139,7 @@ public class SoundFx {
             this.cBlocoSetaSound.open(this.cBlocoSetaSoundStream);
             this.cMatarInimigoSound.open(this.cMatarInimigoSoundStream);
             this.cCoracaoSound.open(this.cCoracaoSoundStream);
+            this.cCoracaoMovendoSound.open(this.cCoracaoMovendoSoundStream);
 
         } catch(Exception e) {
             e.printStackTrace();
