@@ -9,10 +9,12 @@ import java.io.*;
 import java.util.*;
 import java.util.logging.*;
 import java.util.zip.*;
+
 /**
  *
- * @author junio
+ * @author Eduardo, Jonatas
  */
+
 public class Tela extends javax.swing.JFrame implements MouseListener, KeyListener {
 
     private Fases fFases;

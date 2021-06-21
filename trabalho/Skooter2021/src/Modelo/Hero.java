@@ -7,6 +7,7 @@ import java.util.ArrayList;
  *
  * @author Eduardo, Jonatas
  */
+
 public class Hero extends Elemento {
 
     protected boolean Energizado;

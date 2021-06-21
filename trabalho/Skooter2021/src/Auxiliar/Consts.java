@@ -4,8 +4,9 @@ import java.io.File;
 
 /**
  *
- * @author Junio
+ * @author Eduardo, Jonatas
  */ 
+
 public class Consts {
     public static final int CELL_SIDE = 85;
     public static final int RES = 11;

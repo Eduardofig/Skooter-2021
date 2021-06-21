@@ -2,7 +2,7 @@ package Modelo;
 
 /**
  *
- * @author Junio
+ * @author Eduardo, Jonatas
  */
 
 //Classe do bloco com uma seta que define que o heroi so possa mover para 

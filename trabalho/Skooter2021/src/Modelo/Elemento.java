@@ -12,8 +12,9 @@ import javax.swing.ImageIcon;
 
 /**
  *
- * @author Junio
+ * @author Eduardo, Jonatas
  */
+
 public abstract class Elemento implements Serializable {
 
     protected ImageIcon iImage;

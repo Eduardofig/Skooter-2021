@@ -8,8 +8,9 @@ import java.util.ArrayList;
 
 /**
  *
- * @author junio
+ * @author Eduardo, Jonatas
  */
+
 public class ControleDeJogo {
     public void desenhaTudo(Fases fFases){
         Fase fFase = fFases.getFaseAtual();

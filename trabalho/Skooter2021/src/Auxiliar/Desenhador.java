@@ -7,8 +7,9 @@ import Controler.Tela;
 
 /**
  *
- * @author junio
+ * @author Eduardo, Jonatas
  */
+
 public class Desenhador implements Serializable {
     static Tela tCenarioOndeSeDesenha;
     public static void setCenario(Tela umTCenarioOndeDesenhar) {

@@ -4,6 +4,7 @@ package Modelo;
  *
  * @author Eduardo, Jonatas
  */
+
 public class BlocoInteragivel extends Elemento {
 
     protected boolean ehEmpurravel;

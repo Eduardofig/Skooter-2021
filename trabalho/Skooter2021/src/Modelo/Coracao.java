@@ -6,6 +6,7 @@ import java.util.Random;
  *
  * @author Eduardo, Jonatas
  */
+
 public class Coracao extends Elemento {
 
     protected Random rRandom;

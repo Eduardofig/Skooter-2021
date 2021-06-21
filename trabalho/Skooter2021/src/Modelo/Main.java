@@ -4,8 +4,9 @@ import Controler.Tela;
 
 /**
  *
- * @author junio
+ * @author Eduardo, Jonatas
  */
+
 public class Main {
 
     /**

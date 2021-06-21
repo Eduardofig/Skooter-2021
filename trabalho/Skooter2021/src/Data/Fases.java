@@ -5,6 +5,11 @@ import java.util.ArrayList;
 import Auxiliar.Fase;
 import Modelo.*;
 
+/**
+ *
+ * @author Eduardo, Jonatas
+ */
+
 public class Fases {
     protected ArrayList<Fase> Fases;
     protected int faseAtual;
