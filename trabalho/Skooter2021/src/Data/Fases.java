@@ -46,6 +46,10 @@ public class Fases {
         aHeroiSprites.add("heroi" + File.separator + "heroi_left.png");
         aHeroiSprites.add("heroi" + File.separator + "heroi_up.png");
         aHeroiSprites.add("heroi" + File.separator + "heroi_right.png");
+        aHeroiSprites.add("inimigos" + File.separator + "inimigo_vermelho_down.png");
+        aHeroiSprites.add("inimigos" + File.separator + "inimigo_vermelho_left.png");
+        aHeroiSprites.add("inimigos" + File.separator + "inimigo_vermelho_up.png");
+        aHeroiSprites.add("inimigos" + File.separator + "inimigo_vermelho_right.png");
 
         aRoboAmareloSprites.add("inimigos" + File.separator + "inimigo_amarelo_down.png");
         aRoboAmareloSprites.add("inimigos" + File.separator + "inimigo_amarelo_left.png");

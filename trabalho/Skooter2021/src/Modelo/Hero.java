@@ -19,6 +19,7 @@ public class Hero extends Elemento {
     protected boolean Energizado;
     protected int numVidas;
     protected int tempoEnergizado;
+    protected int iDeslocadorSprites;
     protected Posicao Olhando;
     protected ArrayList<ImageIcon> iSprites;
 
@@ -50,6 +51,8 @@ public class Hero extends Elemento {
     }
 
     public void setEnergizado(boolean sEnergizado) {
+        if(sEnergizado) this.iDeslocadorSprites = 4;
+        else this.iDeslocadorSprites = 0;
         this.Energizado = sEnergizado;
     }
 
@@ -66,6 +69,7 @@ public class Hero extends Elemento {
         Graphics g;
 
         this.iSprites = new ArrayList<ImageIcon>();
+        this.iDeslocadorSprites = 0;
         this.Olhando = new Posicao(0, 0);
         setNumVidas(4);
         setEnergizado(false);
@@ -100,25 +104,25 @@ public class Hero extends Elemento {
     public boolean moveLeft() {
         this.setPosicao(this.getPosicao().getLinha(), this.getPosicao().getColuna() - 1);
         this.setOlhando(this.getPosicao().getLinha(), this.getPosicao().getColuna() - 1);
-        this.mudarImagem(this.iSprites.get(1));
+        this.mudarImagem(this.iSprites.get(1 + this.iDeslocadorSprites));
         return true;
     }
     public boolean moveUp() {
         this.setPosicao(this.getPosicao().getLinha() - 1, this.getPosicao().getColuna());
         this.setOlhando(this.getPosicao().getLinha() - 1, this.getPosicao().getColuna());
-        this.mudarImagem(this.iSprites.get(2));
+        this.mudarImagem(this.iSprites.get(2 + this.iDeslocadorSprites));
         return true;
     }
     public boolean moveRight() {
         this.setPosicao(this.getPosicao().getLinha(), this.getPosicao().getColuna() + 1);
         this.setOlhando(this.getPosicao().getLinha(), this.getPosicao().getColuna() + 1);
-        this.mudarImagem(this.iSprites.get(3));
+        this.mudarImagem(this.iSprites.get(3 + this.iDeslocadorSprites));
         return true;
     }
     public boolean moveDown() {
         this.setPosicao(this.getPosicao().getLinha() + 1, this.getPosicao().getColuna());
         this.setOlhando(this.getPosicao().getLinha() + 1, this.getPosicao().getColuna());
-        this.mudarImagem(this.iSprites.get(0));
+        this.mudarImagem(this.iSprites.get(0 + this.iDeslocadorSprites));
         return true;
     }
 
