@@ -4,6 +4,7 @@ import Modelo.*;
 import Auxiliar.Fase;
 import Auxiliar.Posicao;
 import Data.Fases;
+import Data.SoundFx;
 import java.util.ArrayList;
 
 /**
@@ -12,6 +13,9 @@ import java.util.ArrayList;
  */
 
 public class ControleDeJogo {
+
+    protected SoundFx sSoundFx;
+
     public void desenhaTudo(Fases fFases){
         Fase fFase = fFases.getFaseAtual();
         for(int i = 1; i < fFase.getElementos().size(); i++){
@@ -135,5 +139,10 @@ public class ControleDeJogo {
             if(bBloco.getPosicao().estaNaMesmaPosicao(hHero.getOlhando()))
                 fFase.destruirBlocosInteragiveis(bBloco);
         }
+    }
+
+    public ControleDeJogo() {
+        this.sSoundFx = new SoundFx();
+        this.sSoundFx.soundtrack();
     }
 }
