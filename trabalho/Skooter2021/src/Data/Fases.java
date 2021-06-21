@@ -37,10 +37,37 @@ public class Fases {
     public Fases() {
         BlocoInteragivel bBloco;
         ArrayList<String> aHeroiSprites = new ArrayList<String>();
+        ArrayList<String> aRoboAmareloSprites = new ArrayList<String>();
+        ArrayList<String> aRoboAzulSprites = new ArrayList<String>();
+        ArrayList<String> aRoboVerdeSprites = new ArrayList<String>();
+        ArrayList<String> aRoboVermelhoSprites = new ArrayList<String>();
+
         aHeroiSprites.add("heroi" + File.separator + "heroi_down.png");
         aHeroiSprites.add("heroi" + File.separator + "heroi_left.png");
         aHeroiSprites.add("heroi" + File.separator + "heroi_up.png");
         aHeroiSprites.add("heroi" + File.separator + "heroi_right.png");
+
+        aRoboAmareloSprites.add("inimigos" + File.separator + "inimigo_amarelo_down.png");
+        aRoboAmareloSprites.add("inimigos" + File.separator + "inimigo_amarelo_left.png");
+        aRoboAmareloSprites.add("inimigos" + File.separator + "inimigo_amarelo_up.png");
+        aRoboAmareloSprites.add("inimigos" + File.separator + "inimigo_amarelo_right.png");
+
+        aRoboAzulSprites.add("inimigos" + File.separator + "inimigo_azul_down.png");
+        aRoboAzulSprites.add("inimigos" + File.separator + "inimigo_azul_left.png");
+        aRoboAzulSprites.add("inimigos" + File.separator + "inimigo_azul_up.png");
+        aRoboAzulSprites.add("inimigos" + File.separator + "inimigo_azul_right.png");
+
+        aRoboVerdeSprites.add("inimigos" + File.separator + "inimigo_verde_down.png");
+        aRoboVerdeSprites.add("inimigos" + File.separator + "inimigo_verde_left.png");
+        aRoboVerdeSprites.add("inimigos" + File.separator + "inimigo_verde_up.png");
+        aRoboVerdeSprites.add("inimigos" + File.separator + "inimigo_verde_right.png");
+
+        aRoboVermelhoSprites.add("inimigos" + File.separator + "inimigo_vermelho_down.png");
+        aRoboVermelhoSprites.add("inimigos" + File.separator + "inimigo_vermelho_left.png");
+        aRoboVermelhoSprites.add("inimigos" + File.separator + "inimigo_vermelho_up.png");
+        aRoboVermelhoSprites.add("inimigos" + File.separator + "inimigo_vermelho_right.png");
+
+
         this.Fases = new ArrayList<Fase>();
         this.faseAtual = 0;
         //Fase 1
@@ -100,10 +127,10 @@ public class Fases {
         BlocoInteragivel blocoInteragivel22 = new BlocoInteragivel("blocos" + File.separator + "blocointeragivel2.png", 9, 6);
         BlocoInteragivel blocoInteragivel23 = new BlocoInteragivel("blocos" + File.separator + "blocointeragivel2.png", 9, 8);
         BlocoInteragivel blocoInteragivel24 = new BlocoInteragivel("blocos" + File.separator + "blocointeragivel2.png", 10, 7);
-        RoboInimigo roboInimigo1 = new RoboInimigo("inimigos" + File.separator + "inimigo_vermelho_down.png", 0, 9);
-        RoboInimigo roboInimigo2 = new RoboInimigo("inimigos" + File.separator + "inimigo_amarelo_down.png", 2, 0);
-        RoboInimigo roboInimigo3 = new RoboInimigo("inimigos" + File.separator + "inimigo_azul_down.png", 10, 1);
-        RoboInimigo roboInimigo4 = new RoboInimigo("inimigos" + File.separator + "inimigo_verde_down.png", 10, 9);
+        RoboInimigo roboInimigo1 = new RoboInimigo(aRoboVermelhoSprites, 0, 9);
+        RoboInimigo roboInimigo2 = new RoboInimigo(aRoboAmareloSprites, 2, 0);
+        RoboInimigo roboInimigo3 = new RoboInimigo(aRoboAzulSprites, 10, 1);
+        RoboInimigo roboInimigo4 = new RoboInimigo(aRoboVerdeSprites, 10, 9);
         Fase1.addColecionavel(colecionavel1);
         Fase1.addColecionavel(colecionavel2);
         Fase1.addColecionavel(colecionavel3);
@@ -204,10 +231,10 @@ public class Fases {
         BlocoSeta blocoSeta31 = new BlocoSeta("blocos" + File.separator + "bloco2.png",2,8,7);
         BlocoSeta blocoSeta32 = new BlocoSeta("blocos" + File.separator + "bloco0.png",0,10,3);
         BlocoSeta blocoSeta33 = new BlocoSeta("blocos" + File.separator + "bloco2.png",2,10,7);
-        RoboInimigo roboInimigo5 = new RoboInimigo("inimigos" + File.separator + "inimigo_vermelho_down.png", 9, 1);
-        RoboInimigo roboInimigo6 = new RoboInimigo("inimigos" + File.separator + "inimigo_amarelo_down.png", 1, 1);
-        RoboInimigo roboInimigo7 = new RoboInimigo("inimigos" + File.separator + "inimigo_azul_down.png", 9, 9);
-        RoboInimigo roboInimigo8 = new RoboInimigo("inimigos" + File.separator + "inimigo_verde_down.png", 1, 9);
+        RoboInimigo roboInimigo5 = new RoboInimigo(aRoboVermelhoSprites, 9, 1);
+        RoboInimigo roboInimigo6 = new RoboInimigo(aRoboAmareloSprites, 1, 1);
+        RoboInimigo roboInimigo7 = new RoboInimigo(aRoboAzulSprites, 9, 9);
+        RoboInimigo roboInimigo8 = new RoboInimigo(aRoboVerdeSprites, 1, 9);
         Fase2.addColecionavel(colecionavel5);
         Fase2.addColecionavel(colecionavel6);
         Fase2.addColecionavel(colecionavel7);
@@ -322,10 +349,10 @@ public class Fases {
         BlocoInteragivel blocoInteragivel70 = new BlocoInteragivel("blocos" + File.separator + "bloconaointeragivel2.png", 4, 7);
         BlocoInteragivel blocoInteragivel71 = new BlocoInteragivel("blocos" + File.separator + "bloconaointeragivel2.png", 5, 7);
         BlocoInteragivel blocoInteragivel72 = new BlocoInteragivel("blocos" + File.separator + "bloconaointeragivel2.png", 6, 7);
-        RoboInimigo roboInimigo9 = new RoboInimigo("inimigos" + File.separator + "inimigo_vermelho_down.png", 2, 5);
-        RoboInimigo roboInimigo10 = new RoboInimigo("inimigos" + File.separator + "inimigo_amarelo_down.png", 0, 5);
-        RoboInimigo roboInimigo11 = new RoboInimigo("inimigos" + File.separator + "inimigo_azul_down.png", 8, 5);
-        RoboInimigo roboInimigo12 = new RoboInimigo("inimigos" + File.separator + "inimigo_verde_down.png", 10, 5);
+        RoboInimigo roboInimigo9 = new RoboInimigo(aRoboVermelhoSprites, 2, 5);
+        RoboInimigo roboInimigo10 = new RoboInimigo(aRoboAmareloSprites, 0, 5);
+        RoboInimigo roboInimigo11 = new RoboInimigo(aRoboAzulSprites, 8, 5);
+        RoboInimigo roboInimigo12 = new RoboInimigo(aRoboVerdeSprites, 10, 5);
         Fase3.addColecionavel(colecionavel9);
         Fase3.addColecionavel(colecionavel10);
         Fase3.addColecionavel(colecionavel11);
@@ -451,10 +478,10 @@ public class Fases {
         BlocoNaoInteragivel blocoNaoInteragivel38 = new BlocoNaoInteragivel("blocos" + File.separator + "bloconaointeragivel.png",8,7);
         BlocoNaoInteragivel blocoNaoInteragivel39 = new BlocoNaoInteragivel("blocos" + File.separator + "bloconaointeragivel.png",8,10);
         BlocoNaoInteragivel blocoNaoInteragivel40 = new BlocoNaoInteragivel("blocos" + File.separator + "bloconaointeragivel.png",10,1);
-        RoboInimigo roboInimigo13 = new RoboInimigo("inimigos" + File.separator + "inimigo_vermelho_down.png", 10, 5);
-        RoboInimigo roboInimigo14 = new RoboInimigo("inimigos" + File.separator + "inimigo_amarelo_down.png", 0, 5);
-        RoboInimigo roboInimigo15 = new RoboInimigo("inimigos" + File.separator + "inimigo_azul_down.png", 5, 10);
-        RoboInimigo roboInimigo16 = new RoboInimigo("inimigos" + File.separator + "inimigo_verde_down.png", 5, 0);
+        RoboInimigo roboInimigo13 = new RoboInimigo(aRoboVermelhoSprites, 10, 5);
+        RoboInimigo roboInimigo14 = new RoboInimigo(aRoboAmareloSprites, 0, 5);
+        RoboInimigo roboInimigo15 = new RoboInimigo(aRoboAzulSprites, 5, 10);
+        RoboInimigo roboInimigo16 = new RoboInimigo(aRoboVerdeSprites, 5, 0);
         Fase4.addBlocoNaoInteragivel(blocoNaoInteragivel26);
         Fase4.addBlocoNaoInteragivel(blocoNaoInteragivel27);
         Fase4.addBlocoNaoInteragivel(blocoNaoInteragivel28);
