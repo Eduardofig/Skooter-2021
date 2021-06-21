@@ -138,6 +138,14 @@ public class Hero extends Elemento {
         return false;
     }
 
+    //Override do reset
+    public void reset() {
+        this.setPosicao(this.pPosicaoInicial.getLinha(), this.pPosicaoInicial.getColuna());
+        this.mudarImagem(this.iSprites.get(0));
+        this.tempoEnergizado = 0;
+        this.iDeslocadorSprites = 0;
+    }
+
     public void ficarEnergizado() {
         setEnergizado(true);
         System.out.println("Esta Energizado");
