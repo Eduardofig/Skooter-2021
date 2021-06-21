@@ -96,6 +96,7 @@ public class ControleDeJogo {
                 if(hHero.isEnergizado()) {
                     fFase.matarInimigo(rRobo);
                 } else {
+                    this.sSoundFx.morteSound();
                     hHero.morrer();
                     fFase.reset();
                 }
