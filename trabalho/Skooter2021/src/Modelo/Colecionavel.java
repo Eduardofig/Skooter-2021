@@ -18,5 +18,6 @@ public class Colecionavel extends Elemento implements Serializable{
 
     public Colecionavel(String sNomeImagePNG, int linha, int coluna) {
         super(sNomeImagePNG, linha, coluna);
+        this.setbTransponivel(false);
     }
 }

@@ -20,7 +20,7 @@ import java.util.Random;
  *
  * @author jonatas
  */
-public class Coracao extends Colecionavel implements Serializable {
+public class Coracao extends Elemento implements Serializable {
 
     protected Random rRandom;
     protected int iAtrasador;
