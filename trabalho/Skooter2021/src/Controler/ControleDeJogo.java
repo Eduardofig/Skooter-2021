@@ -95,6 +95,7 @@ public class ControleDeJogo {
             //Processa possiveis colisoes do inimigo com o heroi
             if(hHero.getPosicao().estaNaMesmaPosicao(rRobo.getPosicao())) {
                 if(hHero.isEnergizado()) {
+                    this.sSoundFx.matarInimigoSound();
                     fFase.matarInimigo(rRobo);
                 } else {
                     this.sSoundFx.morteSound();

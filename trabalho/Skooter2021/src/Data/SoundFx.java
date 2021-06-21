@@ -12,12 +12,14 @@ public class SoundFx {
     private Clip cDestroiBlocoSound;
     private Clip cMorteSound;
     private Clip cBlocoSetaSound;
+    private Clip cMatarInimigoSound;
 
     private AudioInputStream cSoundtrackStream;
     private AudioInputStream cColecionavelSoundStream;
     private AudioInputStream cDestroiBlocoSoundStream;
     private AudioInputStream cMorteSoundStream;
     private AudioInputStream cBlocoSetaSoundStream;
+    private AudioInputStream cMatarInimigoSoundStream;
 
     public void soundtrack() {
         try {
@@ -67,6 +69,16 @@ public class SoundFx {
         }
     }
 
+    public void matarInimigoSound() {
+        try {
+            this.cMatarInimigoSound.stop();
+            this.cMatarInimigoSound.setFramePosition(0);
+            this.cMatarInimigoSound.start();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public SoundFx() {
         try {
             File soundtrackFile = new File("audio" + File.separator + "soundtrack.wav");
@@ -74,24 +86,28 @@ public class SoundFx {
             File destroiBlocoSoundFile = new File("audio" + File.separator + "break.wav");
             File morteSoundFile = new File ("audio" + File.separator + "death.wav");
             File blocoSetaSoundFile = new File ("audio" + File.separator + "skid.wav");
+            File matarInimigoSoundFile = new File("audio" + File.separator + "enemy.wav");
 
             this.cSoundtrackStream = AudioSystem.getAudioInputStream(soundtrackFile);
             this.cColecionavelSoundStream = AudioSystem.getAudioInputStream(colecionavelSoundFile);
             this.cDestroiBlocoSoundStream = AudioSystem.getAudioInputStream(destroiBlocoSoundFile);
             this.cMorteSoundStream = AudioSystem.getAudioInputStream(morteSoundFile);
             this.cBlocoSetaSoundStream = AudioSystem.getAudioInputStream(blocoSetaSoundFile);
+            this.cMatarInimigoSoundStream = AudioSystem.getAudioInputStream(matarInimigoSoundFile);
 
             this.cSoundtrack = AudioSystem.getClip();
             this.cColecionavelSound = AudioSystem.getClip();
             this.cDestroiBlocoSound = AudioSystem.getClip();
             this.cMorteSound = AudioSystem.getClip();
             this.cBlocoSetaSound = AudioSystem.getClip();
+            this.cMatarInimigoSound = AudioSystem.getClip();
 
             this.cSoundtrack.open(this.cSoundtrackStream);
             this.cColecionavelSound.open(this.cColecionavelSoundStream);
             this.cDestroiBlocoSound.open(this.cDestroiBlocoSoundStream);
             this.cMorteSound.open(this.cMorteSoundStream);
             this.cBlocoSetaSound.open(this.cBlocoSetaSoundStream);
+            this.cMatarInimigoSound.open(this.cMatarInimigoSoundStream);
         } catch(Exception e) {
             e.printStackTrace();
         }
