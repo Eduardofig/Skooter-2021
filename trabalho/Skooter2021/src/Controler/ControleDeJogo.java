@@ -82,6 +82,7 @@ public class ControleDeJogo {
             //Movimento dos coracoes
             cCoracao.move();
             if(hHero.getPosicao().estaNaMesmaPosicao(cCoracao.getPosicao())) {
+                this.sSoundFx.coracaoSound();
                 fFase.removeCoracao(cCoracao);
                 hHero.ficarEnergizado();
             }
