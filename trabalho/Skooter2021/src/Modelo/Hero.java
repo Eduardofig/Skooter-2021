@@ -1,7 +1,13 @@
 package Modelo;
 
 import Auxiliar.Posicao;
+import Auxiliar.Consts;
 import java.util.ArrayList;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -14,6 +20,7 @@ public class Hero extends Elemento {
     protected int numVidas;
     protected int tempoEnergizado;
     protected Posicao Olhando;
+    protected ArrayList<ImageIcon> iSprites;
 
     public void processarEnergizado() {
         if(!this.isEnergizado()) return;
@@ -50,11 +57,31 @@ public class Hero extends Elemento {
         return this.Energizado;
     }
 
-    public Hero(String sNomeImagePNG, int linha, int coluna) {
-        super(sNomeImagePNG, linha, coluna);
+    public Hero(ArrayList<String> sNomeImages, int linha, int coluna) {
+        super(sNomeImages.get(0), linha, coluna);
+
+        ImageIcon Image;
+        Image img;
+        BufferedImage bi;
+        Graphics g;
+
+        this.iSprites = new ArrayList<ImageIcon>();
         this.Olhando = new Posicao(0, 0);
         setNumVidas(4);
         setEnergizado(false);
+
+        for(int i = 0; i < sNomeImages.size(); i++) {
+            try {
+                Image = new ImageIcon(new java.io.File(".").getCanonicalPath() + Consts.PATH + sNomeImages.get(i));
+                img = Image.getImage();
+                bi = new BufferedImage(Consts.CELL_SIDE, Consts.CELL_SIDE, BufferedImage.TYPE_INT_ARGB);
+                g = bi.createGraphics();
+                g.drawImage(img, 0, 0, Consts.CELL_SIDE, Consts.CELL_SIDE, null);
+                this.iSprites.add(new ImageIcon(bi));
+            } catch (IOException ex) {
+                System.out.println(ex.getMessage());
+            }
+        }
     }
 
     //Metodo chamado quando o heroi morre
@@ -73,21 +100,25 @@ public class Hero extends Elemento {
     public boolean moveLeft() {
         this.setPosicao(this.getPosicao().getLinha(), this.getPosicao().getColuna() - 1);
         this.setOlhando(this.getPosicao().getLinha(), this.getPosicao().getColuna() - 1);
+        this.mudarImagem(this.iSprites.get(1));
         return true;
     }
     public boolean moveUp() {
         this.setPosicao(this.getPosicao().getLinha() - 1, this.getPosicao().getColuna());
         this.setOlhando(this.getPosicao().getLinha() - 1, this.getPosicao().getColuna());
+        this.mudarImagem(this.iSprites.get(2));
         return true;
     }
     public boolean moveRight() {
         this.setPosicao(this.getPosicao().getLinha(), this.getPosicao().getColuna() + 1);
         this.setOlhando(this.getPosicao().getLinha(), this.getPosicao().getColuna() + 1);
+        this.mudarImagem(this.iSprites.get(3));
         return true;
     }
     public boolean moveDown() {
         this.setPosicao(this.getPosicao().getLinha() + 1, this.getPosicao().getColuna());
         this.setOlhando(this.getPosicao().getLinha() + 1, this.getPosicao().getColuna());
+        this.mudarImagem(this.iSprites.get(0));
         return true;
     }
 

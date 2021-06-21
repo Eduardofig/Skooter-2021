@@ -36,10 +36,15 @@ public class Fases {
 
     public Fases() {
         BlocoInteragivel bBloco;
+        ArrayList<String> aHeroiSprites = new ArrayList<String>();
+        aHeroiSprites.add("heroi" + File.separator + "heroi_down.png");
+        aHeroiSprites.add("heroi" + File.separator + "heroi_left.png");
+        aHeroiSprites.add("heroi" + File.separator + "heroi_up.png");
+        aHeroiSprites.add("heroi" + File.separator + "heroi_right.png");
         this.Fases = new ArrayList<Fase>();
         this.faseAtual = 0;
         //Fase 1
-        Hero hHero1 = new Hero("heroi" + File.separator + "heroi_down.png",4,4);
+        Hero hHero1 = new Hero(aHeroiSprites, 4, 4);
         Fase Fase1 = new Fase(hHero1);
         Colecionavel colecionavel1 = new Colecionavel("colecionaveis" + File.separator + "lampada.png", 0, 0);
         Colecionavel colecionavel2 = new Colecionavel("colecionaveis" + File.separator + "lanterna.png", 0, 10);
@@ -160,7 +165,7 @@ public class Fases {
         this.addFase(Fase1);
 
         //Fase 2
-        Hero hHeroi2 = new Hero("heroi" + File.separator + "heroi_down.png",5,5);
+        Hero hHeroi2 = new Hero(aHeroiSprites,5,5);
         Fase Fase2 = new Fase(hHeroi2);
         Colecionavel colecionavel5 = new Colecionavel("colecionaveis" + File.separator + "lampada.png", 5, 1);
         Colecionavel colecionavel6 = new Colecionavel("colecionaveis" + File.separator + "lanterna.png", 9, 5);
@@ -263,7 +268,7 @@ public class Fases {
         this.addFase(Fase2);
 
         //Fase3
-        Hero hHero3 = new Hero("heroi" + File.separator + "heroi_down.png",5,5);
+        Hero hHero3 = new Hero(aHeroiSprites,5,5);
         Fase Fase3 = new Fase(hHero3);
         Colecionavel colecionavel9 = new Colecionavel("colecionaveis" + File.separator + "lampada.png", 5, 0);
         Colecionavel colecionavel10 = new Colecionavel("colecionaveis" + File.separator + "lanterna.png", 5, 2);
@@ -384,7 +389,7 @@ public class Fases {
         this.addFase(Fase3);
 
         //Fase 4
-        Hero hHero4 = new Hero("heroi" + File.separator + "heroi_down.png", 5, 5);
+        Hero hHero4 = new Hero(aHeroiSprites, 5, 5);
         Fase Fase4 = new Fase(hHero4);
         Colecionavel colecionavel13 = new Colecionavel("colecionaveis" + File.separator + "lampada.png", 0, 10);
         Colecionavel colecionavel14 = new Colecionavel("colecionaveis" + File.separator + "lanterna.png", 10, 9);

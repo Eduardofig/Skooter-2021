@@ -40,6 +40,10 @@ public abstract class Elemento implements Serializable {
         }
     }
 
+    public void mudarImagem(ImageIcon sImage) {
+        this.iImage = sImage;
+    }
+
     public Posicao getPosicao() {
         return pPosicao;
     }
