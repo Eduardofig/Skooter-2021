@@ -91,15 +91,16 @@ public class Hero extends Elemento {
         return true;
     }
 
-    public void removerBloco(ArrayList<Elemento> listaBlocosInteragiveis, ArrayList<Elemento> eElementos) {
+    public boolean removerBloco(ArrayList<Elemento> listaBlocosInteragiveis, ArrayList<Elemento> eElementos) {
         for(int i = 0; i < listaBlocosInteragiveis.size(); i++) {
             BlocoInteragivel bBloco = (BlocoInteragivel)listaBlocosInteragiveis.get(i);
-            if(!bBloco.isDestruivel()) return;
+            if(!bBloco.isDestruivel()) return false;
             if(bBloco.pPosicao.estaNaMesmaPosicao(this.getOlhando())){
                 eElementos.remove(bBloco);
-                return;
+                return true;
             } 
         }
+        return false;
     }
 
     public void ficarEnergizado() {

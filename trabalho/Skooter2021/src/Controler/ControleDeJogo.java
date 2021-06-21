@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 public class ControleDeJogo {
 
-    protected SoundFx sSoundFx;
+    public SoundFx sSoundFx;
 
     public void desenhaTudo(Fases fFases){
         Fase fFase = fFases.getFaseAtual();
@@ -68,6 +68,7 @@ public class ControleDeJogo {
             eTemp = fFase.getColecionaveis().get(i);
             if(hHero.getPosicao().estaNaMesmaPosicao(eTemp.getPosicao())) {
                 fFase.removeColecionavel(eTemp);
+                this.sSoundFx.colecionavelSound();
                 if(fFase.getColecionaveis().isEmpty()) {
                     fFases.passarDeFase();
                 }
