@@ -1,26 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Modelo;
 
-import Auxiliar.Consts;
-import Auxiliar.Desenhador;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.io.IOException;
-import java.io.Serializable;
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
 import java.util.Random;
 
 /**
  *
- * @author jonatas
+ * @author Eduardo, Jonatas
  */
-public class Coracao extends Elemento implements Serializable {
+public class Coracao extends Elemento {
 
     protected Random rRandom;
     protected int iAtrasador;

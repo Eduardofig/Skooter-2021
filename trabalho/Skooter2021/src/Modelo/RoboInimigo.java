@@ -1,24 +1,12 @@
 package Modelo;
 
-import Auxiliar.Consts;
-import Auxiliar.Desenhador;
-import Auxiliar.Posicao;
-import Modelo.BlocoInteragivel;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.io.IOException;
-import java.io.Serializable;
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import java.util.ArrayList;
 import java.util.Random;
 
 /**
  *
- * @author jonatas
+ * @author Eduardo, Jonatas
  */
-public class RoboInimigo extends Elemento implements Serializable{
+public class RoboInimigo extends Elemento {
 
     protected Random rRandom;
     protected int iAtrasador;

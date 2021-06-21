@@ -1,22 +1,13 @@
 package Modelo;
 
-import Auxiliar.Consts;
-import Auxiliar.Desenhador;
 import Auxiliar.Posicao;
-import Modelo.BlocoInteragivel;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.io.IOException;
-import java.io.Serializable;
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
 import java.util.ArrayList;
+
 /**
  *
- * @author Junio
+ * @author Eduardo, Jonatas
  */
-public class Hero extends Elemento implements Serializable {
+public class Hero extends Elemento {
 
     protected boolean Energizado;
     protected int numVidas;

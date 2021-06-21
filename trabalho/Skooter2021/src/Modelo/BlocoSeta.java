@@ -1,15 +1,5 @@
 package Modelo;
 
-import Auxiliar.Consts;
-import Auxiliar.Desenhador;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.io.IOException;
-import java.io.Serializable;
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-
 /**
  *
  * @author Junio
@@ -17,7 +7,7 @@ import javax.swing.JPanel;
 
 //Classe do bloco com uma seta que define que o heroi so possa mover para 
 //uma direcao quando esta atravessando ele
-public class BlocoSeta extends Elemento implements Serializable{
+public class BlocoSeta extends Elemento {
 
     //Atributo Orientacao que define para aonde aponta a seta e seus getters e setters
     protected int pOrientacao;
