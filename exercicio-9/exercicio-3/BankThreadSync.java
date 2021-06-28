@@ -12,6 +12,8 @@ public class BankThreadSync extends Thread{
     for(int i = 0; i <= 5000; i++){
       c.deposita(300);
       c.saca(300);
+      /*int saldo = c.saldo;
+      System.out.println(saldo);*/
     }
   }
 }
