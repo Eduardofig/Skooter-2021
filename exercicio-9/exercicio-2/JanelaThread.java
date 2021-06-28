@@ -17,7 +17,7 @@ public class JanelaThread extends Thread {
         running = true;
         //Criacao do JFrame
         jfTela = new JFrame();
-        jfTela.setSize(new Dimension(200, 200));
+        jfTela.setSize(new Dimension(400, 400));
         jfTela.setLayout(new BorderLayout());
         jfTela.setVisible(true);
 
