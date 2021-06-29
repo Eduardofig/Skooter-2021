@@ -11,10 +11,16 @@ public class UserThread extends Thread{
 
   public void run(){
     for(int i = 0; i <= 5000; i++){
-      c.deposita(300);
+      int saldo = c.saldo;
+      //System.out.println(saldo);
       c.saca(300);
-      /*int saldo = c.saldo;
-      System.out.println(saldo);*/
+      c.saca(700);
+      c.saca(200);
+      c.saca(100);
+      c.deposita(300);
+      c.saca(500);
+      saldo = c.saldo;
+      //System.out.println(saldo);
     }
   }
 }

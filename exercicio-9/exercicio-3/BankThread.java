@@ -11,9 +11,16 @@ public class BankThread extends Thread{
   public void run(){
     for(int i = 0; i <= 5000; i++){
       c.deposita(300);
-      c.saca(300);
-      /*int saldo = c.saldo;
-      System.out.println(saldo);*/
+      c.deposita(500);
+      c.deposita(700);
+      c.deposita(200);
+      c.deposita(100);
+      int saldo = c.saldo;
+      //System.out.println(saldo);
+      c.saca(150);
+      c.saca(150);
+      saldo = c.saldo;
+      //System.out.println(saldo);
     }
   }
 }

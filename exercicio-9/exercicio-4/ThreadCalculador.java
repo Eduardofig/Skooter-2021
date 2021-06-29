@@ -5,17 +5,17 @@ import java.util.Random;
 public class ThreadCalculador extends Thread{
     private long nCalculations;
     Random r;
-    RaizQuadrada rq;
+    double j;
 
     public ThreadCalculador(long iNCalculations){
         nCalculations = iNCalculations;
         r = new Random();
-        rq = new RaizQuadrada();
     }
 
     public void run(){
         for(long i = 0; i < nCalculations; i++){
-            rq.RaizQuadrada(r.nextDouble());
+            j = r.nextDouble();
+            Math.sqrt(j);
         }
     }
 }
