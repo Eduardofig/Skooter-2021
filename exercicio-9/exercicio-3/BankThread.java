@@ -14,13 +14,9 @@ public class BankThread extends Thread{
       c.deposita(500);
       c.deposita(700);
       c.deposita(200);
-      c.deposita(100);
-      int saldo = c.saldo;
-      //System.out.println(saldo);
+      c.deposita(100);;
       c.saca(150);
       c.saca(150);
-      saldo = c.saldo;
-      //System.out.println(saldo);
     }
   }
 }
