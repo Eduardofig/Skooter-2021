@@ -7,6 +7,7 @@ public class OperadorMultiplos3 implements Operador {
         if(num % 3 != 0) {
             return this.proxOperador.raizQuadrada(num);
         } else {
+            System.out.println("Calculado Com OperadorMultiplos3");
             return Math.sqrt(num);
         }
 
@@ -16,6 +17,7 @@ public class OperadorMultiplos3 implements Operador {
         if(num % 3 != 0) {
             return this.proxOperador.quadrado(num);
         } else {
+            System.out.println("Calculado Com OperadorMultiplos3");
             return Math.pow(num, 2);
         }
     }
