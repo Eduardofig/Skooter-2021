@@ -1,6 +1,6 @@
 public class JurosComDescontoTaxa extends DividaDecorator{
-  public JurosComDescontoTaxa(DividaAbstrata dividaaserdecorada, float parametro){
-    super(dividaaserdecorada,parametro);
+  public JurosComDescontoTaxa(DividaAbstrata dividaASerDecorada, float parametro){
+    super(dividaASerDecorada,parametro);
   }
 
   public float getvalor(){

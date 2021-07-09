@@ -1,6 +1,6 @@
 public class Juros extends DividaDecorator{
-  public Juros(DividaAbstrata dividaaserdecorada, float parametro){
-    super(dividaaserdecorada,parametro);
+  public Juros(DividaAbstrata dividaASerDecorada, float parametro){
+    super(dividaASerDecorada,parametro);
   }
 
   public float getvalor(){
