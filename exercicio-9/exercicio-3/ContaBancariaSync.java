@@ -12,11 +12,17 @@ public class ContaBancariaSync{
   }
 
   synchronized public void deposita(int iValor){
-    this.saldo += iValor;
+    int saldoTemporario = this.saldo;
+    saldoTemporario += iValor;
+    //System.out.println("Saldo temporario: " + saldoTemporario);
+    this.saldo = saldoTemporario;
   }
 
   synchronized public int saca(int iValor){
-    this.saldo -= iValor;
+    int saldoTemporario = this.saldo;
+    saldoTemporario -= iValor;
+    //System.out.println("Saldo temporario: " + saldoTemporario);
+    this.saldo = saldoTemporario;
     return this.saldo;
   }
 
