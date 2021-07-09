@@ -14,33 +14,31 @@ public class Main{
     }
 
     MeusVetores mv = new MeusVetores(vet1, vet2);
+    MeusVetoresFunctionFactory factory = new MeusVetoresFunctionFactory();
 
     //União dos dois vetores
     System.out.println("Uniao entre dois vetores");
-    tamanho = mv.MeusVetoresNovaFuncao(new MeusVetoresUniao()).length;
-    vetuniao = new int[tamanho];
-    vetuniao = mv.MeusVetoresNovaFuncao(new MeusVetoresUniao());
-    for(i = 0; i < tamanho; i++){
+    vetuniao = mv.MeusVetoresNovaFuncao(factory.fabricarFuncao("uniao"));
+
+    for(i = 0; i < vetuniao.length; i++){
       System.out.println(vetuniao[i]);
     }
     System.out.println("\n");
 
     //Intersecção dos dois vetores
     System.out.println("Interseccao entre dois vetores");
-    tamanho = mv.MeusVetoresNovaFuncao(new MeusVetoresInterseccao()).length;
-    vetinterseccao = new int[tamanho];
-    vetinterseccao = mv.MeusVetoresNovaFuncao(new MeusVetoresInterseccao());
-    for(i = 0; i < tamanho; i++){
+    vetinterseccao = mv.MeusVetoresNovaFuncao(factory.fabricarFuncao("interseccao"));
+
+    for(i = 0; i < vetinterseccao.length; i++){
       System.out.println(vetinterseccao[i]);
     }
     System.out.println("\n");
 
     //Diferença dos dois vetores sendo vet2 - vet1
     System.out.println("Diferenca entre dois vetores");
-    tamanho = mv.MeusVetoresNovaFuncao(new MeusVetoresDiferenca()).length;
-    vetdiferenca = new int[tamanho];
-    vetdiferenca = mv.MeusVetoresNovaFuncao(new MeusVetoresDiferenca());
-    for(i = 0; i < tamanho; i++){
+    vetdiferenca = mv.MeusVetoresNovaFuncao(factory.fabricarFuncao("diferenca"));
+
+    for(i = 0; i < vetdiferenca.length; i++){
       System.out.println(vetdiferenca[i]);
     }
   }
