@@ -43,8 +43,8 @@ public class Node<T extends Comparable> {
     Node(T sValor, Node<T> sParent)
     {
         setValor(sValor);
+        setParent(sParent);
         setRight(null);
         setLeft(null);
-        setParent(sParent);
     }
 }

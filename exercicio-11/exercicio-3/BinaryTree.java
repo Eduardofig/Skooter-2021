@@ -69,6 +69,24 @@ public class BinaryTree<T extends Comparable> {
         return findRecursivo(node.getLeft(), valor);
     }
 
+    void delete(T valor) {
+        if(getRoot() == null) return;
+
+        Node<T> target = findRecursivo(getRoot(), valor);
+
+        if(target == null) return;
+
+        if(target.getLeft() == null && target.getRight() == null) {
+            Node<T> targetParent = target.getParent();
+
+            if(targetParent.getValor().compareTo(valor) < 0) targetParent.setRight(null);
+            else targetParent.setLeft(null);
+        }
+    }
+
+    void deleteRecursivo(Node<T> node, T valor) {
+    }
+
     BinaryTree() {
         setRoot(null);
     }
