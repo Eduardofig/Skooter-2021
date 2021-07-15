@@ -52,6 +52,23 @@ public class BinaryTree<T extends Comparable> {
         printRecursivo(node.getRight());
     }
 
+    boolean find(T valor) {
+        if(getRoot() == null) return false;
+
+        return findRecursivo(getRoot(), valor) != null;
+    }
+
+    Node<T> findRecursivo(Node<T> node, T valor) {
+        if(node == null) return null;
+
+        if(node.getValor().equals(valor)) return node;
+
+        if(node.getValor().compareTo(valor) < 0)
+            return findRecursivo(node.getRight(), valor);
+
+        return findRecursivo(node.getLeft(), valor);
+    }
+
     BinaryTree() {
         setRoot(null);
     }

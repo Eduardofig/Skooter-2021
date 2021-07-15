@@ -2,12 +2,18 @@ import java.lang.Math;
 
 public class Main {
     public static void main(String[] args) {
-        BinaryTree<Double> t = new BinaryTree<Double>();
+        BinaryTree<Integer> t = new BinaryTree<Integer>();
 
         for(int i = 0; i < 10; ++i) {
-            t.inserir(new Double(Math.random()));
+            t.inserir(new Integer(i));
         }
 
         t.printOrdenado();
+
+        System.out.println(t.find(5));
+        System.out.println(t.find(8));
+        System.out.println(t.find(11));
+        System.out.println(t.find(12));
+        System.out.println(t.find(1));
     }
 }
