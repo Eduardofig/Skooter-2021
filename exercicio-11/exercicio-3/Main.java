@@ -5,7 +5,7 @@ public class Main {
         BinaryTree<Integer> t = new BinaryTree<Integer>();
 
         for(int i = 0; i < 10; ++i) {
-            t.inserir(new Integer(i));
+            t.inserir(Integer.valueOf(i));
         }
 
         t.printOrdenado();
