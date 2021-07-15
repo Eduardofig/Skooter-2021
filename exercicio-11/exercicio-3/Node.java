@@ -1,6 +1,7 @@
 public class Node<T extends Comparable> {
     private Node<T> right;
     private Node<T> left;
+    private Node<T> parent;
     private T valor;
     
     T getValor() {
@@ -30,10 +31,20 @@ public class Node<T extends Comparable> {
         this.left = sLeft;
     }
 
-    Node(T sValor)
+    Node<T> getParent() {
+        return this.parent;
+    }
+
+    void setParent(Node<T> sParent)
+    {
+        this.parent = sParent;
+    }
+
+    Node(T sValor, Node<T> sParent)
     {
         setValor(sValor);
         setRight(null);
         setLeft(null);
+        setParent(sParent);
     }
 }

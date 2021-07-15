@@ -11,7 +11,7 @@ public class BinaryTree<T extends Comparable> {
 
     void inserir(T valor) {
         if(this.root == null) {
-            setRoot(new Node<T>(valor));
+            setRoot(new Node<T>(valor, null));
             return;
         }
 
@@ -23,7 +23,7 @@ public class BinaryTree<T extends Comparable> {
 
         if(valor.compareTo(node.getValor()) > 0) {
             if(node.getRight() == null) {
-                node.setRight(new Node<T>(valor));
+                node.setRight(new Node<T>(valor, node));
                 return;
             }
             inserirRecursivo(node.getRight(), valor);
@@ -31,7 +31,7 @@ public class BinaryTree<T extends Comparable> {
         }
 
         if(node.getLeft() == null) {
-            node.setLeft(new Node<T>(valor));
+            node.setLeft(new Node<T>(valor, node));
             return;
         }
 
