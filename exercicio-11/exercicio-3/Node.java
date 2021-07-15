@@ -1,4 +1,4 @@
-public class Node<T> {
+public class Node<T extends Comparable> {
     private Node<T> right;
     private Node<T> left;
     private T valor;
@@ -16,7 +16,7 @@ public class Node<T> {
         return this.right;
     }
 
-    void setRight(T sRight)
+    void setRight(Node<T> sRight)
     {
         this.right = sRight;
     }
@@ -25,7 +25,7 @@ public class Node<T> {
         return this.left;
     }
 
-    void setLeft(T sLeft)
+    void setLeft(Node<T> sLeft)
     {
         this.left = sLeft;
     }

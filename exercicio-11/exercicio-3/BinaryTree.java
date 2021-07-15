@@ -1,4 +1,4 @@
-public class ArvoreBinaria<T> {
+public class BinaryTree<T extends Comparable> {
     Node<T> root;
 
     Node<T> getRoot() {
@@ -15,18 +15,18 @@ public class ArvoreBinaria<T> {
             return;
         }
 
-        inserirRecursivo(getRoot());
+        inserirRecursivo(getRoot(), valor);
     }
 
     void inserirRecursivo(Node<T> node, T valor) {
         if(valor.compareTo(node.getValor()) == 0) return;
 
-        if(valor.compareTo(node.getValor()) < 0) {
+        if(valor.compareTo(node.getValor()) > 0) {
             if(node.getRight() == null) {
                 node.setRight(new Node<T>(valor));
                 return;
             }
-            inserirRecursivo(node.getRight());
+            inserirRecursivo(node.getRight(), valor);
             return;
         }
 
@@ -35,7 +35,7 @@ public class ArvoreBinaria<T> {
             return;
         }
 
-        inserirRecursivo(node.getLeft());
+        inserirRecursivo(node.getLeft(), valor);
     }
 
     void printOrdenado() {
@@ -52,7 +52,7 @@ public class ArvoreBinaria<T> {
         printRecursivo(node.getRight());
     }
 
-    ArvoreBinaria() {
+    BinaryTree() {
         setRoot(null);
     }
 }
