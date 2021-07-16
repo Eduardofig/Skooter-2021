@@ -26,6 +26,7 @@ public class Main {
         t.delete(Integer.valueOf(21));
         t.delete(Integer.valueOf(40));
         t.delete(Integer.valueOf(20));
+        t.delete(Integer.valueOf(39));
 
         t.printOrdenado();
 

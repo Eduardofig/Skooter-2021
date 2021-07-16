@@ -70,6 +70,7 @@ public class BinaryTree<T extends Comparable> {
         return findRecursivo(node.getLeft(), valor);
     }
 
+    //Funcao que acha o menor no de uma subarvore
     private Node<T> findMinimum(Node<T> subtree) {
         Node<T> node = subtree;
         while(node.getLeft() != null) node = node.getLeft();
@@ -85,6 +86,8 @@ public class BinaryTree<T extends Comparable> {
         if(target == getRoot()) {
             setRoot(target.getRight());
             getRoot().setLeft(target.getLeft());
+            getRoot().getLeft().setParent(getRoot());
+            getRoot().setParent(null);
             return;
 
         }
@@ -95,18 +98,33 @@ public class BinaryTree<T extends Comparable> {
             if(targetParent.getValor().compareTo(valor) < 0) targetParent.setRight(null);
             else targetParent.setLeft(null);
 
+            target.setParent(null);
+
             return;
         }
 
         //Remocao de no com 1 filho
         if(target.getNumFilhos() == 1) {
 
+            // O no esta na direita do pai
             if(targetParent.getValor().compareTo(valor) < 0) {
-                if(target.getRight() != null) targetParent.setRight(target.getRight());
-                else targetParent.setRight(target.getLeft());
+                if(target.getRight() != null)  {
+                    targetParent.setRight(target.getRight());
+                    target.getRight().setParent(targetParent);
+                } else {
+                    targetParent.setRight(target.getLeft());
+                    target.getLeft().setParent(targetParent);
+                }
+
+                return;
+            } 
+            // O no esta na esquerda do pai
+            if(target.getRight() != null) {
+                targetParent.setLeft(target.getRight());
+                target.getRight().setParent(targetParent);
             } else {
-                if(target.getRight() != null) targetParent.setLeft(target.getRight());
-                else targetParent.setLeft(target.getLeft());
+                targetParent.setLeft(target.getLeft());
+                target.getLeft().setParent(targetParent);
             }
 
             return;
