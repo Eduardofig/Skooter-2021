@@ -28,5 +28,11 @@ public class Main {
         t.delete(Integer.valueOf(20));
 
         t.printOrdenado();
+
+        System.out.println(t.find(Integer.valueOf(15)));
+        System.out.println(t.find(Integer.valueOf(7)));
+        System.out.println(t.find(Integer.valueOf(9)));
+        System.out.println(t.find(Integer.valueOf(12)));
+        System.out.println(t.find(Integer.valueOf(1)));
     }
 }

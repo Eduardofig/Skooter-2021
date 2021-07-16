@@ -114,8 +114,8 @@ public class BinaryTree<T extends Comparable> {
 
         //Remocao de no com 2 filhos
         Node<T> minimum = findMinimum(target.getRight());
-        target.setValor(minimum.getValor());
         deleteNode(minimum);
+        target.setValor(minimum.getValor());
 
     }
 
