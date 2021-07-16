@@ -1,11 +1,11 @@
 public class BinaryTree<T extends Comparable> {
     Node<T> root;
 
-    Node<T> getRoot() {
+    private Node<T> getRoot() {
         return this.root;
     }
 
-    void setRoot(Node<T> sRoot) {
+    private void setRoot(Node<T> sRoot) {
         this.root = sRoot;
     }
 
@@ -18,7 +18,7 @@ public class BinaryTree<T extends Comparable> {
         inserirRecursivo(getRoot(), valor);
     }
 
-    void inserirRecursivo(Node<T> node, T valor) {
+    private void inserirRecursivo(Node<T> node, T valor) {
         if(valor.compareTo(node.getValor()) == 0) return;
 
         if(valor.compareTo(node.getValor()) > 0) {
@@ -44,7 +44,7 @@ public class BinaryTree<T extends Comparable> {
         printRecursivo(getRoot());
     }
 
-    void printRecursivo(Node<T> node) {
+    private void printRecursivo(Node<T> node) {
         if(node == null) return;
 
         printRecursivo(node.getLeft());
@@ -58,7 +58,7 @@ public class BinaryTree<T extends Comparable> {
         return findRecursivo(getRoot(), valor) != null;
     }
 
-    Node<T> findRecursivo(Node<T> node, T valor) {
+    private Node<T> findRecursivo(Node<T> node, T valor) {
         if(node == null) return null;
 
         if(node.getValor().equals(valor)) return node;
@@ -69,6 +69,47 @@ public class BinaryTree<T extends Comparable> {
         return findRecursivo(node.getLeft(), valor);
     }
 
+    private Node<T> findMinimum(Node<T> subtree) {
+        Node<T> node = subtree;
+        while(node.getLeft() != null) node = node.getLeft();
+        return node;
+    }
+
+    private void deleteNode(Node<T> target) {
+
+        Node<T> targetParent = target.getParent();
+        T valor = target.getValor();
+
+        //Remocao de folha
+        if(target.getNumFilhos() == 0) {
+
+            if(targetParent.getValor().compareTo(valor) < 0) targetParent.setRight(null);
+            else targetParent.setLeft(null);
+
+            return;
+        }
+
+        //Remocao de no com 1 filho
+        if(target.getNumFilhos() == 1) {
+
+            if(targetParent.getValor().compareTo(valor) < 0) {
+                if(target.getRight() != null) targetParent.setRight(target.getRight());
+                else targetParent.setRight(target.getLeft());
+            } else {
+                if(target.getRight() != null) targetParent.setLeft(target.getRight());
+                else targetParent.setLeft(target.getLeft());
+            }
+
+            return;
+        }
+
+        //Remocao de no com 2 filhos
+        Node<T> minimum = findMinimum(target.getRight());
+        target.setValor(minimum.getValor());
+        deleteNode(minimum);
+
+    }
+
     void delete(T valor) {
         if(getRoot() == null) return;
 
@@ -76,15 +117,7 @@ public class BinaryTree<T extends Comparable> {
 
         if(target == null) return;
 
-        if(target.getLeft() == null && target.getRight() == null) {
-            Node<T> targetParent = target.getParent();
-
-            if(targetParent.getValor().compareTo(valor) < 0) targetParent.setRight(null);
-            else targetParent.setLeft(null);
-        }
-    }
-
-    void deleteRecursivo(Node<T> node, T valor) {
+        deleteNode(target);
     }
 
     BinaryTree() {

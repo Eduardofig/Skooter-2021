@@ -35,6 +35,13 @@ public class Node<T extends Comparable> {
         return this.parent;
     }
 
+    int getNumFilhos() {
+        int filhos = 0;
+        if(getRight() != null) filhos++;
+        if(getLeft() != null) filhos++;
+        return filhos;
+    }
+
     void setParent(Node<T> sParent)
     {
         this.parent = sParent;
