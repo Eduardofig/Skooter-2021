@@ -1,4 +1,5 @@
 public class BinaryTree<T extends Comparable> {
+
     Node<T> root;
 
     private Node<T> getRoot() {
@@ -79,6 +80,14 @@ public class BinaryTree<T extends Comparable> {
 
         Node<T> targetParent = target.getParent();
         T valor = target.getValor();
+        
+        //Remocao da raiz
+        if(target == getRoot()) {
+            setRoot(target.getRight());
+            getRoot().setLeft(target.getLeft());
+            return;
+
+        }
 
         //Remocao de folha
         if(target.getNumFilhos() == 0) {
