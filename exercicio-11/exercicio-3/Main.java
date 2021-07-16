@@ -22,10 +22,10 @@ public class Main {
         System.out.println(t.find(Integer.valueOf(1)));
 
         t.delete(Integer.valueOf(7));
+        t.delete(Integer.valueOf(15));
         t.delete(Integer.valueOf(21));
         t.delete(Integer.valueOf(40));
         t.delete(Integer.valueOf(20));
-        t.delete(Integer.valueOf(39));
 
         t.printOrdenado();
     }
