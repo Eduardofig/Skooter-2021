@@ -25,6 +25,7 @@ public class Fase implements Serializable {
     protected ArrayList<Elemento> listaColecionaveis;
     protected ArrayList<Elemento> listaCoracoes;
     protected ArrayList<Elemento> eElementos;
+    protected ArrayList<Elemento> listaElementosGenericos;
 
     public void addCoracao(Elemento Coracao) {
         this.listaCoracoes.add(Coracao);
@@ -65,6 +66,11 @@ public class Fase implements Serializable {
         this.eElementosBackup.add(bBloco);
     }
 
+    public void addElementoGenerico(Elemento eElemento) {
+        this.getElementosGenericos().add(eElemento);
+        this.eElementos.add(eElemento);
+    }
+
     public ArrayList<Elemento> getCoracoes() {
         return this.listaCoracoes;
     }
@@ -83,6 +89,10 @@ public class Fase implements Serializable {
 
     public ArrayList<Elemento> getBlocosSeta() {
         return this.listaBlocosSeta;
+    }
+
+    public ArrayList<Elemento> getElementosGenericos() {
+        return this.listaElementosGenericos;
     }
 
     public void removeCoracao(Elemento Coracao) {
@@ -106,6 +116,7 @@ public class Fase implements Serializable {
     }
 
     public void reset() {
+        this.listaElementosGenericos = new ArrayList<Elemento>();
         this.listaBlocosInteragiveis = new ArrayList<Elemento>(this.listaBlocosInteragiveisBackup);
         this.listaInimigos = new ArrayList<Elemento>(this.listaInimigosBackup);
         this.listaColecionaveis = new ArrayList<Elemento>(this.listaColecionaveisBackup);
@@ -146,6 +157,8 @@ public class Fase implements Serializable {
                     case "BlocoSeta":
                         this.getBlocosSeta().remove(eElemento);
                         return;
+                    case "ElementoGenerico":
+                        this.getElementosGenericos().remove(eElemento);
                     default:
                         return;
                 }
@@ -154,6 +167,7 @@ public class Fase implements Serializable {
     }
 
     public Fase(Elemento hHero) {
+        this.listaElementosGenericos = new ArrayList<Elemento>();
         this.listaBlocosInteragiveisBackup = new ArrayList<Elemento>();
         this.listaInimigosBackup = new ArrayList<Elemento>();
         this.listaColecionaveisBackup = new ArrayList<Elemento>();
