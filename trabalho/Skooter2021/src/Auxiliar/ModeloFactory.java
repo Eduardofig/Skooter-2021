@@ -1,23 +1,22 @@
 import Modelo.*;
 import java.util.ArrayList;
 
+//Factory Design pattern
 public class ModeloFactory {
     public Elemento criarElemento(String seletor, String sNomeImagePNG, int linha, int coluna) {
         switch(seletor) {
-            case "BlocoSeta":
-                return new BlocoSeta(sNomeImagePNG, sOrientacaArgs[0], linha, coluna);
             case "Colecionavel":
                 return new Colecionavel(sNomeImagePNG, linha, coluna);
-            case "Coracao":
+            default:
                 return new Coracao(sNomeImagePNG, linha, coluna);
         }
     }
 
     //Method overloading para Elementos do tipo BlocoNaoInteragivel
-    public Elemento criarElemento(String seletor, int linha, int coluna, int sOrientacao) {
+    public Elemento criarElemento(String seletor, String sNomeImagePNG, int linha, int coluna, int sOrientacao) {
         switch (seletor) {
             default:
-                return new BlocoNaoInteragivel(sNomeImagePNG[0], linha, coluna);
+                return new BlocoSeta(sNomeImagePNG, sOrientacao, linha, coluna);
         }
     }
 

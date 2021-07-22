@@ -10,6 +10,7 @@ import Modelo.*;
  * @author Eduardo, Jonatas
  */
 
+//Facade Design Pattern
 public class Fases {
     protected ArrayList<Fase> Fases;
     protected int faseAtual;
