@@ -31,6 +31,7 @@ public class ControleDeJogo {
         BlocoSeta bBlocoSeta;
         RoboInimigo rRobo;
         Coracao cCoracao;
+        ElementoGenerico eGenericoTemp;
 
         int moveLinha, moveColuna;
 
@@ -121,6 +122,12 @@ public class ControleDeJogo {
                     hHero.setOlhando(hHero.getPosicao().getLinhaAnterior(), hHero.getPosicao().getColunaAnterior());
                 }
             }
+        }
+
+        //Processa elementos genericos
+        for(int i = 0; i < fFase.getElementosGenericos().size(); ++i) {
+            eGenericoTemp = (ElementoGenerico)fFase.getElementosGenericos().get(i);
+            eGenericoTemp.acao();
         }
 
 
