@@ -9,6 +9,7 @@ import java.io.*;
 import java.util.*;
 import java.util.logging.*;
 import java.util.zip.*;
+import javax.swing.JFileChooser;
 
 /**
  *
@@ -157,6 +158,14 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
     }
 
     public void mouseClicked(MouseEvent e) {
+        JFileChooser chooser = new JFileChooser();
+        chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+
+        int returnVal = chooser.showOpenDialog(null);
+        if(returnVal == JFileChooser.APPROVE_OPTION) {
+            System.out.println("Posicao = " + String.valueOf(e.getX()/Consts.CELL_SIDE) +
+                    " Arquivo = " + chooser.getSelectedFile().getPath());
+        }
     }
 
     public void mouseReleased(MouseEvent e) {
