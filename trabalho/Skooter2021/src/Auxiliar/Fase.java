@@ -141,23 +141,24 @@ public class Fase implements Serializable {
                 if(eElemento.getClass().getName() == "Hero") return;
 
                 this.getElementos().remove(eElemento);
+                System.out.println(eElemento.getClass().getName());
                 switch(eElemento.getClass().getName()) {
-                    case "BlocoInteragivel":
+                    case "Modelo.BlocoInteragivel":
                         this.getBlocosInteragiveis().remove(eElemento);
                         return;
-                    case "RoboInimigo":
+                    case "Modelo.RoboInimigo":
                         this.getInimigos().remove(eElemento);
                         return;
-                    case "Colecionavel":
+                    case "Modelo.Colecionavel":
                         this.getColecionaveis().remove(eElemento);
                         return;
-                    case "Coracao":
+                    case "Modelo.Coracao":
                         this.getCoracoes().remove(eElemento);
                         return;
-                    case "BlocoSeta":
+                    case "Modelo.BlocoSeta":
                         this.getBlocosSeta().remove(eElemento);
                         return;
-                    case "ElementoGenerico":
+                    case "Modelo.ElementoGenerico":
                         this.getElementosGenericos().remove(eElemento);
                     default:
                         return;
