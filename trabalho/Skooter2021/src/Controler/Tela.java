@@ -161,11 +161,16 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         JFileChooser chooser = new JFileChooser();
         chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
 
+        Posicao pPosicao = new Posicao(e.getY()/Consts.CELL_SIDE, e.getX()/Consts.CELL_SIDE);
+        this.fFases.getFaseAtual().removerElementoPosicao(pPosicao);
+
         int returnVal = chooser.showOpenDialog(null);
         if(returnVal == JFileChooser.APPROVE_OPTION) {
-            System.out.println("Posicao = " + String.valueOf(e.getX()/Consts.CELL_SIDE) +
+            System.out.println("Posicao = " + String.valueOf(e.getY()/Consts.CELL_SIDE) + ", " + String.valueOf(e.getX()/Consts.CELL_SIDE) +
                     " Arquivo = " + chooser.getSelectedFile().getPath());
         }
+
+
     }
 
     public void mouseReleased(MouseEvent e) {
