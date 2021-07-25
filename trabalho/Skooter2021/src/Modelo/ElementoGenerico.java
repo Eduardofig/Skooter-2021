@@ -11,6 +11,7 @@ public class ElementoGenerico extends Elemento {
 
     protected Behavior bBehavior;
 
+    //Bridge Design Pattern
     public void acao() {
         this.bBehavior.agir(this.getPosicao());
     }
