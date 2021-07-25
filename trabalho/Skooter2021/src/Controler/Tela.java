@@ -166,11 +166,10 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         Posicao pPosicao = new Posicao(e.getY()/Consts.CELL_SIDE, e.getX()/Consts.CELL_SIDE);
         this.fFases.getFaseAtual().removerElementoPosicao(pPosicao);
 
+        this.fFases.togglePause();
+
         int returnVal = chooser.showOpenDialog(null);
         if(returnVal == JFileChooser.APPROVE_OPTION) {
-
-            System.out.println("Posicao = " + String.valueOf(e.getY()/Consts.CELL_SIDE) + ", " + String.valueOf(e.getX()/Consts.CELL_SIDE) +
-                    " Arquivo = " + chooser.getSelectedFile().getPath());
 
             try {
                 FileInputStream ifStream = new FileInputStream(chooser.getSelectedFile());
@@ -181,11 +180,15 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
                 eGenerico.setPosicao(e.getX()/Consts.CELL_SIDE, e.getY()/Consts.CELL_SIDE);
 
                 this.fFases.getFaseAtual().addElementoGenerico(eGenerico);
+
+                System.out.println(eGenerico.getClass().getName() + " Adicionado ao jogo em (" + 
+                        String.valueOf(eGenerico.getPosicao().getColuna()) + "," + String.valueOf(eGenerico.getPosicao().getLinha()) + ")");
+
+                this.fFases.togglePause();
             }
             catch (Exception ex) {
                 ex.printStackTrace();
             }
-
         }
     }
 

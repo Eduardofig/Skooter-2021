@@ -1,3 +1,5 @@
+package Auxiliar;
+
 import Modelo.*;
 import Behaviors.Behavior;
 import java.util.ArrayList;
@@ -34,7 +36,7 @@ public class ModeloFactory {
     //Method overloading para Elementos do tipo ElementoGenerico
     public Elemento criarElemento(String seletor, String sNomeImagePNG, int linha, int coluna, Behavior bBehavior) {
         switch(seletor) {
-            case "ElementoGenerico" :
+            default:
                 return new ElementoGenerico(sNomeImagePNG, linha, coluna, bBehavior);
         }
     }

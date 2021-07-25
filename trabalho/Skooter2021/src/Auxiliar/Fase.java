@@ -141,7 +141,9 @@ public class Fase implements Serializable {
                 if(eElemento.getClass().getName() == "Hero") return;
 
                 this.getElementos().remove(eElemento);
-                System.out.println(eElemento.getClass().getName());
+
+                System.out.println(eElemento.getClass().getName() + " Removido");
+
                 switch(eElemento.getClass().getName()) {
                     case "Modelo.BlocoInteragivel":
                         this.getBlocosInteragiveis().remove(eElemento);

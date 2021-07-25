@@ -13,7 +13,7 @@ public class BehaviorTeletransportador extends Behavior {
     protected Random rRandom;
 
     public void agir(Posicao pPosicao) {
-        int move = this.rRandom.nextInt();
+        int move = this.rRandom.nextInt(4);
         for(int i = 0; i < 3; ++i) {
             switch(move) {
                 case 0:
