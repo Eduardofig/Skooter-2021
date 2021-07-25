@@ -1,4 +1,4 @@
-package Modelo;
+package Behaviors;
 
 import Auxiliar.Posicao;
 import java.util.Random;

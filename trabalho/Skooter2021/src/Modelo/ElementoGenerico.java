@@ -1,5 +1,7 @@
 package Modelo;
 
+import Behaviors.Behavior;
+
 /**
  *
  * @author Eduardo, Jonatas

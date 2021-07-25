@@ -1,4 +1,4 @@
-package Modelo;
+package Behaviors;
 
 import java.io.Serializable;
 import Auxiliar.Posicao;
