@@ -16,35 +16,39 @@ import javax.swing.JFileChooser;
  * @author Eduardo, Jonatas
  */
 
-public class Tela extends javax.swing.JFrame implements MouseListener, KeyListener {
+ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListener {
 
-    private Fases fFases;
-    private ControleDeJogo cControle = new ControleDeJogo();
-    private Graphics g2;
-    private Hero hHero;
-    /**
-     * Creates new form
-     */
-    public Tela() {
-        this.fFases = new Fases();
-        Desenhador.setCenario(this); /*Desenhador funciona no modo estatico*/
-        initComponents();
- 
-        this.addMouseListener(this); /*mouse*/
-        this.addKeyListener(this);   /*teclado*/
-        
-        /*Cria a janela do tamanho do cenario + insets (bordas) da janela*/
-        this.setSize(Consts.RES * Consts.CELL_SIDE + getInsets().left + getInsets().right,
-                Consts.RES * Consts.CELL_SIDE + getInsets().top + getInsets().bottom);
-    
-    }
+     private Fases fFases;
+     private ControleDeJogo cControle = new ControleDeJogo();
+     private Graphics g2;
+     private Hero hHero;
+     private CaixaComandos cComandos;
+     /**
+      * Creates new form
+      */
+     public Tela() {
+         this.fFases = new Fases();
+         CaixaComandos cComandos = new CaixaComandos();
+         Desenhador.setCenario(this); /*Desenhador funciona no modo estatico*/
+         initComponents();
+
+         this.addMouseListener(this); /*mouse*/
+         this.addKeyListener(this);   /*teclado*/
+
+         /*Cria a janela do tamanho do cenario + insets (bordas) da janela*/
+         this.setSize(Consts.RES * Consts.CELL_SIDE + getInsets().left + getInsets().right,
+                 Consts.RES * Consts.CELL_SIDE + getInsets().top + getInsets().bottom);
+
+         this.cComandos.RecebeFases(fFases);
+         cComandos.run();
+     }
 
 /*--------------------------------------------------*/
     public Graphics getGraphicsBuffer(){
         return g2;
     }
-    
-    /*Este metodo eh executado a cada Consts.FRAME_INTERVAL milissegundos*/    
+
+    /*Este metodo eh executado a cada Consts.FRAME_INTERVAL milissegundos*/
     public void paint(Graphics gOld) {
         Graphics g = this.getBufferStrategy().getDrawGraphics();
         /*Criamos um contexto gráfico*/
@@ -63,7 +67,7 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
                 }
             }
         }
-        
+
         /*Aqui podem ser inseridos novos processamentos de controle*/
         this.cControle.processaTudo(fFases);
         this.cControle.desenhaTudo(fFases);
@@ -80,8 +84,8 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
             public void run() {
                 repaint(); /*(executa o metodo paint)*/
             }
-        };        
-        
+        };
+
         /*Redesenha (executa o metodo paint) tudo a cada Consts.FRAME_INTERVAL milissegundos*/
         Timer timer = new Timer();
         timer.schedule(redesenhar, 0, Consts.FRAME_INTERVAL);
@@ -177,11 +181,11 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
 
                 ElementoGenerico eGenerico = (ElementoGenerico)oStream.readObject();
                 //Checar se funciona
-                eGenerico.setPosicao(e.getX()/Consts.CELL_SIDE, e.getY()/Consts.CELL_SIDE);
+                eGenerico.setPosicao(e.getY()/Consts.CELL_SIDE, e.getX()/Consts.CELL_SIDE);
 
                 this.fFases.getFaseAtual().addElementoGenerico(eGenerico);
 
-                System.out.println(eGenerico.getClass().getName() + " Adicionado ao jogo em (" + 
+                System.out.println(eGenerico.getClass().getName() + " Adicionado ao jogo em (" +
                         String.valueOf(eGenerico.getPosicao().getColuna()) + "," + String.valueOf(eGenerico.getPosicao().getLinha()) + ")");
 
                 this.fFases.togglePause();
