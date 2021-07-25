@@ -24,6 +24,9 @@ public class ControleDeJogo {
         fFase.getElementos().get(0).autoDesenho();
     }
     public void processaTudo(Fases fFases){
+
+        if(fFases.isPaused()) return;
+
         Fase fFase = fFases.getFaseAtual();
         Hero hHero = (Hero)fFase.getElementos().get(0); /*O heroi (protagonista) eh sempre o primeiro do array*/
         Elemento eTemp;

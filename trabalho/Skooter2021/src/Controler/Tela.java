@@ -103,6 +103,8 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         } else if(e.getKeyCode() == KeyEvent.VK_Z) {
             if(this.hHero.removerBloco(this.fFases.getFaseAtual().getBlocosInteragiveis(), this.fFases.getFaseAtual().getElementos()))
                 this.cControle.sSoundFx.destroiBlocoSound();
+        } else if(e.getKeyCode() == KeyEvent.VK_P) {
+            this.fFases.togglePause();
         }
 
         this.setTitle("-> Cell: " + (this.hHero.getPosicao().getColuna()) + ", " + (this.hHero.getPosicao().getLinha()));

@@ -14,6 +14,16 @@ import Modelo.*;
 public class Fases {
     protected ArrayList<Fase> Fases;
     protected int faseAtual;
+    protected boolean paused;
+
+    public boolean isPaused() {
+        return this.paused;
+    }
+
+    public void togglePause() {
+        if(isPaused()) this.paused = false;
+        else this.paused = true;
+    }
 
     public void addFase(Fase fFase) {
         this.Fases.add(fFase);
@@ -36,6 +46,8 @@ public class Fases {
     }
 
     public Fases() {
+        this.paused = false;
+
         BlocoInteragivel bBloco;
         ArrayList<String> aHeroiSprites = new ArrayList<String>();
         ArrayList<String> aRoboAmareloSprites = new ArrayList<String>();
