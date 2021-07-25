@@ -3,7 +3,7 @@ all:
 run: 
 	java Modelo.Main
 clean: 
-	rm */*.class *.obj
+	rm -f */*.class *.obj
 write:
 	java ArquivosElemento.Main
 
