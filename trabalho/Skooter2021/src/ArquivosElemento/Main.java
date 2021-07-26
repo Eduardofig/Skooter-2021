@@ -1,6 +1,7 @@
 package ArquivosElemento;
 
 import Behaviors.*;
+import Auxiliar.BehaviorFactory;
 import Modelo.ElementoGenerico;
 import Auxiliar.ModeloFactory;
 import java.io.FileOutputStream;
@@ -10,9 +11,15 @@ import java.io.File;
 public class Main {
     public static void main(String[] args) {
         ModeloFactory factory = new ModeloFactory();
-        ElementoGenerico eGenerico1 = (ElementoGenerico)factory.criarElemento("ElementoGenerico", "colecionaveis" + File.separator + "sol.png", 0, 0, new BehaviorTeletransportador());
-        ElementoGenerico eGenerico2 = (ElementoGenerico)factory.criarElemento("ElementoGenerico", "colecionaveis" + File.separator + "lampada.png", 0, 0, new BehaviorOscilador());
-        ElementoGenerico eGenerico3 = (ElementoGenerico)factory.criarElemento("ElementoGenerico", "colecionaveis" + File.separator + "lampada.png", 0, 0, new BehaviorEstatico());
+        BehaviorFactory bFactory = new BehaviorFactory();
+
+        Behavior behavior1 = bFactory.criarBehavior("BehaviorTeletransportador");
+        Behavior behavior2 = bFactory.criarBehavior("BehaviorOscilador");
+        Behavior behavior3 = bFactory.criarBehavior("BehaviorEstatico");
+
+        ElementoGenerico eGenerico1 = (ElementoGenerico)factory.criarElemento("ElementoGenerico", "colecionaveis" + File.separator + "sol.png", 0, 0, behavior1);
+        ElementoGenerico eGenerico2 = (ElementoGenerico)factory.criarElemento("ElementoGenerico", "colecionaveis" + File.separator + "lampada.png", 0, 0, behavior2);
+        ElementoGenerico eGenerico3 = (ElementoGenerico)factory.criarElemento("ElementoGenerico", "colecionaveis" + File.separator + "lampada.png", 0, 0, behavior3);
         try {
             FileOutputStream ofStream = new FileOutputStream("ElementoTransportador.obj");
             ObjectOutputStream obStream = new ObjectOutputStream(ofStream);
