@@ -15,9 +15,9 @@ public class AutoSave extends Thread{
     this.fFases = fFases;
     this.temp = temp;
 
-    while(running){
+    /*while(running){
       Thread.sleep(this.temp);
-    }
+    }*/
   }
 
   /*public void run(){
@@ -33,7 +33,7 @@ public class AutoSave extends Thread{
     this.running = false;
   }
 
-  public static void main(String[] args){
+  /*public static void main(String[] args){
     AutoSave aSave = new AutoSave(fFases,temp);
     aSave.start();
     try{
@@ -41,5 +41,5 @@ public class AutoSave extends Thread{
     }catch(InterruptedException ex){
       Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
     }
-  }
+  }*/
 }

@@ -2,6 +2,8 @@ package Data;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.io.Serializable;
+
 import Auxiliar.Fase;
 import Modelo.*;
 
@@ -11,12 +13,12 @@ import Modelo.*;
  */
 
 //Facade Design Pattern
-public class Fases {
+public class Fases implements Serializable {
     protected ArrayList<Fase> Fases;
     protected int faseAtual;
-    protected boolean paused;
+    protected boolean paused = true;
 
-    public boolean isPaused() {
+    public boolean isPaused(){
         return this.paused;
     }
 

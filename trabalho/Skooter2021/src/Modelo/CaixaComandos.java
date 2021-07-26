@@ -47,19 +47,26 @@ public class CaixaComandos extends JFrame implements ActionListener{
     setVisible(true);
   }
 
-  int temp = 1000;
-  AutoSave aSave = new AutoSave(fFases, temp);
+  //int temp = 1000;
+  //AutoSave aSave = new AutoSave(fFases, temp);
+
+  Salvar sJogo = new Salvar();
 
 
   public void actionPerformed(ActionEvent e){
     if(e.getSource()==bt1){
       this.fFases.togglePause();
     }else if(e.getSource()==bt2){ //salvar
+      //FileClass fcTemp = new FileClass();
+
+      sJogo.salvarFase(this.fFases);
+
       //if(fFase.getFaseAtual==0){}
     }else if(e.getSource()==bt3){ //carregar
+      sJogo.carregarFase();
 
     }else if(e.getSource()==bt4){
-      aSave.encerrarAutoSave();
+      //aSave.encerrarAutoSave();
       System.exit(0);
     }
   }

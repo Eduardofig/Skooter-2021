@@ -28,7 +28,7 @@ import javax.swing.JFileChooser;
       */
      public Tela() {
          this.fFases = new Fases();
-         CaixaComandos cComandos = new CaixaComandos();
+         this.cComandos = new CaixaComandos();
          Desenhador.setCenario(this); /*Desenhador funciona no modo estatico*/
          initComponents();
 
@@ -39,7 +39,7 @@ import javax.swing.JFileChooser;
          this.setSize(Consts.RES * Consts.CELL_SIDE + getInsets().left + getInsets().right,
                  Consts.RES * Consts.CELL_SIDE + getInsets().top + getInsets().bottom);
 
-         this.cComandos.RecebeFases(fFases);
+         this.cComandos.RecebeFases(this.fFases);
          cComandos.run();
      }
 
