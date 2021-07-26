@@ -17,7 +17,7 @@ import Data.Fases;
  *
  * @author Eduardo, Jonatas
  */
-public class Salvar{
+public class Salvar extends Thread{
 
   public void salvarFase(Fases fFases){
     try{

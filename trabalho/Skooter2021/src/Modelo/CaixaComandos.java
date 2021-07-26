@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JOptionPane;
 import Auxiliar.FasesWrapper;
+
 import Data.Fases;
 
 /**
@@ -16,7 +17,7 @@ import Data.Fases;
 public class CaixaComandos extends JFrame implements ActionListener{
   private FasesWrapper fWrapper;
 
-  JButton bt1 = new JButton("Pausar");
+  JButton bt1 = new JButton("Iniciar/Pausar");
   JButton bt2 = new JButton("Salvar");
   JButton bt3 = new JButton("Carregar");
   JButton bt4 = new JButton("Quit");
@@ -47,10 +48,9 @@ public class CaixaComandos extends JFrame implements ActionListener{
     setVisible(true);
   }
 
-  //int temp = 1000;
-  //AutoSave aSave = new AutoSave(fFases, temp);
-
   Salvar sJogo = new Salvar();
+  ChamaAutoSave asJogo = new ChamaAutoSave();
+  asJogo.run();
 
 
   public void actionPerformed(ActionEvent e){

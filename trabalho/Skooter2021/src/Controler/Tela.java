@@ -23,6 +23,7 @@ import javax.swing.JFileChooser;
      private Graphics g2;
      private Hero hHero;
      private CaixaComandos cComandos;
+     private ChamaAutoSave asJogo;
      /**
       * Creates new form
       */
@@ -31,6 +32,8 @@ import javax.swing.JFileChooser;
          this.fWrapper.loadFases(new Fases());
          this.cComandos = new CaixaComandos();
          this.cComandos.recebeFases(this.fWrapper);
+         //this.asJogo = new ChamaAutoSave(this.fWrapper,2000);
+
 
          Desenhador.setCenario(this); /*Desenhador funciona no modo estatico*/
          initComponents();

@@ -1,5 +1,8 @@
 package Modelo;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import Data.Fases;
 /**
  *
@@ -14,32 +17,17 @@ public class AutoSave extends Thread{
   public AutoSave(Fases fFases,int temp){
     this.fFases = fFases;
     this.temp = temp;
-
-    /*while(running){
-      Thread.sleep(this.temp);
-    }*/
   }
 
-  /*public void run(){
-    new AutoSave();
-    try{
-      this.AutoSave.join();
-    }catch(InterruptedException ex){
-      Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+  public void run(){
+    while(running){
+      Salvar sJogo = new Salvar();
+      try {
+        sJogo.salvarFase(this.fFases);
+        Thread.sleep(2000);
+      } catch (InterruptedException e) {
+          e.printStackTrace();
+      }
     }
-  }*/
-
-  public void encerrarAutoSave(){
-    this.running = false;
   }
-
-  /*public static void main(String[] args){
-    AutoSave aSave = new AutoSave(fFases,temp);
-    aSave.start();
-    try{
-      aSave.join();
-    }catch(InterruptedException ex){
-      Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-    }
-  }*/
 }
