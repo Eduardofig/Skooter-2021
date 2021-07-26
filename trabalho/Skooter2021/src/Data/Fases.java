@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.io.Serializable;
 
 import Auxiliar.Fase;
+import Auxiliar.ModeloFactory;
 import Modelo.*;
 
 /**
@@ -50,6 +51,8 @@ public class Fases implements Serializable {
     public Fases() {
         this.paused = false;
 
+        ModeloFactory fact = new ModeloFactory();
+
         BlocoInteragivel bBloco;
         ArrayList<String> aHeroiSprites = new ArrayList<String>();
         ArrayList<String> aRoboAmareloSprites = new ArrayList<String>();
@@ -92,10 +95,10 @@ public class Fases implements Serializable {
         //Fase 1
         Hero hHero1 = new Hero(aHeroiSprites, 4, 4);
         Fase Fase1 = new Fase(hHero1);
-        Colecionavel colecionavel1 = new Colecionavel("colecionaveis" + File.separator + "lampada.png", 0, 0);
-        Colecionavel colecionavel2 = new Colecionavel("colecionaveis" + File.separator + "lanterna.png", 0, 10);
-        Colecionavel colecionavel3 = new Colecionavel("colecionaveis" + File.separator + "sol.png", 10, 0);
-        Colecionavel colecionavel4 = new Colecionavel("colecionaveis" + File.separator + "vela.png", 10, 10);
+        Colecionavel colecionavel1 = (Colecionavel)fact.criarElemento("Colecionavel", "colecionaveis" + File.separator + "lampada.png", 0, 0);
+        Colecionavel colecionavel2 = (Colecionavel)fact.criarElemento("Colecionavel", "colecionaveis" + File.separator + "lanterna.png", 0, 10);
+        Colecionavel colecionavel3 = (Colecionavel)fact.criarElemento("Colecionavel", "colecionaveis" + File.separator + "sol.png", 10, 0);
+        Colecionavel colecionavel4 = (Colecionavel)fact.criarElemento("Colecionavel", "colecionaveis" + File.separator + "vela.png", 10, 10);
         Coracao coracao1 = new Coracao("colecionaveis" + File.separator + "coracao.png", 9,0);
         BlocoNaoInteragivel blocoNaoInteragivel1 = new BlocoNaoInteragivel("blocos" + File.separator + "bloconaointeragivel.png",1,1);
         BlocoNaoInteragivel blocoNaoInteragivel2 = new BlocoNaoInteragivel("blocos" + File.separator + "bloconaointeragivel.png",1,3);

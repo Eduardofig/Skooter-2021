@@ -49,8 +49,8 @@ public class CaixaComandos extends JFrame implements ActionListener{
   }
 
   Salvar sJogo = new Salvar();
-  ChamaAutoSave asJogo = new ChamaAutoSave();
-  asJogo.run();
+  //ChamaAutoSave asJogo = new ChamaAutoSave();
+  //asJogo.run();
 
 
   public void actionPerformed(ActionEvent e){
