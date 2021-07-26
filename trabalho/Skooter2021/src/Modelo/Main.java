@@ -9,7 +9,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import Controler.Tela;
-import Modelo.ChamaAutoSave;
+import Save.*;
 
 /**
  *

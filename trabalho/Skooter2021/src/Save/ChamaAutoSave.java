@@ -1,4 +1,4 @@
-package Modelo;
+package Save;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -21,7 +21,7 @@ import Auxiliar.FasesWrapper;
      try{
        asJogo.join();
      }catch(InterruptedException ex){
-       Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+         ex.printStackTrace();
      }
    }
  }

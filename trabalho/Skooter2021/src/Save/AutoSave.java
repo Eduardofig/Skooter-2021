@@ -1,4 +1,4 @@
-package Modelo;
+package Save;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -25,8 +25,10 @@ public class AutoSave extends Thread{
       Salvar sJogo = new Salvar();
       try {
         Thread.sleep(this.temp);
-        sJogo.salvarFase(this.fWrapper.getFases());
-        System.out.println("Salvou");
+        if(!this.fWrapper.getFases().isPaused()) {
+            sJogo.salvarFase(this.fWrapper.getFases());
+            System.out.println("Salvou");
+        }
       } catch (InterruptedException e) {
           e.printStackTrace();
       }
