@@ -24,9 +24,9 @@ public class AutoSave extends Thread{
     while(running){
       Salvar sJogo = new Salvar();
       try {
+        Thread.sleep(this.temp);
         sJogo.salvarFase(this.fWrapper.getFases());
         System.out.println("Salvou");
-        Thread.sleep(2000);
       } catch (InterruptedException e) {
           e.printStackTrace();
       }
