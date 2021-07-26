@@ -4,18 +4,19 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import Data.Fases;
+import Auxiliar.FasesWrapper;
 /**
  *
  * @author Eduardo, Jonatas
  */
 
 public class AutoSave extends Thread{
-  private Fases fFases;
+  private FasesWrapper fWrapper;
   private int temp;
   private boolean running = true;
 
-  public AutoSave(Fases fFases,int temp){
-    this.fFases = fFases;
+  public AutoSave(FasesWrapper sWrapper,int temp){
+    this.fWrapper = sWrapper;
     this.temp = temp;
   }
 
@@ -23,7 +24,8 @@ public class AutoSave extends Thread{
     while(running){
       Salvar sJogo = new Salvar();
       try {
-        sJogo.salvarFase(this.fFases);
+        sJogo.salvarFase(this.fWrapper.getFases());
+        System.out.println("Salvou");
         Thread.sleep(2000);
       } catch (InterruptedException e) {
           e.printStackTrace();

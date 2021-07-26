@@ -23,6 +23,7 @@ import javax.swing.JFileChooser;
      private Graphics g2;
      private Hero hHero;
      private CaixaComandos cComandos;
+     private ChamaAutoSave asJogo;
      /**
       * Creates new form
       */
@@ -44,6 +45,10 @@ import javax.swing.JFileChooser;
          this.setSize(Consts.RES * Consts.CELL_SIDE + getInsets().left + getInsets().right,
                  Consts.RES * Consts.CELL_SIDE + getInsets().top + getInsets().bottom);
 
+     }
+
+     public FasesWrapper getFWrapper() {
+         return this.fWrapper;
      }
 
 /*--------------------------------------------------*/

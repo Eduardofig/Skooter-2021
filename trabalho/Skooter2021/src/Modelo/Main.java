@@ -1,6 +1,7 @@
 package Modelo;
 
 import Controler.Tela;
+import Modelo.ChamaAutoSave;
 
 /**
  *
@@ -22,14 +23,17 @@ public class Main {
 
     }*/
 
+
     public static void main(String[] args){
+        ChamaAutoSave as = new ChamaAutoSave();
+          Tela tTela = new Tela();
       java.awt.EventQueue.invokeLater(new Runnable(){
         public void run(){
-          Tela tTela = new Tela();
           tTela.setVisible(true);
           tTela.createBufferStrategy(2);
           tTela.go();
         }
       });
+      as.iniciaAutoSave(tTela.getFWrapper());
     }
 }
