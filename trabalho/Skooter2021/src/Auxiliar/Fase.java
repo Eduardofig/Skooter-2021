@@ -11,6 +11,7 @@ import Modelo.BlocoInteragivel;
  * @author Eduardo, Jonatas
  */
 
+//Facade Design Pattern
 public class Fase implements Serializable {
     //Backups para o reset da fase apos o heroi morrer ou apos o jogador apertar r
     protected ArrayList<Elemento> listaBlocosInteragiveisBackup;

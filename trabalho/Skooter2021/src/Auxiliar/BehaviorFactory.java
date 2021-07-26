@@ -7,6 +7,7 @@ import Behaviors.*;
  * @author Eduardo, Jonatas
  */
 
+//Factory Design Pattern
 public class BehaviorFactory {
     public Behavior criarBehavior(String seletor) {
         switch(seletor) {
