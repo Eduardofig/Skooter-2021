@@ -42,8 +42,6 @@ import javax.swing.JFileChooser;
          this.setSize(Consts.RES * Consts.CELL_SIDE + getInsets().left + getInsets().right,
                  Consts.RES * Consts.CELL_SIDE + getInsets().top + getInsets().bottom);
 
-
-         cComandos.run();
      }
 
 /*--------------------------------------------------*/
@@ -114,6 +112,8 @@ import javax.swing.JFileChooser;
                 this.cControle.sSoundFx.destroiBlocoSound();
         } else if(e.getKeyCode() == KeyEvent.VK_P) {
             this.fWrapper.getFases().togglePause();
+        } else if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+            this.cComandos.run();
         }
 
         this.setTitle("-> Cell: " + (this.hHero.getPosicao().getColuna()) + ", " + (this.hHero.getPosicao().getLinha()));

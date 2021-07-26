@@ -16,10 +16,10 @@ import Data.Fases;
 public class CaixaComandos extends JFrame implements ActionListener{
   private FasesWrapper fWrapper;
 
-  JButton bt1 = new JButton("Jogar");
+  JButton bt1 = new JButton("Pausar");
   JButton bt2 = new JButton("Salvar");
   JButton bt3 = new JButton("Carregar");
-  JButton bt4 = new JButton("Sair");
+  JButton bt4 = new JButton("Quit");
 
   public void recebeFases(FasesWrapper sWrapper){
     this.fWrapper = sWrapper;
