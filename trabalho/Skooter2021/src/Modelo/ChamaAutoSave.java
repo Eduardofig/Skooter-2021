@@ -13,16 +13,9 @@ import Auxiliar.FasesWrapper;
  * @author Eduardo, Jonatas
  */
  public class ChamaAutoSave extends Thread{
-   private Fases fFases;
-   private int temp;
 
-   public ChamaAutoSave(Fases fFases, int temp){
-     this.fFases = fFases;
-     this.temp = temp;
-   }
-
-   public void run(){
-     AutoSave asJogo = new AutoSave(this.fFases,2000);
+   public void iniciaAutoSave(Fases fFases){
+     AutoSave asJogo = new AutoSave(fFases,2000);
 
      asJogo.start();
      try{
