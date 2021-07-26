@@ -17,42 +17,42 @@ import javax.swing.JFileChooser;
  * @author Eduardo, Jonatas
  */
 
- public class Tela extends javax.swing.JFrame implements MouseListener, KeyListener {
+public class Tela extends javax.swing.JFrame implements MouseListener, KeyListener {
 
-     private FasesWrapper fWrapper;
-     private ControleDeJogo cControle = new ControleDeJogo();
-     private Graphics g2;
-     private Hero hHero;
-     private CaixaComandos cComandos;
-     private ChamaAutoSave asJogo;
-     /**
-      * Creates new form
-      */
-     public Tela() {
-         this.fWrapper = new FasesWrapper();
-         this.fWrapper.loadFases(new Fases());
-         this.cComandos = new CaixaComandos();
-         this.cComandos.recebeFases(this.fWrapper);
-         this.asJogo = new ChamaAutoSave();
+    private FasesWrapper fWrapper;
+    private ControleDeJogo cControle = new ControleDeJogo();
+    private Graphics g2;
+    private Hero hHero;
+    private CaixaComandos cComandos;
+    private ChamaAutoSave asJogo;
+    /**
+     * Creates new form
+     */
+    public Tela() {
+        this.fWrapper = new FasesWrapper();
+        this.fWrapper.loadFases(new Fases());
+        this.cComandos = new CaixaComandos();
+        this.cComandos.recebeFases(this.fWrapper);
+        this.asJogo = new ChamaAutoSave();
 
 
-         Desenhador.setCenario(this); /*Desenhador funciona no modo estatico*/
-         initComponents();
+        Desenhador.setCenario(this); /*Desenhador funciona no modo estatico*/
+        initComponents();
 
-         this.addMouseListener(this); /*mouse*/
-         this.addKeyListener(this);   /*teclado*/
+        this.addMouseListener(this); /*mouse*/
+        this.addKeyListener(this);   /*teclado*/
 
-         /*Cria a janela do tamanho do cenario + insets (bordas) da janela*/
-         this.setSize(Consts.RES * Consts.CELL_SIDE + getInsets().left + getInsets().right,
-                 Consts.RES * Consts.CELL_SIDE + getInsets().top + getInsets().bottom);
+        /*Cria a janela do tamanho do cenario + insets (bordas) da janela*/
+        this.setSize(Consts.RES * Consts.CELL_SIDE + getInsets().left + getInsets().right,
+                Consts.RES * Consts.CELL_SIDE + getInsets().top + getInsets().bottom);
 
-     }
+    }
 
-     public FasesWrapper getFWrapper() {
-         return this.fWrapper;
-     }
+    public FasesWrapper getFWrapper() {
+        return this.fWrapper;
+    }
 
-/*--------------------------------------------------*/
+    /*--------------------------------------------------*/
     public Graphics getGraphicsBuffer(){
         return g2;
     }
@@ -131,19 +131,19 @@ import javax.swing.JFileChooser;
     }
 
     public void mousePressed(MouseEvent e) {
-         //Movimento via mouse
-         int x = e.getX();
-         int y = e.getY();
+        //Movimento via mouse
+        int x = e.getX();
+        int y = e.getY();
 
-         this.setTitle("X: "+ x + ", Y: " + y +
-                 " -> Cell: " + (y/Consts.CELL_SIDE) + ", " + (x/Consts.CELL_SIDE));
+        this.setTitle("X: "+ x + ", Y: " + y +
+                " -> Cell: " + (y/Consts.CELL_SIDE) + ", " + (x/Consts.CELL_SIDE));
 
-         //this.hHero.getPosicao().setPosicao(y/Consts.CELL_SIDE, x/Consts.CELL_SIDE);
+        //this.hHero.getPosicao().setPosicao(y/Consts.CELL_SIDE, x/Consts.CELL_SIDE);
 
-         /*Se o heroi for para uma posicao invalida, sobre um elemento intransponivel, volta para onde estava*/
-         //Processa as colisoes dos blocos interagiveis e dos inimigos
+        /*Se o heroi for para uma posicao invalida, sobre um elemento intransponivel, volta para onde estava*/
+        //Processa as colisoes dos blocos interagiveis e dos inimigos
 
-         repaint();
+        repaint();
     }
 
     /**

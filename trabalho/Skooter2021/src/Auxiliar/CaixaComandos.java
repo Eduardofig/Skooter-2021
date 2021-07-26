@@ -1,4 +1,4 @@
-package Modelo;
+package Auxiliar;
 
 import javax.swing.JFrame;
 import javax.swing.JButton;
