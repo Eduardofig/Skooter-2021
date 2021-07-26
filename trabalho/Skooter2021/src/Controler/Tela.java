@@ -117,7 +117,10 @@ import javax.swing.JFileChooser;
             this.fWrapper.getFases().togglePause();
         } else if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
             this.cComandos.run();
+        } else if (e.getKeyCode() == KeyEvent.VK_F) {
+            this.fWrapper.getFases().passarDeFase();
         }
+
 
         this.setTitle("-> Cell: " + (this.hHero.getPosicao().getColuna()) + ", " + (this.hHero.getPosicao().getLinha()));
     }
