@@ -9,15 +9,16 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
-
-
-import Data.Fases;
+import Auxiliar.FasesWrapper;
 import Auxiliar.Fase;
+import Data.Fases;
+
 /**
  *
  * @author Eduardo, Jonatas
  */
 public class Salvar{
+
   public void salvarFase(Fases fFases){
     try{
       File fTemp = new File("save.zip");
@@ -42,14 +43,12 @@ public class Salvar{
     }
   }
 
-  public Fases carregarFase(){
+  public void carregarFase(FasesWrapper fWrapper){
         try {
             File fTemp = new File("save.zip");
             if (fTemp.exists()) {
                 fTemp.createNewFile();
             }
-            Fases fFases;
-
 
             FileInputStream canoIn = new FileInputStream("save.zip");
             GZIPInputStream gis = new GZIPInputStream(canoIn);
@@ -59,8 +58,7 @@ public class Salvar{
             GZIPInputStream gis = new GZIPInputStream(fin);
             ObjectInputStream ois = new ObjectInputStream(gis);*/
 
-            fFases = (Fases) deserializador.readObject();
-            return fFases;
+            fWrapper.loadFases((Fases) deserializador.readObject());
 
         } catch (ClassNotFoundException e) {
             e.printStackTrace();

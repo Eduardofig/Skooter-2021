@@ -18,7 +18,7 @@ import javax.swing.JFileChooser;
 
  public class Tela extends javax.swing.JFrame implements MouseListener, KeyListener {
 
-     private Fases fFases;
+     private FasesWrapper fWrapper;
      private ControleDeJogo cControle = new ControleDeJogo();
      private Graphics g2;
      private Hero hHero;
@@ -27,8 +27,11 @@ import javax.swing.JFileChooser;
       * Creates new form
       */
      public Tela() {
-         this.fFases = new Fases();
+         this.fWrapper = new FasesWrapper();
+         this.fWrapper.loadFases(new Fases());
          this.cComandos = new CaixaComandos();
+         this.cComandos.recebeFases(this.fWrapper);
+
          Desenhador.setCenario(this); /*Desenhador funciona no modo estatico*/
          initComponents();
 
@@ -39,7 +42,7 @@ import javax.swing.JFileChooser;
          this.setSize(Consts.RES * Consts.CELL_SIDE + getInsets().left + getInsets().right,
                  Consts.RES * Consts.CELL_SIDE + getInsets().top + getInsets().bottom);
 
-         this.cComandos.RecebeFases(this.fFases);
+
          cComandos.run();
      }
 
@@ -50,7 +53,9 @@ import javax.swing.JFileChooser;
 
     /*Este metodo eh executado a cada Consts.FRAME_INTERVAL milissegundos*/
     public void paint(Graphics gOld) {
+        Fases fFases = this.fWrapper.getFases();
         Graphics g = this.getBufferStrategy().getDrawGraphics();
+
         /*Criamos um contexto gráfico*/
         g2 = g.create(getInsets().left, getInsets().top, getWidth() - getInsets().right, getHeight() - getInsets().top);
 
@@ -92,7 +97,7 @@ import javax.swing.JFileChooser;
     }
 
     public void keyPressed(KeyEvent e) {
-        this.hHero = this.fFases.getHeroAtual();
+        this.hHero = this.fWrapper.getFases().getHeroAtual();
         /*Movimento do heroi via teclado*/
         if (e.getKeyCode() == KeyEvent.VK_UP) {
             this.hHero.moveUp();
@@ -103,12 +108,12 @@ import javax.swing.JFileChooser;
         } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
             this.hHero.moveRight();
         } else if (e.getKeyCode() == KeyEvent.VK_R) {
-            this.fFases.getFaseAtual().reset();
+            this.fWrapper.getFases().getFaseAtual().reset();
         } else if(e.getKeyCode() == KeyEvent.VK_Z) {
-            if(this.hHero.removerBloco(this.fFases.getFaseAtual().getBlocosInteragiveis(), this.fFases.getFaseAtual().getElementos()))
+            if(this.hHero.removerBloco(this.fWrapper.getFases().getFaseAtual().getBlocosInteragiveis(), this.fWrapper.getFases().getFaseAtual().getElementos()))
                 this.cControle.sSoundFx.destroiBlocoSound();
         } else if(e.getKeyCode() == KeyEvent.VK_P) {
-            this.fFases.togglePause();
+            this.fWrapper.getFases().togglePause();
         }
 
         this.setTitle("-> Cell: " + (this.hHero.getPosicao().getColuna()) + ", " + (this.hHero.getPosicao().getLinha()));
@@ -168,9 +173,9 @@ import javax.swing.JFileChooser;
         chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
 
         Posicao pPosicao = new Posicao(e.getY()/Consts.CELL_SIDE, e.getX()/Consts.CELL_SIDE);
-        this.fFases.getFaseAtual().removerElementoPosicao(pPosicao);
+        this.fWrapper.getFases().getFaseAtual().removerElementoPosicao(pPosicao);
 
-        this.fFases.togglePause();
+        this.fWrapper.getFases().togglePause();
 
         int returnVal = chooser.showOpenDialog(null);
         if(returnVal == JFileChooser.APPROVE_OPTION) {
@@ -183,12 +188,12 @@ import javax.swing.JFileChooser;
                 //Checar se funciona
                 eGenerico.setPosicao(e.getY()/Consts.CELL_SIDE, e.getX()/Consts.CELL_SIDE);
 
-                this.fFases.getFaseAtual().addElementoGenerico(eGenerico);
+                this.fWrapper.getFases().getFaseAtual().addElementoGenerico(eGenerico);
 
                 System.out.println(eGenerico.getClass().getName() + " Adicionado ao jogo em (" +
                         String.valueOf(eGenerico.getPosicao().getColuna()) + "," + String.valueOf(eGenerico.getPosicao().getLinha()) + ")");
 
-                this.fFases.togglePause();
+                this.fWrapper.getFases().togglePause();
             }
             catch (Exception ex) {
                 ex.printStackTrace();

@@ -5,7 +5,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JOptionPane;
-
+import Auxiliar.FasesWrapper;
 import Data.Fases;
 
 /**
@@ -14,15 +14,15 @@ import Data.Fases;
  */
 
 public class CaixaComandos extends JFrame implements ActionListener{
-  private Fases fFases;
+  private FasesWrapper fWrapper;
 
   JButton bt1 = new JButton("Jogar");
   JButton bt2 = new JButton("Salvar");
   JButton bt3 = new JButton("Carregar");
   JButton bt4 = new JButton("Sair");
 
-  public void RecebeFases(Fases fFases){
-    this.fFases = fFases;
+  public void recebeFases(FasesWrapper sWrapper){
+    this.fWrapper = sWrapper;
   }
 
   public void run(){
@@ -55,15 +55,15 @@ public class CaixaComandos extends JFrame implements ActionListener{
 
   public void actionPerformed(ActionEvent e){
     if(e.getSource()==bt1){
-      this.fFases.togglePause();
+      this.fWrapper.getFases().togglePause();
     }else if(e.getSource()==bt2){ //salvar
       //FileClass fcTemp = new FileClass();
 
-      sJogo.salvarFase(this.fFases);
+      sJogo.salvarFase(this.fWrapper.getFases());
 
       //if(fFase.getFaseAtual==0){}
     }else if(e.getSource()==bt3){ //carregar
-      sJogo.carregarFase();
+      sJogo.carregarFase(this.fWrapper);
 
     }else if(e.getSource()==bt4){
       //aSave.encerrarAutoSave();
