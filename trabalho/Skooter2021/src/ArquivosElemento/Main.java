@@ -17,9 +17,9 @@ public class Main {
         Behavior behavior2 = bFactory.criarBehavior("BehaviorOscilador");
         Behavior behavior3 = bFactory.criarBehavior("BehaviorEstatico");
 
-        ElementoGenerico eGenerico1 = (ElementoGenerico)factory.criarElemento("ElementoGenerico", "colecionaveis" + File.separator + "sol.png", 0, 0, behavior1);
-        ElementoGenerico eGenerico2 = (ElementoGenerico)factory.criarElemento("ElementoGenerico", "colecionaveis" + File.separator + "lampada.png", 0, 0, behavior2);
-        ElementoGenerico eGenerico3 = (ElementoGenerico)factory.criarElemento("ElementoGenerico", "colecionaveis" + File.separator + "lampada.png", 0, 0, behavior3);
+        ElementoGenerico eGenerico1 = (ElementoGenerico)factory.criarElemento("ElementoGenerico", "genericos" + File.separator + "enderman.png", 0, 0, behavior1);
+        ElementoGenerico eGenerico2 = (ElementoGenerico)factory.criarElemento("ElementoGenerico", "genericos" + File.separator + "flash.png", 0, 0, behavior2);
+        ElementoGenerico eGenerico3 = (ElementoGenerico)factory.criarElemento("ElementoGenerico", "genericos" + File.separator + "snorlax.png", 0, 0, behavior3);
         try {
             FileOutputStream ofStream = new FileOutputStream("ElementoTransportador.obj");
             ObjectOutputStream obStream = new ObjectOutputStream(ofStream);

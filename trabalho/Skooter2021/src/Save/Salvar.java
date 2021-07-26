@@ -19,33 +19,34 @@ import Data.Fases;
  */
 public class Salvar extends Thread{
 
-  public void salvarFase(Fases fFases){
-    try{
-      File fTemp = new File("save.zip");
-      if(fTemp.exists()){
-        fTemp.createNewFile();
-      }
+    public void salvarFase(Fases fFases){
+        try{
+            File fTemp = new File("save.zip");
+            if(fTemp.exists()){
+                fTemp.createNewFile();
+            }
 
-      FileOutputStream canoOut = new FileOutputStream(fTemp);
-      GZIPOutputStream compactador = new GZIPOutputStream(canoOut);
-      ObjectOutputStream serializador = new ObjectOutputStream(compactador);
+            FileOutputStream canoOut = new FileOutputStream(fTemp);
+            GZIPOutputStream compactador = new GZIPOutputStream(canoOut);
+            ObjectOutputStream serializador = new ObjectOutputStream(compactador);
 
 
-      serializador.writeObject(fFases);
+            serializador.writeObject(fFases);
 
-      serializador.close();
-      compactador.close();
-      canoOut.close();
-    } catch(FileNotFoundException e){
-      e.printStackTrace();
-    }catch(IOException e){
-      e.printStackTrace();
+            serializador.close();
+            compactador.close();
+            canoOut.close();
+        } catch(FileNotFoundException e){
+            e.printStackTrace();
+        }catch(IOException e){
+            e.printStackTrace();
+        }
     }
-  }
 
-  public void carregarFase(FasesWrapper fWrapper){
+    public void carregarFase(FasesWrapper fWrapper){
         try {
             File fTemp = new File("save.zip");
+
             if (fTemp.exists()) {
                 fTemp.createNewFile();
             }
@@ -53,10 +54,6 @@ public class Salvar extends Thread{
             FileInputStream canoIn = new FileInputStream("save.zip");
             GZIPInputStream gis = new GZIPInputStream(canoIn);
             ObjectInputStream deserializador = new ObjectInputStream(gis);
-
-            /*FileInputStream fin = new FileInputStream("c:\\address.gz");
-            GZIPInputStream gis = new GZIPInputStream(fin);
-            ObjectInputStream ois = new ObjectInputStream(gis);*/
 
             fWrapper.loadFases((Fases) deserializador.readObject());
 

@@ -12,16 +12,16 @@ import Auxiliar.FasesWrapper;
  *
  * @author Eduardo, Jonatas
  */
- public class ChamaAutoSave extends Thread{
+public class ChamaAutoSave extends Thread{
 
-   public void iniciaAutoSave(FasesWrapper fWrapper, int temp){
-     AutoSave asJogo = new AutoSave(fWrapper,temp);
+    public void iniciaAutoSave(FasesWrapper fWrapper, int temp){
+        AutoSave asJogo = new AutoSave(fWrapper,temp);
 
-     asJogo.start();
-     try{
-       asJogo.join();
-     }catch(InterruptedException ex){
-         ex.printStackTrace();
-     }
-   }
- }
+        asJogo.start();
+        try{
+            asJogo.join();
+        }catch(InterruptedException ex){
+            ex.printStackTrace();
+        }
+    }
+}
