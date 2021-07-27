@@ -121,6 +121,7 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         } else if(e.getKeyCode() == KeyEvent.VK_P) {
             this.fWrapper.getFases().togglePause();
         } else if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+            this.fWrapper.getFases().togglePause();
             this.cComandos.run();
         } else if (e.getKeyCode() == KeyEvent.VK_F) {
             this.fWrapper.getFases().passarDeFase();
