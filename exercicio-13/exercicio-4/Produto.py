@@ -1,5 +1,8 @@
-class Produto:
+from abc import ABC, abstractmethod
 
+
+class Produto(ABC):
+    @abstractmethod
     def __init__(self, codigo, preco, descricao, quantidade):
         self._codigo = codigo
         self._preco = preco
