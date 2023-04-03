@@ -1,0 +1,3 @@
+make -> compila as classes
+make run -> roda o programa
+make clean -> apaga as classes

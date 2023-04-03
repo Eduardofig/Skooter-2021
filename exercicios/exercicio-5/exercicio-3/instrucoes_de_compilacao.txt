@@ -1,0 +1,4 @@
+make 1 -> compila e roda a parte 1
+make 2 -> compila e roda a parte 2
+make 3 -> compila e roda a parte 3
+make clean -> apaga os binarios
