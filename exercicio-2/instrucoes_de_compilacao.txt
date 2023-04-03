@@ -1,4 +1,0 @@
-Comandos:
-    make all ->compila o programa
-    make run ->roda o programa
-

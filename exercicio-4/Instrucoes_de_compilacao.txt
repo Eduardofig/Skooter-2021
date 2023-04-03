@@ -1,3 +1,0 @@
-make -> compila o codigo
-make run -> roda o codigo
-make clear -> apaga os binarios

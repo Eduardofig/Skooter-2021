@@ -1,3 +1,0 @@
-make a -> compila e roda a letra a
-make b -> compila e roda a letra b
-make clean -> apaga os binarios
